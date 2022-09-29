@@ -17,35 +17,26 @@ public class PlayerController : MonoBehaviour
     private int timesJumped;
     Vector3 playerVelocity;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
     {
         playerMove();
-        playerJump();
     }
 
     void playerMove()
-    {
-        float xAxis = Input.GetAxis("Horizontal");
-        float zAxis = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * xAxis + transform.forward * zAxis;
-        playerController.Move(move * playerSpeed * Time.deltaTime);
-    }
-
-    void playerJump()
     {
         if (playerController.isGrounded && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
             timesJumped = 0;
         }
+
+        float xAxis = Input.GetAxis("Horizontal");
+        float zAxis = Input.GetAxis("Vertical");
+
+        Vector3 move = transform.right * xAxis + transform.forward * zAxis;
+        playerController.Move(move * playerSpeed * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump") && timesJumped < jumpsMax)
         {
@@ -55,5 +46,6 @@ public class PlayerController : MonoBehaviour
 
         playerVelocity.y -= gravityValue * Time.deltaTime;
         playerController.Move(playerVelocity * Time.deltaTime);
+
     }
 }
