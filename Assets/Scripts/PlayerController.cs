@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float playerSpeed;
     [SerializeField] float jumpHeight;
     [SerializeField] float gravityValue;
-
     [SerializeField] int jumpsMax;
 
-    
-    
+    [SerializeField] int damage;
+    [SerializeField] float shootRate;
+    [SerializeField] int shootDistance;
+
+    bool isShooting;
     private int timesJumped;
     Vector3 playerVelocity;
 
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         playerMove();
+        StartCoroutine(shoot());
     }
 
     void playerMove()
@@ -46,6 +49,21 @@ public class PlayerController : MonoBehaviour
 
         playerVelocity.y -= gravityValue * Time.deltaTime;
         playerController.Move(playerVelocity * Time.deltaTime);
+    }
 
+    IEnumerator shoot()
+    {
+        if(Input.GetButton("Shoot") && !isShooting)
+        {
+            isShooting = true;
+            RaycastHit hit;
+            if(Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+            {
+                if (hit.collider.GetComponent<IDamage>() != null)
+                    hit.collider.GetComponent<IDamage>().takeDamage(damage);
+            }
+            yield return new WaitForSeconds(shootRate);
+            isShooting = false;
+        }
     }
 }

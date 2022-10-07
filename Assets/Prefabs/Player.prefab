@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ff38d309f197447ac9164db0f35dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hzntlSens: 120
-  vrtclSens: 120
+  hzntlSens: 300
+  vrtclSens: 300
   lockVerticalMin: -85
   lockVerticalMax: 85
   invert: 0
@@ -156,6 +156,9 @@ MonoBehaviour:
   jumpHeight: 10
   gravityValue: 25
   jumpsMax: 2
+  damage: 1
+  shootRate: 0.1
+  shootDistance: 25
 --- !u!143 &7726628884606260107
 CharacterController:
   m_ObjectHideFlags: 0
