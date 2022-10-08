@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour, IDamage
 {
     [SerializeField] int HP;
     // Start is called before the first frame update
