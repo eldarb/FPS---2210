@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("----- Component -----")]
     [SerializeField] CharacterController playerController;
 
-    [SerializeField] float playerSpeed;
-    [SerializeField] float jumpHeight;
-    [SerializeField] float gravityValue;
-    [SerializeField] int jumpsMax;
+    [Header("----- Player Stats -----")]
+    [Range(1, 5)] [SerializeField] float playerSpeed;
+    [Range(8, 15)] [SerializeField] float jumpHeight;
+    [Range(15, 35)] [SerializeField] float gravityValue;
+    [Range(1, 5)] [SerializeField] int jumpsMax;
 
-    [SerializeField] int damage;
+    [Header("----- Gun Stats -----")]
     [SerializeField] float shootRate;
     [SerializeField] int shootDistance;
+    [SerializeField] int shootDamage;
+    [SerializeField] GameObject gunModel;
+    [SerializeField] List<gunStats> gunStat = new List<gunStats>();
 
-    bool isShooting;
-    private int timesJumped;
     Vector3 playerVelocity;
+    private int timesJumped;
+    bool isShooting;
+    int selectGun;
 
 
     // Update is called once per frame
@@ -25,6 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         playerMove();
         StartCoroutine(shoot());
+        gunSelect();
     }
 
     void playerMove()
@@ -53,17 +60,54 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator shoot()
     {
-        if(Input.GetButton("Shoot") && !isShooting)
+        if (gunStat.Count > 0 && Input.GetButton("Shoot") && !isShooting)
         {
             isShooting = true;
             RaycastHit hit;
-            if(Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
             {
                 if (hit.collider.GetComponent<IDamage>() != null)
-                    hit.collider.GetComponent<IDamage>().takeDamage(damage);
+                    hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
             }
             yield return new WaitForSeconds(shootRate);
             isShooting = false;
         }
+    }
+
+    public void gunPickUp(gunStats stats)
+    {
+        shootRate = gunStat[selectGun].shootRate;
+        shootDistance = gunStat[selectGun].shootDistance;
+        shootDamage = gunStat[selectGun].shootDamage;
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunStat[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStat[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+        gunStat.Add(stats);
+    }
+
+    void gunSelect()
+    {
+        if (gunStat.Count > 1)
+        {
+            if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectGun < gunStat.Count - 1)
+            {
+                selectGun++;
+                changeGun();
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGun > 0)
+            {
+                selectGun--;
+                changeGun();
+            }
+        }
+    }
+
+    void changeGun()
+    {
+        shootRate = gunStat[selectGun].shootRate;
+        shootDistance = gunStat[selectGun].shootDistance;
+        shootDamage = gunStat[selectGun].shootDamage;
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunStat[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStat[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
     }
 }
