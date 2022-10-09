@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamage
 {
     [Header("----- Component -----")]
     [SerializeField] CharacterController playerController;
 
     [Header("----- Player Stats -----")]
+    [Range(1, 10)] [SerializeField] int HP;
     [Range(1, 5)] [SerializeField] float playerSpeed;
     [Range(8, 15)] [SerializeField] float jumpHeight;
     [Range(15, 35)] [SerializeField] float gravityValue;
@@ -109,5 +110,14 @@ public class PlayerController : MonoBehaviour
         shootDamage = gunStat[selectGun].shootDamage;
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunStat[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStat[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+    }
+
+    public void takeDamage(int damage)
+    {
+        HP -= damage;
+        if(HP <= 0)
+        {
+            Debug.Log("Dead! Should open up the dead menu!");
+        }
     }
 }
