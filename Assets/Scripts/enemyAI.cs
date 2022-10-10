@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour, IDamage
+public class enemyAI : MonoBehaviour, IDamage
 {
     [Header("----- Components -----")]
-    [SerializeField] NavMeshAgent enemyAgent;
+    [SerializeField] NavMeshAgent agent;
     [SerializeField] Renderer model;
 
     [Header("----- Enemy Stats -----")]
     [SerializeField] int HP;
     [SerializeField] int targetingSpeed;
     [SerializeField] int sightRange;
+
+    [Header("----- Shooting Stats -----")]
     [SerializeField] float shootRate;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject shootPosition;
 
     bool isShooting;
     bool playerInRange;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,22 +32,23 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        if (enemyAgent.enabled && playerInRange)
+        if (agent.enabled && playerInRange)
         {
-            enemyAgent.SetDestination(gameManager.instance.player.transform.position);
+            agent.SetDestination(gameManager.instance.player.transform.position);
 
             if (!isShooting)
                 StartCoroutine(shoot());
         }
     }
 
-    public void takeDamage(int damage)
+    public void takeDamage(int dmg)
     {
-        HP -= damage;
-        //StartCoroutine();
+        HP -= dmg;
+        StartCoroutine(flashDamage());
 
         if (HP <= 0)
         {
+            //gameManager.instance.checkEnemyTotal();
             Destroy(gameObject);
         }
     }
@@ -62,25 +66,24 @@ public class EnemyAI : MonoBehaviour, IDamage
     IEnumerator flashDamage()
     {
         model.material.color = Color.red;
-        enemyAgent.enabled = false;
+        agent.enabled = false;
         yield return new WaitForSeconds(0.25f);
         model.material.color = Color.white;
-        enemyAgent.enabled = true;
+        agent.enabled = true;
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
     }
 
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Player"))
-    //    {
-    //        playerInRange = true;
-    //    }
-    //}
-
-   //void OnTriggerExit(Collider other)
-   // {
-   //     if (other.CompareTag("Player"))
-   //     {
-   //         playerInRange = false;
-   //     }
-   // }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+    }
 }
