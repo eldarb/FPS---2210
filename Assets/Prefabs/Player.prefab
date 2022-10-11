@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ff38d309f197447ac9164db0f35dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hzntlSens: 300
-  vrtclSens: 300
+  hzntlSens: 200
+  vrtclSens: 200
   lockVerticalMin: -85
   lockVerticalMax: 85
   invert: 0
@@ -186,9 +186,9 @@ MonoBehaviour:
   playerController: {fileID: 7726628884606260107}
   HP: 10
   playerSpeed: 5
-  jumpHeight: 10
-  gravityValue: 25
-  jumpsMax: 2
+  jumpHeight: 8
+  gravityValue: 35
+  jumpsMax: 1
   shootRate: 0.1
   shootDistance: 25
   shootDamage: 1
