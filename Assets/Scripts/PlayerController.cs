@@ -8,9 +8,9 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] CharacterController playerController;
 
     [Header("----- Player Stats -----")]
-    [Range(1, 10)] [SerializeField] int HP;
-    [Range(1, 5)] [SerializeField] float playerSpeed;
-    [Range(8, 15)] [SerializeField] float jumpHeight;
+    [Range(1, 100)] [SerializeField] int HP;
+    [Range(1, 20)] [SerializeField] float playerSpeed;
+    [Range(5, 15)] [SerializeField] float jumpHeight;
     [Range(15, 35)] [SerializeField] float gravityValue;
     [Range(1, 5)] [SerializeField] int jumpsMax;
 
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour, IDamage
     private void Start()
     {
         HPOrig = HP;
-        //respawn();
+        respawn();
     }
 
 
@@ -145,5 +145,14 @@ public class PlayerController : MonoBehaviour, IDamage
         updatePlayerHUD();
         transform.position = gameManager.instance.spawnPosition.transform.position;
         playerController.enabled = true;
+    }
+
+    public void EnhanceTraits()
+    {
+        if(HP != 0)
+            HP *= 2;
+        playerSpeed *= 2;
+        jumpHeight *= 2;
+        jumpsMax *= 2;
     }
 }

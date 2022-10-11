@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29ddef52fb011f949a002ebb0e9360f7, type: 3}
-  m_Name: Sniper
+  m_Name: Gun - Sniper
   m_EditorClassIdentifier: 
   shootRate: 2
   shootDistance: 200

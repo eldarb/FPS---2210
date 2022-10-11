@@ -21,7 +21,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject shootPosition;
 
     bool isShooting;
-    bool playerInRange;
+    public bool playerInRange;
 
     // Start is called before the first frame update
     void Start()

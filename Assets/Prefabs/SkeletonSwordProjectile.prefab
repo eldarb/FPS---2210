@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1993272329929681056}
   - component: {fileID: 7913194678289067256}
   - component: {fileID: 5347364763149965362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SkeletonSwordProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5851684014553905639}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.12334247
   m_Height: 1.2226379

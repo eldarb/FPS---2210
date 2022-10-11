@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1649964337475679485}
   - component: {fileID: 2398732259609017176}
   - component: {fileID: 481591651179106194}
+  - component: {fileID: 549900510991987330}
+  - component: {fileID: 1058458431}
   m_Layer: 0
   m_Name: Sword14_Blue
   m_TagString: Untagged
@@ -83,3 +85,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &549900510991987330
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138657310522519111}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.9085807
+  m_Center: {x: -3.1086249e-15, y: 0.55222905, z: -0.00000001303852}
+--- !u!114 &1058458431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138657310522519111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91940a98575273c4fa79227926ccf50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunStat: {fileID: 11400000, guid: 7449ea03e7e338746bcb07a7a60cddbc, type: 2}
