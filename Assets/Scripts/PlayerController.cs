@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour, IDamage
     private void Start()
     {
         HPOrig = HP;
-        respawn();
     }
 
 
@@ -122,28 +121,12 @@ public class PlayerController : MonoBehaviour, IDamage
     public void takeDamage(int damage)
     {
         HP -= damage;
-        updatePlayerHUD();
-        StartCoroutine(gameManager.instance.playerDamage());
-        
+        gameManager.instance.playerHPBar.fillAmount = (float)HP/(float)HPOrig;
+
         if(HP <= 0)
         {
             gameManager.instance.playerDeadMenu.SetActive(true);
             gameManager.instance.togglePause();
         }
-    }
-
-    public void updatePlayerHUD()
-    {
-        gameManager.instance.playerHPBar.fillAmount = (float)HP / (float)HPOrig;
-    }
-
-    public void respawn()
-    {
-        playerController.enabled = false;
-        gameManager.instance.playerDeadMenu.SetActive(false);
-        HP = HPOrig;
-        updatePlayerHUD();
-        transform.position = gameManager.instance.spawnPosition.transform.position;
-        playerController.enabled = true;
     }
 }
