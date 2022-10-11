@@ -7,15 +7,13 @@ public class buttonFunctions : MonoBehaviour
 {
     public void resume()
     {
-        gameManager.instance.cursorUnlockUnpause();
-        gameManager.instance.pauseMenu.SetActive(false);
-        gameManager.instance.isPaused = false;
+        gameManager.instance.togglePause();
     }
 
     // Update is called once per frame
     public void restart()
     {
-        gameManager.instance.cursorUnlockUnpause();
+        gameManager.instance.togglePause();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

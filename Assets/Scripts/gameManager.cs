@@ -29,33 +29,23 @@ public class gameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
-        spawnPosition = GameObject.FindGameObjectWithTag("Spawn Position");
+        //spawnPosition = GameObject.FindGameObjectWithTag("Spawn Position");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
         {
-            isPaused = !isPaused;
-            pauseMenu.SetActive(isPaused);
-            if (isPaused)
-                cursorLockPause();
-            else
-                cursorUnlockUnpause();
+            togglePause();
         }
     }
-    public void cursorLockPause()
-    {
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
-    }
 
-    public void cursorUnlockUnpause()
-    {
-        Time.timeScale = 1;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+    public void togglePause() {
+        isPaused = !isPaused;
+        pauseMenu.SetActive(isPaused);
+        Time.timeScale = isPaused ? 0 : 1;
+        Cursor.visible = isPaused;
+        Cursor.lockState = isPaused ? CursorLockMode.Confined : CursorLockMode.Locked;
     }
 }

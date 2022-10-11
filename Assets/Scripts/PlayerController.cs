@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour, IDamage
         if(HP <= 0)
         {
             gameManager.instance.playerDeadMenu.SetActive(true);
-            gameManager.instance.cursorLockPause();
+            gameManager.instance.togglePause();
         }
     }
 }
