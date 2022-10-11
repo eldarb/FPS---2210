@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour
 {
@@ -14,9 +13,6 @@ public class gameManager : MonoBehaviour
     [Header("----- UI -----")]
     public GameObject pauseMenu;
     public GameObject currentMenu;
-    public GameObject playerDamageFlash;
-    public GameObject reticle;
-    public Image playerHPBar;
 
     public bool isPaused;
 
@@ -34,17 +30,25 @@ public class gameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            togglePause();
+            isPaused = !isPaused;
+            pauseMenu.SetActive(isPaused);
+            if (isPaused)
+                cursorLockPause();
+            else
+                cursorUnlockUnpause();
         }
     }
-    
-    public void togglePause() {
-        isPaused = !isPaused;
-        pauseMenu.SetActive(isPaused);
-        //reticle.SetActive(!isPaused);
+    public void cursorLockPause()
+    {
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
 
-        Time.timeScale = (isPaused) ? 0 : 1;
-        Cursor.visible = isPaused;
-        Cursor.lockState = (isPaused) ? CursorLockMode.Confined : CursorLockMode.Locked;
+    public void cursorUnlockUnpause()
+    {
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
