@@ -25,6 +25,12 @@ public class PlayerController : MonoBehaviour, IDamage
     private int timesJumped;
     bool isShooting;
     int selectGun;
+    int HPOrig;
+
+    private void Start()
+    {
+        HPOrig = HP;
+    }
 
 
     // Update is called once per frame
@@ -115,6 +121,8 @@ public class PlayerController : MonoBehaviour, IDamage
     public void takeDamage(int damage)
     {
         HP -= damage;
+        gameManager.instance.playerHPBar.fillAmount = (float)HP/(float)HPOrig;
+
         if(HP <= 0)
         {
             Debug.Log("Dead! Should open up the dead menu!");
