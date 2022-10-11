@@ -23862,7 +23862,7 @@ MonoBehaviour:
   myDoor: {fileID: 8938933407869467294}
   openTrigger: 1
   closeTrigger: 0
-  animationName: 
+  animationName: DoorOpenAnimation
 --- !u!1 &8938933406542739295
 GameObject:
   m_ObjectHideFlags: 0
@@ -24656,7 +24656,7 @@ MonoBehaviour:
   myDoor: {fileID: 8938933407869467294}
   openTrigger: 0
   closeTrigger: 1
-  animationName: 
+  animationName: DoorCloseAnimation
 --- !u!1 &8938933406836475816
 GameObject:
   m_ObjectHideFlags: 0
@@ -25113,7 +25113,7 @@ MonoBehaviour:
   myDoor: {fileID: 8938933407547674309}
   openTrigger: 1
   closeTrigger: 0
-  animationName: 
+  animationName: DoorOpenAnimation
 --- !u!1 &8938933406953668946
 GameObject:
   m_ObjectHideFlags: 0
