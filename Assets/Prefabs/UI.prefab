@@ -2185,6 +2185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e27856010264764bbe65b05a87b2909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCount: 0
   player: {fileID: 0}
   playerScript: {fileID: 0}
   spawnPosition: {fileID: 0}
@@ -2194,6 +2195,7 @@ MonoBehaviour:
   currentMenu: {fileID: 0}
   playerDamageFlash: {fileID: 1297703905}
   playerHPBar: {fileID: 1949248849}
+  enemyCountText: {fileID: 0}
   isPaused: 0
 --- !u!1 &2305218682928499137
 GameObject:
