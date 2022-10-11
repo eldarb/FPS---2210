@@ -83,11 +83,11 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public void gunPickUp(gunStats stats)
     {
-        shootRate = gunStat[selectGun].shootRate;
-        shootDistance = gunStat[selectGun].shootDistance;
-        shootDamage = gunStat[selectGun].shootDamage;
-        gunModel.GetComponent<MeshFilter>().sharedMesh = gunStat[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStat[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        shootRate = stats.shootRate;
+        shootDistance = stats.shootDistance;
+        shootDamage = stats.shootDamage;
+        gunModel.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         gunStat.Add(stats);
     }

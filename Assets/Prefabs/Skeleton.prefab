@@ -2170,7 +2170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8239933372440443950}
   - component: {fileID: 2646484262472066644}
-  - component: {fileID: 6915527063124702326}
+  - component: {fileID: 2996229441149350786}
   - component: {fileID: 6915527063124702329}
   - component: {fileID: 6915527063124702328}
   - component: {fileID: 6915527063124702327}
@@ -2219,26 +2219,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6915527063124702326
+--- !u!114 &2996229441149350786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8723981631012120212}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebc3f4884b6b50f4187c329617a0e6d5, type: 3}
+  m_Script: {fileID: 11500000, guid: bdb50d865849cf34f8d94e32234d6b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 6915527063124702329}
   model: {fileID: 0}
-  HP: 0
-  targetingSpeed: 0
+  HP: 2
+  facePlayerSpeed: 0
   sightRange: 0
-  shootRate: 0
-  bullet: {fileID: 0}
-  shootPosition: {fileID: 0}
+  shootRate: 1
+  bullet: {fileID: 5851684014553905639, guid: be62a7b4771a6a4488a7e8ca21369736, type: 3}
+  shootPosition: {fileID: 7227299940144408926}
 --- !u!195 &6915527063124702329
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2246,16 +2246,16 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8723981631012120212}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 50
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_AngularSpeed: 600
+  m_StoppingDistance: 8
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0

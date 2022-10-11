@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
     public static gameManager instance;
+
+    public int enemyCount;
 
     [Header("----- Player -----")]
     public GameObject player;
@@ -19,6 +22,7 @@ public class gameManager : MonoBehaviour
     public GameObject currentMenu;
     public GameObject playerDamageFlash;
     public Image playerHPBar;
+    public TextMeshProUGUI enemyCountText;
 
     public bool isPaused;
 
@@ -47,5 +51,25 @@ public class gameManager : MonoBehaviour
         Time.timeScale = isPaused ? 0 : 1;
         Cursor.visible = isPaused;
         Cursor.lockState = isPaused ? CursorLockMode.Confined : CursorLockMode.Locked;
+    }
+
+    public IEnumerator playerDamage()
+    {
+        playerDamageFlash.SetActive(true);
+
+        yield return new WaitForSeconds(0.1f);
+
+        playerDamageFlash.SetActive(false);
+    }
+
+    public void checkEnemyTotal()
+    {
+        enemyCount--;
+        enemyCountText.text = enemyCount.ToString("F0");
+        if (enemyCount < 0)
+        {
+            winMenu.SetActive(true);
+            togglePause();
+        }
     }
 }
