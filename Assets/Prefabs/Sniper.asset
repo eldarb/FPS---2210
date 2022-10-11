@@ -16,7 +16,7 @@ MonoBehaviour:
   shootDistance: 200
   shootDamage: 5
   ammoCount: 5
-  gunModel: {fileID: 8531654022459573224, guid: 182bbd5a4b3aeca47bcb3edca99d506c, type: 3}
+  gunModel: {fileID: 919132149155446097, guid: 60d91f925d8c1e442bb6596dfb94ffff, type: 3}
   sound: {fileID: 0}
   gitEffect: {fileID: 0}
   muzzleEffect: {fileID: 0}
