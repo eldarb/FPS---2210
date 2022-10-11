@@ -125,7 +125,8 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if(HP <= 0)
         {
-            Debug.Log("Dead! Should open up the dead menu!");
+            gameManager.instance.playerDeadMenu.SetActive(true);
+            gameManager.instance.cursorLockPause();
         }
     }
 }

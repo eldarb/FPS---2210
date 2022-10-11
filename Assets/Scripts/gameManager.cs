@@ -10,9 +10,12 @@ public class gameManager : MonoBehaviour
     [Header("----- Player -----")]
     public GameObject player;
     public PlayerController playerScript;
+    public GameObject spawnPosition;
 
     [Header("----- UI -----")]
     public GameObject pauseMenu;
+    public GameObject playerDeadMenu;
+    public GameObject winMenu;
     public GameObject currentMenu;
     public GameObject playerDamageFlash;
     public Image playerHPBar;
@@ -26,6 +29,7 @@ public class gameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
+        spawnPosition = GameObject.FindGameObjectWithTag("Spawn Position");
     }
 
     // Update is called once per frame
