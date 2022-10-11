@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour, IDamage
     private void Start()
     {
         HPOrig = HP;
-        respawn();
+        //respawn();
     }
 
 
