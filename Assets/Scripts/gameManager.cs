@@ -25,7 +25,6 @@ public class gameManager : MonoBehaviour
     public TextMeshProUGUI enemyCountText;
 
     public bool isPaused;
-
     // Start is called before the first frame update
     // Creates the instance that holds the playerController
     void Awake()
@@ -41,24 +40,34 @@ public class gameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
         {
-            togglePause();
+            isPaused = !isPaused;
+            pauseMenu.SetActive(isPaused);
+
+            if (isPaused)
+                cursorLockPause();
+            else
+                cursorUnLockUnPause();
         }
     }
 
-    public void togglePause() {
-        isPaused = !isPaused;
-        pauseMenu.SetActive(isPaused);
-        Time.timeScale = isPaused ? 0 : 1;
-        Cursor.visible = isPaused;
-        Cursor.lockState = isPaused ? CursorLockMode.Confined : CursorLockMode.Locked;
+    public void cursorLockPause()
+    {
+        playerDamageFlash.SetActive(false);
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+    public void cursorUnLockUnPause()
+    {
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public IEnumerator playerDamage()
     {
         playerDamageFlash.SetActive(true);
-
         yield return new WaitForSeconds(0.1f);
-
         playerDamageFlash.SetActive(false);
     }
 
@@ -66,10 +75,10 @@ public class gameManager : MonoBehaviour
     {
         enemyCount--;
         enemyCountText.text = enemyCount.ToString("F0");
-        if (enemyCount < 0)
+        if (enemyCount <= 0)
         {
             winMenu.SetActive(true);
-            togglePause();
+            cursorLockPause();
         }
     }
 }

@@ -45,13 +45,16 @@ public class enemyAI : MonoBehaviour, IDamage
 
     public void takeDamage(int dmg)
     {
-        HP -= dmg;
-        StartCoroutine(flashDamage());
-
-        if (HP <= 0)
+        if (!gameManager.instance.pauseMenu.activeSelf && !gameManager.instance.winMenu.activeSelf && !gameManager.instance.playerDeadMenu.activeSelf)
         {
-            gameManager.instance.checkEnemyTotal();
-            Destroy(gameObject);
+            HP -= dmg;
+            StartCoroutine(flashDamage());
+
+            if (HP <= 0)
+            {
+                gameManager.instance.checkEnemyTotal();
+                Destroy(gameObject);
+            }
         }
     }
 
