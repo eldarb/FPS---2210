@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ddef52fb011f949a002ebb0e9360f7, type: 3}
   m_Name: skeletonSword
   m_EditorClassIdentifier: 
-  shootRate: 0.1
-  shootDistance: 25
+  shootRate: 0.3
+  shootDistance: 2
   shootDamage: 1
   ammoCount: 0
   gunModel: {fileID: 5746359903908249793, guid: 78925be475d86164f92d73a589da7cba, type: 3}

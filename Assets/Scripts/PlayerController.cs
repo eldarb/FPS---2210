@@ -150,10 +150,11 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public void EnhanceTraits()
     {
-        if(HP != 0)
-            HP *= 2;
-        playerSpeed *= 2;
-        jumpHeight *= 2;
+        HP *= 2;
+        HPOrig = HP;
+        updatePlayerHUD();
+        playerSpeed *= 1.3f;
+        jumpHeight *= 1.2f;
         jumpsMax *= 2;
     }
 }

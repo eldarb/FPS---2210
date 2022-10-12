@@ -6,33 +6,26 @@ public class doorOpen : MonoBehaviour
 {
     [SerializeField] Animator myDoor = null;
 
-    [SerializeField] bool openTrigger;
-    [SerializeField] bool closeTrigger;
-    [SerializeField] string animationName;
+    bool openTrigger;
+    bool open;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+
+        if (other.CompareTag("Player"))
+        {
+            if (gameObject.CompareTag("Small Door"))
             {
-            if (closeTrigger && animationName == "BigDoorRightAnimation")
-            {
-                myDoor.Play("BigDoorRightAnimation", 0, 0.0f);
-                gameObject.SetActive(false);
-            }
-            else if (closeTrigger && animationName == "BigDoorLeftAnimation")
-            {
-                myDoor.Play("BigDoorLeftAnimation", 0, 0.0f);
-                gameObject.SetActive(false);
-            }
-            else if (openTrigger && animationName == "DoorOpenAnimation")
-            {
-                myDoor.Play("DoorOpenAnimation", 0, 0.0f);
-                gameObject.SetActive(false);
-            }
-            else if(closeTrigger && animationName == "DoorCloseAnimation")
-            {
-                myDoor.Play("DoorCloseAnimation", 0, 0.0f);
-                gameObject.SetActive(false);
+                if (!openTrigger)
+                {
+                    openTrigger = !openTrigger;
+                    myDoor.Play("DoorOpenAnimation", 0, 0.0f);
+                }
+                else if (openTrigger)
+                {
+                    openTrigger = !openTrigger;
+                    myDoor.Play("DoorCloseAnimation", 0, 0.0f);
+                }
             }
         }
     }

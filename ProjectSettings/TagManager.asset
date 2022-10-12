@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Spawn Point
+  - Small Door
+  - Big Door
   layers:
   - Default
   - TransparentFX
