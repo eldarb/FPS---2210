@@ -15,6 +15,9 @@ public class gameManager : MonoBehaviour
     public PlayerController playerScript;
     public GameObject spawnPosition;
 
+    [Header("----- Weapon Handler -----")]
+    public GameObject weaponHandler;
+    public WeaponHandler weaponHandlerScript;
     [Header("----- UI -----")]
     public GameObject pauseMenu;
     public GameObject playerDeadMenu;
@@ -32,6 +35,8 @@ public class gameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
+        weaponHandler = GameObject.FindGameObjectWithTag("Weapon Handler");
+        weaponHandlerScript = weaponHandler.GetComponent<WeaponHandler>();
         spawnPosition = GameObject.FindGameObjectWithTag("Spawn Point");
     }
 

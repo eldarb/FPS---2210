@@ -14,17 +14,17 @@ public class PlayerController : MonoBehaviour, IDamage
     [Range(15, 35)] [SerializeField] float gravityValue;
     [Range(1, 5)] [SerializeField] int jumpsMax;
 
-    [Header("----- Gun Stats -----")]
-    [SerializeField] float shootRate;
-    [SerializeField] int shootDistance;
-    [SerializeField] int shootDamage;
-    [SerializeField] GameObject gunModel;
-    [SerializeField] List<gunStats> gunStat = new List<gunStats>();
+    //[Header("----- Gun Stats -----")]
+    //[SerializeField] float shootRate;
+    //[SerializeField] int shootDistance;
+    //[SerializeField] int shootDamage;
+    //[SerializeField] GameObject gunModel;
+    //[SerializeField] List<gunStats> gunStat = new List<gunStats>();
 
     Vector3 playerVelocity;
     private int timesJumped;
-    bool isShooting;
-    int selectGun;
+    //bool isShooting;
+    //int selectGun;
     int HPOrig;
 
     private void Start()
@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour, IDamage
     void Update()
     {
         playerMove();
-        StartCoroutine(shoot());
-        gunSelect();
+        //StartCoroutine(shoot());
+        //gunSelect();
     }
 
     void playerMove()
@@ -66,58 +66,57 @@ public class PlayerController : MonoBehaviour, IDamage
         playerController.Move(playerVelocity * Time.deltaTime);
     }
 
-    IEnumerator shoot()
-    {
-        if (gunStat.Count > 0 && Input.GetButton("Shoot") && !isShooting)
-        {
-            isShooting = true;
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
-            {
-                if (hit.collider.GetComponent<IDamage>() != null)
-                    hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
-            }
-            yield return new WaitForSeconds(shootRate);
-            isShooting = false;
-        }
-    }
+    //IEnumerator shoot()
+    //{
+    //    if (gunStat.Count > 0 && Input.GetButton("Shoot") && !isShooting)
+    //    {
+    //        isShooting = true;
+    //        RaycastHit hit;
+    //        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+    //        {
+    //            if (hit.collider.GetComponent<IDamage>() != null)
+    //                hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
+    //        }
+    //        yield return new WaitForSeconds(shootRate);
+    //        isShooting = false;
+    //    }
+    //}
 
-    public void gunPickUp(gunStats stats)
-    {
-        shootRate = stats.shootRate;
-        shootDistance = stats.shootDistance;
-        shootDamage = stats.shootDamage;
-        gunModel.GetComponent<MeshFilter>().sharedMesh = stats.gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = stats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+    //public void gunPickUp(gunStats stats)
+    //{
+    //    shootRate = stats.shootRate;
+    //    shootDistance = stats.shootDistance;
+    //    shootDamage = stats.shootDamage;
 
-        gunStat.Add(stats);
-    }
+    //    gunModel = Instantiate(stats.gunModel, transform);
+    //    gunStat.Add(stats);
+    //}
 
-    void gunSelect()
-    {
-        if (gunStat.Count > 1)
-        {
-            if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectGun < gunStat.Count - 1)
-            {
-                selectGun++;
-                changeGun();
-            }
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGun > 0)
-            {
-                selectGun--;
-                changeGun();
-            }
-        }
-    }
+    //void gunSelect()
+    //{
+    //    if (gunStat.Count > 1)
+    //    {
+    //        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectGun < gunStat.Count - 1)
+    //        {
+    //            selectGun++;
+    //            changeGun();
+    //        }
+    //        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGun > 0)
+    //        {
+    //            selectGun--;
+    //            changeGun();
+    //        }
+    //    }
+    //}
 
-    void changeGun()
-    {
-        shootRate = gunStat[selectGun].shootRate;
-        shootDistance = gunStat[selectGun].shootDistance;
-        shootDamage = gunStat[selectGun].shootDamage;
-        gunModel.GetComponent<MeshFilter>().sharedMesh = gunStat[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStat[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-    }
+    //void changeGun()
+    //{
+    //    shootRate = gunStat[selectGun].shootRate;
+    //    shootDistance = gunStat[selectGun].shootDistance;
+    //    shootDamage = gunStat[selectGun].shootDamage;
+    //    gunModel.GetComponent<MeshFilter>().sharedMesh = gunStat[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
+    //    gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStat[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+    //}
 
     public void takeDamage(int damage)
     {

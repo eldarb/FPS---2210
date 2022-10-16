@@ -7,6 +7,7 @@ TagManager:
   - Spawn Point
   - Small Door
   - Big Door
+  - Weapon Handler
   layers:
   - Default
   - TransparentFX
