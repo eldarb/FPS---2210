@@ -106,28 +106,33 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void facePlayer()
     {
-
+        playerDirection.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(playerDirection);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * facePlayerSpeed);
     }
 
     public void takeDamage(int dmg)
     {
-        if (!gameManager.instance.pauseMenu.activeSelf && !gameManager.instance.winMenu.activeSelf && !gameManager.instance.playerDeadMenu.activeSelf)
-        {
-            HP -= dmg;
-            StartCoroutine(flashDamage());
+        //if (!gameManager.instance.pauseMenu.activeSelf && !gameManager.instance.winMenu.activeSelf && !gameManager.instance.playerDeadMenu.activeSelf)
+        //{
+        HP -= dmg;
 
-            if (HP <= 0)
-            {
-                gameManager.instance.checkEnemyTotal();
-                Destroy(gameObject);
-            }
+        if (HP <= 0)
+        {
+            gameManager.instance.checkEnemyTotal();
+            agent.enabled = false;
+            col.enabled = false;
+            anim.SetBool("Dead", true);
         }
+        else
+            StartCoroutine(flashDamage());
     }
 
     IEnumerator shoot()
     {
         isShooting = true;
 
+        anim.SetTrigger("Shoot");
         Instantiate(bullet, shootPosition.transform.position, transform.rotation);
 
         yield return new WaitForSeconds(shootRate);
@@ -136,11 +141,13 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator flashDamage()
     {
+        anim.SetTrigger("Damage");
         model.material.color = Color.red;
         agent.enabled = false;
         yield return new WaitForSeconds(0.25f);
         model.material.color = Color.white;
         agent.enabled = true;
+        agent.SetDestination(gameManager.instance.player.transform.position);
     }
 
     void OnTriggerEnter(Collider other)
@@ -157,5 +164,6 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             playerInRange = false;
         }
+        agent.stoppingDistance = 0;
     }
 }
