@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [Header("----- Player Stats -----")]
     [Range(1, 100)] [SerializeField] int HP;
     [Range(1, 20)] [SerializeField] float playerSpeed;
+    [Range(1.1f, 2f)] [SerializeField] float sprintMultiplier;
     [Range(5, 15)] [SerializeField] float jumpHeight;
     [Range(15, 35)] [SerializeField] float gravityValue;
     [Range(1, 5)] [SerializeField] int jumpsMax;
@@ -26,10 +27,12 @@ public class PlayerController : MonoBehaviour, IDamage
     //bool isShooting;
     //int selectGun;
     int HPOrig;
+    float playerSpeedOrig;
 
     private void Start()
     {
         HPOrig = HP;
+        playerSpeedOrig = playerSpeed;
         respawn();
     }
 
@@ -38,6 +41,7 @@ public class PlayerController : MonoBehaviour, IDamage
     void Update()
     {
         playerMove();
+        sprint();
         //StartCoroutine(shoot());
         //gunSelect();
     }
@@ -64,6 +68,19 @@ public class PlayerController : MonoBehaviour, IDamage
 
         playerVelocity.y -= gravityValue * Time.deltaTime;
         playerController.Move(playerVelocity * Time.deltaTime);
+    }
+
+    void sprint()
+    {
+        if (Input.GetButtonDown("Sprint"))
+        {
+            playerSpeed *= sprintMultiplier;
+        }
+
+        if (Input.GetButtonUp("Sprint"))
+        {
+            playerSpeed = playerSpeedOrig;
+        }
     }
 
     //IEnumerator shoot()
