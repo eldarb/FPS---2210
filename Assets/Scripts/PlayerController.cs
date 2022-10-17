@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] playerHurtAud;
     [Range(0, 1)] [SerializeField] float playerHurtAudVol;
-    [SerializeField] AudioClip[] playerFootstepsAud;
-    [Range(0, 1)] [SerializeField] float playerFootstepsAudVol;
+    [SerializeField] AudioClip[] playerStepsAud;
+    [Range(0, 1)] [SerializeField] float playerStepsAudVol;
 
     Vector3 playerVelocity;
     private int timesJumped;
@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour, IDamage
     //int selectGun;
     int HPOrig;
     float playerSpeedOrig;
+    bool isSprinting;
+    bool playingSteps;
 
     private void Start()
     {
@@ -67,6 +69,8 @@ public class PlayerController : MonoBehaviour, IDamage
         Vector3 move = transform.right * xAxis + transform.forward * zAxis;
         playerController.Move(move * playerSpeed * Time.deltaTime);
 
+        StartCoroutine(playSteps());
+
         if (Input.GetButtonDown("Jump") && timesJumped < jumpsMax)
         {
             timesJumped++;
@@ -81,12 +85,29 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         if (Input.GetButtonDown("Sprint"))
         {
+            isSprinting = true;
             playerSpeed *= sprintMultiplier;
         }
 
         if (Input.GetButtonUp("Sprint"))
         {
+            isSprinting = false;
             playerSpeed = playerSpeedOrig;
+        }
+    }
+
+    IEnumerator playSteps()
+    {
+        if (!playingSteps && playerController.velocity.magnitude > 0.3f)
+        {
+            playingSteps = true;
+            aud.PlayOneShot(playerStepsAud[Random.Range(0, playerStepsAud.Length)], playerStepsAudVol);
+            if (isSprinting) {
+                yield return new WaitForSeconds(0.225f);
+            } else {
+                yield return new WaitForSeconds(0.3f);
+            }
+            playingSteps = false;
         }
     }
 
