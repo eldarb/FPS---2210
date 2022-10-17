@@ -22,6 +22,13 @@ public class PlayerController : MonoBehaviour, IDamage
     //[SerializeField] GameObject gunModel;
     //[SerializeField] List<gunStats> gunStat = new List<gunStats>();
 
+    [Header("----- Audio -----")]
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip[] playerHurtAud;
+    [Range(0, 1)] [SerializeField] float playerHurtAudVol;
+    [SerializeField] AudioClip[] playerFootstepsAud;
+    [Range(0, 1)] [SerializeField] float playerFootstepsAudVol;
+
     Vector3 playerVelocity;
     private int timesJumped;
     //bool isShooting;
@@ -138,6 +145,9 @@ public class PlayerController : MonoBehaviour, IDamage
     public void takeDamage(int damage)
     {
         HP -= damage;
+
+        aud.PlayOneShot(playerHurtAud[Random.Range(0, playerHurtAud.Length)], playerHurtAudVol);
+
         updatePlayerHUD();
         StartCoroutine(gameManager.instance.playerDamage());
         
