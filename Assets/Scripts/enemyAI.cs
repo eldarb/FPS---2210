@@ -26,7 +26,6 @@ public class enemyAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
-        gameManager.instance.enemyCount++;
         gameManager.instance.enemyCountText.text = gameManager.instance.enemyCount.ToString("F0");
     }
 
