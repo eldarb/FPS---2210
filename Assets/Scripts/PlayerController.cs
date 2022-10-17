@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour, IDamage
     [Range(0, 1)] [SerializeField] float playerHurtAudVol;
     [SerializeField] AudioClip[] playerStepsAud;
     [Range(0, 1)] [SerializeField] float playerStepsAudVol;
+    [SerializeField] AudioClip[] playerJumpAud;
+    [Range(0, 1)] [SerializeField] float playerJumpAudVol;
 
     Vector3 playerVelocity;
     private int timesJumped;
@@ -75,6 +77,7 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             timesJumped++;
             playerVelocity.y += jumpHeight;
+            aud.PlayOneShot(playerJumpAud[Random.Range(0, playerJumpAud.Length)], playerJumpAudVol);
         }
 
         playerVelocity.y -= gravityValue * Time.deltaTime;
@@ -98,7 +101,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator playSteps()
     {
-        if (!playingSteps && playerController.velocity.magnitude > 0.3f)
+        if (!playingSteps && playerController.velocity.magnitude > 0.3f && playerVelocity.y == 0)
         {
             playingSteps = true;
             aud.PlayOneShot(playerStepsAud[Random.Range(0, playerStepsAud.Length)], playerStepsAudVol);
