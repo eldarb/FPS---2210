@@ -709,9 +709,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 5238106446778131546}
   model: {fileID: 4500944658749428223}
+  anim: {fileID: 0}
+  col: {fileID: 0}
   HP: 10
   facePlayerSpeed: 0
   sightRange: 0
+  speedChase: 0
+  animLerpSpeed: 0
+  viewAngle: 0
+  roamDist: 0
+  headPosition: {fileID: 0}
   shootRate: 3
   bullet: {fileID: 5851684014553905639, guid: be62a7b4771a6a4488a7e8ca21369736, type: 3}
   shootPosition: {fileID: 60119562848115403}
