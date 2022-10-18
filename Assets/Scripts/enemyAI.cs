@@ -43,6 +43,7 @@ public class enemyAI : MonoBehaviour, IDamage
         gameManager.instance.enemyCountText.text = gameManager.instance.enemyCount.ToString("F0");
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
+        speedPatrol = agent.speed;
         roam();
     }
 
@@ -55,14 +56,17 @@ public class enemyAI : MonoBehaviour, IDamage
             //agent.SetDestination(gameManager.instance.player.transform.position);
             if (agent.enabled)
             {
-                playerDirection = gameManager.instance.player.transform.position - headPosition.transform.position;
-                angle = Vector3.Angle(playerDirection, transform.forward);
+                if (playerInRange)
+                {
+                    playerDirection = gameManager.instance.player.transform.position - headPosition.transform.position;
+                    angle = Vector3.Angle(playerDirection, transform.forward);
 
-                canSeePlayer();
+                    canSeePlayer();
+                }
+
+                if (agent.remainingDistance < 0.1f && agent.destination != gameManager.instance.player.transform.position)
+                    roam();
             }
-
-            if (agent.remainingDistance < 0.1f && agent.destination != gameManager.instance.player.transform.position)
-                roam();
         }
     }
 
@@ -88,19 +92,20 @@ public class enemyAI : MonoBehaviour, IDamage
         if (Physics.Raycast(headPosition.transform.position, playerDirection, out hit, sightRange))
         {
             Debug.DrawRay(headPosition.transform.position, playerDirection);
-        }
 
-        if (hit.collider.CompareTag("Player") && angle <= viewAngle)
-        {
-            agent.stoppingDistance = stoppingDistOrig;
-            agent.speed = speedChase;
-            agent.SetDestination(gameManager.instance.player.transform.position);
 
-            if (!isShooting)
-                StartCoroutine(shoot());
+            if (hit.collider.CompareTag("Player") && angle <= viewAngle)
+            {
+                agent.stoppingDistance = stoppingDistOrig;
+                agent.speed = speedChase;
+                agent.SetDestination(gameManager.instance.player.transform.position);
 
-            if (agent.remainingDistance < agent.stoppingDistance)
-                facePlayer();
+                if (!isShooting)
+                    StartCoroutine(shoot());
+
+                if (agent.remainingDistance < agent.stoppingDistance)
+                    facePlayer();
+            }
         }
     }
 
