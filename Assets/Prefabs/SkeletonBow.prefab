@@ -1882,7 +1882,7 @@ MonoBehaviour:
   speedChase: 4
   animLerpSpeed: 4
   viewAngle: 45
-  roamDist: 15
+  roamDist: 10
   headPosition: {fileID: 5586660849687888341}
   shootRate: 0.5
   bullet: {fileID: 6932166732833295826, guid: 1ed771777c0bb394f83642bddcde1f65, type: 3}
@@ -1912,7 +1912,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 8
+  m_Speed: 3.5
   m_Acceleration: 9
   avoidancePriority: 50
   m_AngularSpeed: 600
