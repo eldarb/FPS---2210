@@ -217,7 +217,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6765536c6ec1df44d995667ca501004e, type: 3}
   - {fileID: 8300000, guid: 13c124c029c2d974f85327a99f7bc857, type: 3}
   - {fileID: 8300000, guid: 958bf8dcaea36c9419b70a0e6e4cb3eb, type: 3}
-  playerHurtAudVol: 0.5
+  playerHurtAudVol: 0.05
   playerStepsAud:
   - {fileID: 8300000, guid: c88cbfb42b4c9084ca80e933057b17e8, type: 3}
   - {fileID: 8300000, guid: d6255fc681fff7440aa693f0345f05eb, type: 3}
@@ -228,12 +228,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e84ef2215845c3440853a2807866cf33, type: 3}
   - {fileID: 8300000, guid: 914e0bfbe73f4044eabdd5547bf5209e, type: 3}
   - {fileID: 8300000, guid: 40fda127ca6f4084dbb59236db5bf339, type: 3}
-  playerStepsAudVol: 0.5
+  playerStepsAudVol: 0.05
   playerJumpAud:
   - {fileID: 8300000, guid: 9152c3cc3c408a747ab6aff59d3e5012, type: 3}
   - {fileID: 8300000, guid: 363d4369fd2d26a4881cdfd964b9a573, type: 3}
   - {fileID: 8300000, guid: 52774ed56fb79ab46990255d16f42942, type: 3}
-  playerJumpAudVol: 0.5
+  playerJumpAudVol: 0.05
 --- !u!143 &7726628884606260107
 CharacterController:
   m_ObjectHideFlags: 0
