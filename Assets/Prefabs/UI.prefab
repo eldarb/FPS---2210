@@ -2324,6 +2324,8 @@ MonoBehaviour:
   player: {fileID: 0}
   playerScript: {fileID: 0}
   spawnPosition: {fileID: 0}
+  weaponHandler: {fileID: 0}
+  weaponHandlerScript: {fileID: 0}
   pauseMenu: {fileID: 8657268540510048803}
   playerDeadMenu: {fileID: 142732387}
   winMenu: {fileID: 1627537348}
