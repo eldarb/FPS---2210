@@ -2237,7 +2237,7 @@ MonoBehaviour:
   col: {fileID: 6915527063124702328}
   HP: 2
   facePlayerSpeed: 4
-  sightRange: 50
+  sightRange: 4
   speedChase: 6
   animLerpSpeed: 4
   viewAngle: 45
