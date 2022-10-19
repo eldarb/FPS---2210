@@ -9,6 +9,7 @@ public class gameManager : MonoBehaviour
     public static gameManager instance;
 
     public int enemyCount;
+    public int waveCount;
 
     [Header("----- Player -----")]
     public GameObject player;
@@ -26,6 +27,10 @@ public class gameManager : MonoBehaviour
     public GameObject playerDamageFlash;
     public Image playerHPBar;
     public TextMeshProUGUI enemyCountText;
+    public TextMeshProUGUI enemyText;
+    public TextMeshProUGUI waveCountText;
+    public TextMeshProUGUI waveText;
+    public GameObject hiddenWinConditionPanel;
 
     public bool isPaused;
     // Start is called before the first frame update
@@ -80,7 +85,11 @@ public class gameManager : MonoBehaviour
     {
         enemyCount--;
         enemyCountText.text = enemyCount.ToString("F0");
-        if (enemyCount <= 0)
+    }
+    public void CheckWinCondition()
+    {
+        waveCountText.text = waveCount.ToString("F0");
+        if (waveCount == 5)
         {
             winMenu.SetActive(true);
             cursorLockPause();

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ddef52fb011f949a002ebb0e9360f7, type: 3}
+  m_Name: Sword
+  m_EditorClassIdentifier: 
+  shootRate: 0.5
+  shootDistance: 100
+  shootDamage: 10
+  ammoCount: 0
+  gunModel: {fileID: 8360672952631964172, guid: 942d968fa561fab46a682387b5e72a70, type: 3}
+  sound: {fileID: 0}
+  gitEffect: {fileID: 0}
+  muzzleEffect: {fileID: 0}

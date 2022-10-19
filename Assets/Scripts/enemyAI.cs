@@ -38,8 +38,11 @@ public class enemyAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
+=======
         
         gameManager.instance.enemyCount++; //take out after SPAWNER script created and implemented 10/16/22
+>>>>>>> remotes/origin/enemyAI
         gameManager.instance.enemyCountText.text = gameManager.instance.enemyCount.ToString("F0");
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
