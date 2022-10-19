@@ -9,11 +9,18 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----- Components -----")]
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Renderer model;
+    [SerializeField] Animator anim;
+    [SerializeField] Collider col;
 
     [Header("----- Enemy Stats -----")]
     [SerializeField] int HP;
     [SerializeField] int facePlayerSpeed;
     [SerializeField] int sightRange;
+    [SerializeField] int speedChase; // new10/16/22 > 
+    [SerializeField] int animLerpSpeed; // new10/16/22 > 
+    [SerializeField] int viewAngle; // new10/16/22 > 
+    [SerializeField] int roamDist; // new10/16/22 > 
+    [SerializeField] GameObject headPosition;// new10/16/22
 
     [Header("----- Enemy Stats -----")]
     [SerializeField] float shootRate;
@@ -22,45 +29,118 @@ public class enemyAI : MonoBehaviour, IDamage
 
     bool isShooting;
     public bool playerInRange;
+    Vector3 playerDirection;
+    float stoppingDistOrig;
+    Vector3 startingPos;
+    float angle;
+    float speedPatrol;
 
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
+=======
+        
+        gameManager.instance.enemyCount++; //take out after SPAWNER script created and implemented 10/16/22
+>>>>>>> remotes/origin/enemyAI
         gameManager.instance.enemyCountText.text = gameManager.instance.enemyCount.ToString("F0");
+        stoppingDistOrig = agent.stoppingDistance;
+        startingPos = transform.position;
+        speedPatrol = agent.speed;
+        roam();
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()//updated from lecture 5 10/16/22
     {
-        if (agent.enabled && playerInRange)
+        if (HP > 0)
         {
-            agent.SetDestination(gameManager.instance.player.transform.position);
+            anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * animLerpSpeed));
+            //agent.SetDestination(gameManager.instance.player.transform.position);
+            if (agent.enabled)
+            {
+                if (playerInRange)
+                {
+                    playerDirection = gameManager.instance.player.transform.position - headPosition.transform.position;
+                    angle = Vector3.Angle(playerDirection, transform.forward);
 
-            if (!isShooting)
-                StartCoroutine(shoot());
+                    canSeePlayer();
+                }
+
+                if (agent.remainingDistance < 0.1f && agent.destination != gameManager.instance.player.transform.position)
+                    roam();
+            }
         }
     }
 
+    void roam() //new10/16/22
+    {
+        agent.stoppingDistance = 0;
+        agent.speed = speedPatrol;
+
+        Vector3 randomDirection = Random.insideUnitSphere * roamDist;
+        randomDirection += startingPos;
+
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, 1, 1);
+        NavMeshPath path = new NavMeshPath();
+
+        agent.CalculatePath(hit.position, path);
+        agent.SetPath(path);
+    }
+
+    void canSeePlayer() //new10/16/22
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(headPosition.transform.position, playerDirection, out hit, sightRange))
+        {
+            Debug.DrawRay(headPosition.transform.position, playerDirection);
+
+
+            if (hit.collider.CompareTag("Player") && angle <= viewAngle)
+            {
+                agent.stoppingDistance = stoppingDistOrig;
+                agent.speed = speedChase;
+                agent.SetDestination(gameManager.instance.player.transform.position);
+
+                if (!isShooting)
+                    StartCoroutine(shoot());
+
+                if (agent.remainingDistance < agent.stoppingDistance)
+                    facePlayer();
+            }
+        }
+    }
+
+    void facePlayer()
+    {
+        playerDirection.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(playerDirection);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * facePlayerSpeed);
+    }
 
     public void takeDamage(int dmg)
     {
-        if (!gameManager.instance.pauseMenu.activeSelf && !gameManager.instance.winMenu.activeSelf && !gameManager.instance.playerDeadMenu.activeSelf)
-        {
-            HP -= dmg;
-            StartCoroutine(flashDamage());
+        //if (!gameManager.instance.pauseMenu.activeSelf && !gameManager.instance.winMenu.activeSelf && !gameManager.instance.playerDeadMenu.activeSelf)
+        //{
+        HP -= dmg;
 
-            if (HP <= 0)
-            {
-                gameManager.instance.checkEnemyTotal();
-                Destroy(gameObject);
-            }
+        if (HP <= 0)
+        {
+            gameManager.instance.checkEnemyTotal();
+            agent.enabled = false;
+            col.enabled = false;
+            anim.SetBool("Dead", true);
         }
+        else
+            StartCoroutine(flashDamage());
     }
 
     IEnumerator shoot()
     {
         isShooting = true;
 
+        anim.SetTrigger("Shoot");
         Instantiate(bullet, shootPosition.transform.position, transform.rotation);
 
         yield return new WaitForSeconds(shootRate);
@@ -69,11 +149,13 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator flashDamage()
     {
+        anim.SetTrigger("Damage");
         model.material.color = Color.red;
         agent.enabled = false;
         yield return new WaitForSeconds(0.25f);
         model.material.color = Color.white;
         agent.enabled = true;
+        agent.SetDestination(gameManager.instance.player.transform.position);
     }
 
     void OnTriggerEnter(Collider other)
@@ -90,5 +172,6 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             playerInRange = false;
         }
+        agent.stoppingDistance = 0;
     }
 }
