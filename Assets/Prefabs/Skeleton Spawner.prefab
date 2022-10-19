@@ -240,7 +240,7 @@ MonoBehaviour:
   timer: 2
   maxEnemies: 2
   enemyTypes:
-  - {fileID: 8723981631012120212, guid: 0bc18454a07644e428b2c8840b1fb05a, type: 3}
+  - {fileID: 104379178975985367, guid: 0bc18454a07644e428b2c8840b1fb05a, type: 3}
   - {fileID: 3757531041393994077, guid: 4c2124287f024424184b341bca2b06df, type: 3}
   - {fileID: 8492753145317432539, guid: 27c078cb79ede0d4ea357fe1a2642cc7, type: 3}
   - {fileID: 2128195457445123329, guid: 0868af894dd91b642bec93fb4eb40ec6, type: 3}

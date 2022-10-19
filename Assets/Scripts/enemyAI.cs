@@ -38,12 +38,7 @@ public class enemyAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD
-=======
-        
-        gameManager.instance.enemyCount++; //take out after SPAWNER script created and implemented 10/16/22
->>>>>>> remotes/origin/enemyAI
-        gameManager.instance.enemyCountText.text = gameManager.instance.enemyCount.ToString("F0");
+        //gameManager.instance.enemyCountText.text = gameManager.instance.enemyCount.ToString("F0");
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
         speedPatrol = agent.speed;
@@ -85,8 +80,8 @@ public class enemyAI : MonoBehaviour, IDamage
         NavMesh.SamplePosition(randomDirection, out hit, 1, 1);
         NavMeshPath path = new NavMeshPath();
 
-        agent.CalculatePath(randomDirection, path);
-        //agent.CalculatePath(hit.position, path);
+        agent.CalculatePath(hit.position, path);
+        //agent.CalculatePath(randomDirection, path);
         agent.SetPath(path);
     }
 
