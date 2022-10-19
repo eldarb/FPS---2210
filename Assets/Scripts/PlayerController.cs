@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
         playerVelocity.y -= gravityValue * Time.deltaTime;
         playerController.Move(playerVelocity * Time.deltaTime);
+        Debug.Log(playerVelocity.y);
     }
 
     void sprint()
@@ -102,7 +103,7 @@ public class PlayerController : MonoBehaviour, IDamage
     IEnumerator playSteps()
     {
         if (!playingSteps && playerController.velocity.magnitude > 0.3f && playerVelocity.y == 0)
-        {
+            {
             playingSteps = true;
             aud.PlayOneShot(playerStepsAud[Random.Range(0, playerStepsAud.Length)], playerStepsAudVol);
             if (isSprinting) {
@@ -170,7 +171,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         HP -= damage;
 
-        aud.PlayOneShot(playerHurtAud[Random.Range(0, playerHurtAud.Length)], playerHurtAudVol);
+        aud.PlayOneShot(playerHurtAud[Random.Range(0, playerHurtAud.Length-1)], playerHurtAudVol);
 
         updatePlayerHUD();
         StartCoroutine(gameManager.instance.playerDamage());
@@ -205,6 +206,7 @@ public class PlayerController : MonoBehaviour, IDamage
         updatePlayerHUD();
         playerSpeed *= 1.3f;
         jumpHeight *= 1.2f;
-        jumpsMax *= 2;
+        gravityValue = 20;
+        jumpsMax *= 3;
     }
 }
