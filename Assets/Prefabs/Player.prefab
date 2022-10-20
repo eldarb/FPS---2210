@@ -49,9 +49,11 @@ MonoBehaviour:
   shootDistance: 0
   shootDamage: 0
   gunModel: {fileID: 0}
+  sound: {fileID: 0}
+  hitSound: {fileID: 0}
   gunStat: []
   aud: {fileID: 1695621967}
-  gunShotAudVol: 0.3
+  gunShotAudVol: 0.15
 --- !u!82 &1695621967
 AudioSource:
   m_ObjectHideFlags: 0

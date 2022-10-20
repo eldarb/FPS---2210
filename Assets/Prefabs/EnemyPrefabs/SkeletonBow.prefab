@@ -2042,7 +2042,7 @@ MonoBehaviour:
   enemyStepsAudVol: 0.3
   bowSound: {fileID: 8300000, guid: 5447dc19f402b964f96af325303baaae, type: 3}
   swordSound: {fileID: 8300000, guid: b7fb5876676a4b64990c75d615c10916, type: 3}
-  enemyGunShotAudVol: 0.15
+  enemyGunShotAudVol: 0.05
   playerInRange: 0
 --- !u!136 &5503972421581178443
 CapsuleCollider:
@@ -2106,7 +2106,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0.6
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
