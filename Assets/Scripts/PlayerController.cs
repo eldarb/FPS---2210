@@ -15,13 +15,6 @@ public class PlayerController : MonoBehaviour, IDamage
     [Range(15, 35)] [SerializeField] float gravityValue;
     [Range(1, 5)] [SerializeField] int jumpsMax;
 
-    //[Header("----- Gun Stats -----")]
-    //[SerializeField] float shootRate;
-    //[SerializeField] int shootDistance;
-    //[SerializeField] int shootDamage;
-    //[SerializeField] GameObject gunModel;
-    //[SerializeField] List<gunStats> gunStat = new List<gunStats>();
-
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] playerHurtAud;
@@ -33,8 +26,6 @@ public class PlayerController : MonoBehaviour, IDamage
 
     Vector3 playerVelocity;
     private int timesJumped;
-    //bool isShooting;
-    //int selectGun;
     int HPOrig;
     float playerSpeedOrig;
     bool isSprinting;
@@ -53,8 +44,6 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         playerMove();
         sprint();
-        //StartCoroutine(shoot());
-        //gunSelect();
     }
 
     void playerMove()
@@ -114,58 +103,6 @@ public class PlayerController : MonoBehaviour, IDamage
             playingSteps = false;
         }
     }
-
-    //IEnumerator shoot()
-    //{
-    //    if (gunStat.Count > 0 && Input.GetButton("Shoot") && !isShooting)
-    //    {
-    //        isShooting = true;
-    //        RaycastHit hit;
-    //        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
-    //        {
-    //            if (hit.collider.GetComponent<IDamage>() != null)
-    //                hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
-    //        }
-    //        yield return new WaitForSeconds(shootRate);
-    //        isShooting = false;
-    //    }
-    //}
-
-    //public void gunPickUp(gunStats stats)
-    //{
-    //    shootRate = stats.shootRate;
-    //    shootDistance = stats.shootDistance;
-    //    shootDamage = stats.shootDamage;
-
-    //    gunModel = Instantiate(stats.gunModel, transform);
-    //    gunStat.Add(stats);
-    //}
-
-    //void gunSelect()
-    //{
-    //    if (gunStat.Count > 1)
-    //    {
-    //        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectGun < gunStat.Count - 1)
-    //        {
-    //            selectGun++;
-    //            changeGun();
-    //        }
-    //        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectGun > 0)
-    //        {
-    //            selectGun--;
-    //            changeGun();
-    //        }
-    //    }
-    //}
-
-    //void changeGun()
-    //{
-    //    shootRate = gunStat[selectGun].shootRate;
-    //    shootDistance = gunStat[selectGun].shootDistance;
-    //    shootDamage = gunStat[selectGun].shootDamage;
-    //    gunModel.GetComponent<MeshFilter>().sharedMesh = gunStat[selectGun].gunModel.GetComponent<MeshFilter>().sharedMesh;
-    //    gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStat[selectGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-    //}
 
     public void takeDamage(int damage)
     {

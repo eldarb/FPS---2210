@@ -27,6 +27,16 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject shootPosition;
 
+    [Header("----- Enemy Audio -----")]
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip[] enemyHurtAud;
+    [Range(0, 1)] [SerializeField] float enemyHurtAudVol;
+    [SerializeField] AudioClip[] enemyStepsAud;
+    [Range(0, 1)] [SerializeField] float enemyStepsAudVol;
+    [SerializeField] AudioClip bowSound;
+    [SerializeField] AudioClip swordSound;
+    [Range(0, 1)] [SerializeField] float enemyGunShotAudVol;
+
     bool isShooting;
     public bool playerInRange;
     Vector3 playerDirection;
@@ -34,11 +44,12 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 startingPos;
     float angle;
     float speedPatrol;
+    bool playingSteps;
 
     // Start is called before the first frame update
     void Start()
     {
-        //gameManager.instance.enemyCountText.text = gameManager.instance.enemyCount.ToString("F0");
+        gameManager.instance.enemyCountText.text = gameManager.instance.enemyCount.ToString("F0");
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
         speedPatrol = agent.speed;
@@ -51,19 +62,22 @@ public class enemyAI : MonoBehaviour, IDamage
         if (HP > 0)
         {
             anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), agent.velocity.normalized.magnitude, Time.deltaTime * animLerpSpeed));
-            //agent.SetDestination(gameManager.instance.player.transform.position);
             if (agent.enabled)
             {
+                
                 if (playerInRange)
                 {
                     playerDirection = gameManager.instance.player.transform.position - headPosition.transform.position;
                     angle = Vector3.Angle(playerDirection, transform.forward);
-
                     canSeePlayer();
+                    StartCoroutine(playSteps());
                 }
 
                 if (agent.remainingDistance < 0.1f && agent.destination != gameManager.instance.player.transform.position)
+                {
                     roam();
+                    StartCoroutine(playSteps());
+                }
             }
         }
     }
@@ -80,8 +94,8 @@ public class enemyAI : MonoBehaviour, IDamage
         NavMesh.SamplePosition(randomDirection, out hit, 1, 1);
         NavMeshPath path = new NavMeshPath();
 
-        agent.CalculatePath(hit.position, path);
-        //agent.CalculatePath(randomDirection, path);
+        //agent.CalculatePath(hit.position, path);
+        agent.CalculatePath(randomDirection, path);
         agent.SetPath(path);
     }
 
@@ -105,6 +119,8 @@ public class enemyAI : MonoBehaviour, IDamage
                 if (agent.remainingDistance < agent.stoppingDistance)
                     facePlayer();
             }
+            else
+                agent.stoppingDistance = 0;
         }
     }
 
@@ -117,34 +133,54 @@ public class enemyAI : MonoBehaviour, IDamage
 
     public void takeDamage(int dmg)
     {
-        //if (!gameManager.instance.pauseMenu.activeSelf && !gameManager.instance.winMenu.activeSelf && !gameManager.instance.playerDeadMenu.activeSelf)
-        //{
-        HP -= dmg;
-
-        if (HP <= 0)
+        if (!gameManager.instance.pauseMenu.activeSelf && !gameManager.instance.winMenu.activeSelf && !gameManager.instance.playerDeadMenu.activeSelf)
         {
-            gameManager.instance.checkEnemyTotal();
-            agent.enabled = false;
-            col.enabled = false;
-            anim.SetBool("Dead", true);
+            HP -= dmg;
+
+            if (HP <= 0)
+            {
+                gameManager.instance.checkEnemyTotal();
+                agent.enabled = false;
+                col.enabled = false;
+                anim.SetBool("Dead", true);
+            }
+            else
+                StartCoroutine(flashDamage());
         }
-        else
-            StartCoroutine(flashDamage());
     }
 
     IEnumerator shoot()
     {
         isShooting = true;
 
+        if (gameObject.CompareTag("Range"))
+            aud.PlayOneShot(bowSound, enemyGunShotAudVol);
+        else if (gameObject.CompareTag("Melee"))
+            aud.PlayOneShot(swordSound, enemyGunShotAudVol);
+
+
         anim.SetTrigger("Shoot");
+        
         Instantiate(bullet, shootPosition.transform.position, transform.rotation);
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
     }
 
+    IEnumerator playSteps()
+    {
+        if(agent.speed != 0 && !playingSteps)
+        {
+            playingSteps = true;
+            aud.PlayOneShot(enemyStepsAud[Random.Range(0, enemyStepsAud.Length - 1)], enemyStepsAudVol);
+            yield return new WaitForSeconds(0.75f);
+            playingSteps = false;
+        }
+    }
+
     IEnumerator flashDamage()
     {
+        aud.PlayOneShot(enemyHurtAud[Random.Range(0, enemyHurtAud.Length)], enemyHurtAudVol);
         anim.SetTrigger("Damage");
         model.material.color = Color.red;
         agent.enabled = false;

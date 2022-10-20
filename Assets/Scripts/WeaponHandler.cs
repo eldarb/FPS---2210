@@ -9,8 +9,14 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] int shootDistance;
     [SerializeField] int shootDamage;
     [SerializeField] GameObject gunModel;
+    [SerializeField] AudioClip sound;
+    [SerializeField] AudioClip hitSound;
     [SerializeField] List<gunStats> gunStat = new List<gunStats>();
 
+    [Header("----- Audio -----")]
+    [SerializeField] AudioSource aud;
+    [Range(0, 1)] [SerializeField] float gunShotAudVol;
+    
 
     bool isShooting;
     int selectGun;
@@ -30,12 +36,18 @@ public class WeaponHandler : MonoBehaviour
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
             {
                 if (hit.collider.GetComponent<IDamage>() != null)
+                {
+                    aud.PlayOneShot(hitSound, gunShotAudVol);
                     hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
+                }
             }
+            aud.PlayOneShot(sound, gunShotAudVol);
+            
             yield return new WaitForSeconds(shootRate);
             isShooting = false;
         }
     }
+
 
     public void gunPickUp(gunStats stats)
     {
@@ -45,7 +57,8 @@ public class WeaponHandler : MonoBehaviour
         shootRate = stats.shootRate;
         shootDistance = stats.shootDistance;
         shootDamage = stats.shootDamage;
-
+        sound = stats.sound;
+        hitSound = stats.hitSound;
         gunModel = Instantiate(stats.gunModel, transform);
         
         gunStat.Add(stats);
@@ -74,6 +87,8 @@ public class WeaponHandler : MonoBehaviour
         shootRate = gunStat[selectGun].shootRate;
         shootDistance = gunStat[selectGun].shootDistance;
         shootDamage = gunStat[selectGun].shootDamage;
+        sound = gunStat[selectGun].sound;
+        hitSound = gunStat[selectGun].hitSound;
         gunModel = Instantiate(gunStat[selectGun].gunModel, transform);
     }
 }

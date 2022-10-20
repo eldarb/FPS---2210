@@ -11,6 +11,7 @@ public class gunStats : ScriptableObject
     public int ammoCount;
     public GameObject gunModel;
     public AudioClip sound;
+    public AudioClip hitSound;
     public GameObject gitEffect;
     public GameObject muzzleEffect;
 

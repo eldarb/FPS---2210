@@ -8,6 +8,8 @@ TagManager:
   - Small Door
   - Big Door
   - Weapon Handler
+  - Range
+  - Melee
   layers:
   - Default
   - TransparentFX

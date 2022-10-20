@@ -542,9 +542,10 @@ GameObject:
   - component: {fileID: 3159599872430769856}
   - component: {fileID: 6343789623948698999}
   - component: {fileID: 7021042683750876548}
+  - component: {fileID: 7527129147519212253}
   m_Layer: 7
   m_Name: 'SkeletonGreatSword '
-  m_TagString: Untagged
+  m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -613,6 +614,31 @@ MonoBehaviour:
   shootRate: 3
   bullet: {fileID: 5851684014553905639, guid: be62a7b4771a6a4488a7e8ca21369736, type: 3}
   shootPosition: {fileID: 1183676418358025190}
+  aud: {fileID: 7527129147519212253}
+  enemyHurtAud:
+  - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}
+  - {fileID: 8300000, guid: fd0d8e6ee12442144951f581b2b04baa, type: 3}
+  - {fileID: 8300000, guid: 19d5f7a72d33d5741befdf642497e0bb, type: 3}
+  - {fileID: 8300000, guid: 6765536c6ec1df44d995667ca501004e, type: 3}
+  - {fileID: 8300000, guid: 13c124c029c2d974f85327a99f7bc857, type: 3}
+  - {fileID: 8300000, guid: 958bf8dcaea36c9419b70a0e6e4cb3eb, type: 3}
+  enemyHurtAudVol: 0.2
+  enemyStepsAud:
+  - {fileID: 8300000, guid: e209d7f1222bcf94ebf7e7d0a0dd9ceb, type: 3}
+  - {fileID: 8300000, guid: 9aa32ca6c9f5c884a8fbd32ab3b5cfe6, type: 3}
+  - {fileID: 8300000, guid: 7b5aab92f10f96748b103ac1c9cf8748, type: 3}
+  - {fileID: 8300000, guid: ebd9e1eaf63c52f4991d8df69bf8b2e9, type: 3}
+  - {fileID: 8300000, guid: 1d69d779e9a66eb468322cc5b20de1f8, type: 3}
+  - {fileID: 8300000, guid: 131790738aaad1240b7e785833200a00, type: 3}
+  - {fileID: 8300000, guid: a92d0c4938e554040a0a7a3aefc9adcb, type: 3}
+  - {fileID: 8300000, guid: a3c2370b24ec7794dbfaef080f62a90e, type: 3}
+  - {fileID: 8300000, guid: 4838b8ce72576d744a041e0bb4eaa08d, type: 3}
+  - {fileID: 8300000, guid: 96784f24ba5dc194ca3da7ce0282d361, type: 3}
+  - {fileID: 8300000, guid: 1cb8c52a10a07134f8e574d12b827f72, type: 3}
+  enemyStepsAudVol: 0.2
+  bowSound: {fileID: 0}
+  swordSound: {fileID: 8300000, guid: b7fb5876676a4b64990c75d615c10916, type: 3}
+  enemyGunShotAudVol: 0.1
   playerInRange: 0
 --- !u!136 &3159599872430769856
 CapsuleCollider:
@@ -663,6 +689,102 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 13
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &7527129147519212253
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950272152659842092}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &960872651352313178
 GameObject:
   m_ObjectHideFlags: 0

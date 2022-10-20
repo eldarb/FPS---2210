@@ -6,11 +6,13 @@ public class bigDoorAnimation : MonoBehaviour
 {
     [SerializeField] Animator myDoor = null;
     [SerializeField] string animationName;
+    
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && gameObject.CompareTag("Big Door"))
         {
+            gameManager.instance.isInBossRoom = true;
             if (animationName == "BigDoorRightAnimation")
             {
                 myDoor.Play("BigDoorRightAnimation", 0, 0.0f);

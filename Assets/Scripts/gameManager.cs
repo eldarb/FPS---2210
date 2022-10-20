@@ -10,11 +10,13 @@ public class gameManager : MonoBehaviour
 
     public int enemyCount;
     public int waveCount;
+    public bool isInBossRoom;
 
     [Header("----- Player -----")]
     public GameObject player;
     public PlayerController playerScript;
     public GameObject spawnPosition;
+
 
     [Header("----- Weapon Handler -----")]
     public GameObject weaponHandler;
@@ -31,6 +33,10 @@ public class gameManager : MonoBehaviour
     public TextMeshProUGUI waveCountText;
     public TextMeshProUGUI waveText;
     public GameObject hiddenWinConditionPanel;
+    [Header("----- Audio -----")]
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip sound;
+    [Range(0, 1)] [SerializeField] float soundVol;
 
     public bool isPaused;
     // Start is called before the first frame update
@@ -43,6 +49,7 @@ public class gameManager : MonoBehaviour
         weaponHandler = GameObject.FindGameObjectWithTag("Weapon Handler");
         weaponHandlerScript = weaponHandler.GetComponent<WeaponHandler>();
         spawnPosition = GameObject.FindGameObjectWithTag("Spawn Point");
+        aud = GameObject.FindGameObjectWithTag("Big Door").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -57,6 +64,11 @@ public class gameManager : MonoBehaviour
                 cursorLockPause();
             else
                 cursorUnLockUnPause();
+        }
+        if(isInBossRoom)
+        {
+            aud.PlayOneShot(sound, soundVol);
+            isInBossRoom = false;
         }
     }
 

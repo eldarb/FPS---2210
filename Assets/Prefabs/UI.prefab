@@ -3156,6 +3156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCount: 0
   waveCount: 0
+  isInBossRoom: 0
   player: {fileID: 0}
   playerScript: {fileID: 0}
   spawnPosition: {fileID: 0}
@@ -3172,6 +3173,9 @@ MonoBehaviour:
   waveCountText: {fileID: 2299448494225282488}
   waveText: {fileID: 15944516}
   hiddenWinConditionPanel: {fileID: 1784583467600647770}
+  aud: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4594da37506d82f479ff5746785b0de6, type: 3}
+  soundVol: 0.3
   isPaused: 0
 --- !u!1 &1784583467600647770
 GameObject:

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ddef52fb011f949a002ebb0e9360f7, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  shootRate: 0.5
-  shootDistance: 100
-  shootDamage: 10
+  shootRate: 1
+  shootDistance: 5
+  shootDamage: 5
   ammoCount: 0
   gunModel: {fileID: 8360672952631964172, guid: 942d968fa561fab46a682387b5e72a70, type: 3}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: b7fb5876676a4b64990c75d615c10916, type: 3}
+  hitSound: {fileID: 8300000, guid: 677448472ca0dc14cb373d20873af38f, type: 3}
   gitEffect: {fileID: 0}
   muzzleEffect: {fileID: 0}
