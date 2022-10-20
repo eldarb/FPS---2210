@@ -2012,7 +2012,7 @@ MonoBehaviour:
   sightRange: 75
   speedChase: 4
   animLerpSpeed: 4
-  viewAngle: 45
+  viewAngle: 50
   roamDist: 10
   headPosition: {fileID: 5586660849687888341}
   shootRate: 1.5
@@ -2106,7 +2106,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.6
   Loop: 0
   Mute: 0
   Spatialize: 0

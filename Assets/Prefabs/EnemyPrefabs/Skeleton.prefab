@@ -227,7 +227,7 @@ MonoBehaviour:
   sightRange: 50
   speedChase: 2
   animLerpSpeed: 4
-  viewAngle: 45
+  viewAngle: 50
   roamDist: 10
   headPosition: {fileID: 2773724602163407781}
   shootRate: 1.5

@@ -184,7 +184,7 @@ public class enemyAI : MonoBehaviour, IDamage
         anim.SetTrigger("Damage");
         model.material.color = Color.red;
         agent.enabled = false;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         model.material.color = Color.white;
         agent.enabled = true;
         agent.SetDestination(gameManager.instance.player.transform.position);
