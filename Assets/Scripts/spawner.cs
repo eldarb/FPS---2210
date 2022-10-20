@@ -56,6 +56,8 @@ public class spawner : MonoBehaviour
         gameManager.instance.enemyCountText.gameObject.SetActive(true);
         gameManager.instance.waveText.gameObject.SetActive(true);
         gameManager.instance.waveCountText.gameObject.SetActive(true);
+        gameManager.instance.waveNumberText.gameObject.SetActive(true);
+        
 
         if (other.CompareTag("Player"))
         {

@@ -138,13 +138,13 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public void EnhanceTraits()
     {
-        HP *= 2;
+        HP = 20;
         HPOrig = HP;
-        updatePlayerHUD();
         playerSpeed *= 1.3f;
         jumpHeight *= 1.2f;
         gravityValue = 20;
         sprintMultiplier = 2f;
         jumpsMax *= 3;
+        updatePlayerHUD();
     }
 }

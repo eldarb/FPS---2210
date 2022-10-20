@@ -10,6 +10,7 @@ public class gameManager : MonoBehaviour
 
     public int enemyCount;
     public int waveCount;
+    public int waveMax;
     public bool isInBossRoom;
 
     [Header("----- Player -----")]
@@ -32,7 +33,9 @@ public class gameManager : MonoBehaviour
     public TextMeshProUGUI enemyText;
     public TextMeshProUGUI waveCountText;
     public TextMeshProUGUI waveText;
+    public TextMeshProUGUI waveNumberText;
     public GameObject hiddenWinConditionPanel;
+    public GameObject enhancedTraitsNotifier;
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip sound;
@@ -50,6 +53,7 @@ public class gameManager : MonoBehaviour
         weaponHandlerScript = weaponHandler.GetComponent<WeaponHandler>();
         spawnPosition = GameObject.FindGameObjectWithTag("Spawn Point");
         aud = GameObject.FindGameObjectWithTag("Big Door").GetComponent<AudioSource>();
+        waveNumberText.text = waveMax.ToString("F0");
     }
 
     // Update is called once per frame
@@ -68,6 +72,8 @@ public class gameManager : MonoBehaviour
         if(isInBossRoom)
         {
             aud.PlayOneShot(sound, soundVol);
+            StartCoroutine(EnhancedTraitsNotifier());
+
             isInBossRoom = false;
         }
     }
@@ -101,10 +107,17 @@ public class gameManager : MonoBehaviour
     public void CheckWinCondition()
     {
         waveCountText.text = waveCount.ToString("F0");
-        if (waveCount == 5)
+        if (waveCount == waveMax)
         {
             winMenu.SetActive(true);
             cursorLockPause();
         }
+    }
+
+    public IEnumerator EnhancedTraitsNotifier()
+    {
+        enhancedTraitsNotifier.SetActive(true);
+        yield return new WaitForSeconds(2);
+        enhancedTraitsNotifier.SetActive(false);
     }
 }
