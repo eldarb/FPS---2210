@@ -24,11 +24,16 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] AudioClip[] playerJumpAud;
     [Range(0, 1)] [SerializeField] float playerJumpAudVol;
 
+    [Header("----- Abilities -----")]
+    [SerializeField] List<ability> abilities = new List<ability>;
+    [SerializeField] int selected;
+
     Vector3 playerVelocity;
     private int timesJumped;
     int HPOrig;
     float playerSpeedOrig;
     bool isSprinting;
+    bool isShooting;
     bool playingSteps;
 
     private void Start()
@@ -44,6 +49,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         playerMove();
         sprint();
+        StartCoroutine(shoot());
     }
 
     void playerMove()
@@ -147,4 +153,39 @@ public class PlayerController : MonoBehaviour, IDamage
         jumpsMax *= 3;
         updatePlayerHUD();
     }
+
+    IEnumerator shoot()
+    {
+        // shoot the ability like a bullet and user the stored stats like a gun
+        if (Input.GetButton("Shoot") && !isShooting)
+        {
+            isShooting = true;
+            // Instantiate(bullet, shootPosition.transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(abilities[selected].cooldown); // make selected an int 
+            isShooting = false;
+        }
+    }
+
+
+    void abilitySelect()
+    {
+        if (Input.GetButtonDown("Ability1"))
+        {
+            selected = 1;
+        }
+        else if (Input.GetButtonDown("Ability2"))
+        {
+            selected = 2;
+        }
+        else if (Input.GetButtonDown("Ability3"))
+        {
+            selected = 3;
+        }
+        else if (Input.GetButtonDown("Ability4"))
+        {
+            selected = 4;
+        }
+    } 
+
 }

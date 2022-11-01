@@ -22,6 +22,7 @@ public class gameManager : MonoBehaviour
     [Header("----- Weapon Handler -----")]
     public GameObject weaponHandler;
     public WeaponHandler weaponHandlerScript;
+
     [Header("----- UI -----")]
     public GameObject pauseMenu;
     public GameObject playerDeadMenu;
