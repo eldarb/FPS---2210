@@ -48,8 +48,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110000692895859051}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 161c3832ea3579a4e8869b6fabdf0e46, type: 3}
+  m_Controller: {fileID: 9100000, guid: 90e302669be1cf94cab5a9d9c3842feb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -71,10 +71,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb50d865849cf34f8d94e32234d6b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  model: {fileID: 0}
-  anim: {fileID: 0}
-  col: {fileID: 0}
+  agent: {fileID: 1662449908460202231}
+  model: {fileID: 3649801662901597122}
+  anim: {fileID: 6152828054243843306}
+  col: {fileID: 1523657329104446534}
   HP: 0
   facePlayerSpeed: 0
   sightRange: 0

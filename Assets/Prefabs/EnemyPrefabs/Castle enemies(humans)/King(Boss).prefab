@@ -11355,7 +11355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2736024591055500694}
-  model: {fileID: 0}
+  model: {fileID: 6603427453295948933}
   anim: {fileID: 4005936747138842326}
   col: {fileID: 2110105833620041531}
   HP: 0

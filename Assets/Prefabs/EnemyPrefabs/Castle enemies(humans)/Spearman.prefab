@@ -4254,7 +4254,7 @@ Animator:
   m_GameObject: {fileID: 8767451820191758916}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 02ded044b8e0963439276550f50be6f9, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ff5f6c05c9a3a7a4ea458c6719726a35, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4276,10 +4276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb50d865849cf34f8d94e32234d6b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  model: {fileID: 0}
-  anim: {fileID: 0}
-  col: {fileID: 0}
+  agent: {fileID: 8860481927191466716}
+  model: {fileID: 8767451820180294630}
+  anim: {fileID: 8767451820184349866}
+  col: {fileID: 8794405093134146445}
   HP: 0
   facePlayerSpeed: 0
   sightRange: 0
