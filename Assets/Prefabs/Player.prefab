@@ -310,6 +310,7 @@ MonoBehaviour:
   jumpHeight: 8
   gravityValue: 30
   jumpsMax: 1
+  damageDelay: 0.5
   aud: {fileID: 2094630005}
   playerHurtAud:
   - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}
