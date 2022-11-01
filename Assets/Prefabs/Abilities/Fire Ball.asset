@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 5
   bullet: {fileID: 2452950129445779521, guid: 86c3497b3064b9949831707aa61f5f1c, type: 3}
-  abilityModel: {fileID: 0}
   activateEffect: {fileID: 0}
   sound: {fileID: 0}

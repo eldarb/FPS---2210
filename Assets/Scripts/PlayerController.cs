@@ -29,12 +29,12 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int selected;
     [SerializeField] GameObject shootPosition;
 
+    bool[] cooldown = new bool[4];
     Vector3 playerVelocity;
     private int timesJumped;
     int HPOrig;
     float playerSpeedOrig;
     bool isSprinting;
-    bool isShooting;
     bool playingSteps;
 
     private void Start()
@@ -50,7 +50,10 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         playerMove();
         sprint();
-        StartCoroutine(shoot());
+        StartCoroutine(shoot0());
+        StartCoroutine(shoot1());
+        StartCoroutine(shoot2());
+        StartCoroutine(shoot3());
         abilitySelect();
     }
 
@@ -155,22 +158,54 @@ public class PlayerController : MonoBehaviour, IDamage
         updatePlayerHUD();
     }
 
-    IEnumerator shoot()
+    IEnumerator shoot0() // Individual cooldowns
     {
-        // shoot the ability like a bullet and user the stored stats like a gun
-        if (Input.GetButton("Shoot Ability") && !isShooting)
+        if (Input.GetButton("Shoot Ability") && selected == 0 && cooldown[selected] != true)
         {
-            isShooting = true;
-
+            cooldown[selected] = true;
             Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
 
             yield return new WaitForSeconds(abilities[selected].cooldown);
-            isShooting = false;
+
+            cooldown[selected] = false;
+        }
+    }IEnumerator shoot1() // Individual cooldowns
+    {
+        if (Input.GetButton("Shoot Ability") && selected == 1 && cooldown[selected] != true)
+        {
+            cooldown[selected] = true;
+            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(abilities[selected].cooldown);
+
+            cooldown[selected] = false;
+        }
+    }IEnumerator shoot2() // Individual cooldowns
+    {
+        if (Input.GetButton("Shoot Ability") && selected == 2 && cooldown[selected] != true)
+        {
+            cooldown[selected] = true;
+            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(abilities[selected].cooldown);
+
+            cooldown[selected] = false;
+        }
+    }IEnumerator shoot3() // Individual cooldowns
+    {
+        if (Input.GetButton("Shoot Ability") && selected == 3 && cooldown[selected] != true)
+        {
+            cooldown[selected] = true;
+            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(abilities[selected].cooldown);
+
+            cooldown[selected] = false;
         }
     }
 
-
-    public void abilitySelect() // Change shoot and the ability hotkeys
+    
+    public void abilitySelect()
     {
         if (Input.GetButtonDown("Ability1") && abilities[0] != null)
         {
