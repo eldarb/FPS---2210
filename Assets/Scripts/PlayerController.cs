@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [Header("----- Abilities -----")]
     [SerializeField] List<ability> abilities = new List<ability>();
     [SerializeField] int selected;
+    [SerializeField] GameObject shootPosition;
 
     Vector3 playerVelocity;
     private int timesJumped;
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour, IDamage
         playerMove();
         sprint();
         StartCoroutine(shoot());
+        abilitySelect();
     }
 
     void playerMove()
@@ -77,7 +79,6 @@ public class PlayerController : MonoBehaviour, IDamage
 
         playerVelocity.y -= gravityValue * Time.deltaTime;
         playerController.Move(playerVelocity * Time.deltaTime);
-        Debug.Log(playerVelocity.y);
     }
 
     void sprint()
@@ -157,34 +158,35 @@ public class PlayerController : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         // shoot the ability like a bullet and user the stored stats like a gun
-        if (Input.GetButton("Shoot") && !isShooting)
+        if (Input.GetButton("Shoot Ability") && !isShooting)
         {
             isShooting = true;
-            // Instantiate(bullet, shootPosition.transform.position, transform.rotation);
 
-            yield return new WaitForSeconds(abilities[selected].cooldown); // make selected an int 
+            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(abilities[selected].cooldown);
             isShooting = false;
         }
     }
 
 
-    public void abilitySelect()
+    public void abilitySelect() // Change shoot and the ability hotkeys
     {
         if (Input.GetButtonDown("Ability1") && abilities[0] != null)
         {
-            selected = 1;
+            selected = 0;
         }
         else if (Input.GetButtonDown("Ability2") && abilities[1] != null)
         {
-            selected = 2;
+            selected = 1;
         }
         else if (Input.GetButtonDown("Ability3") && abilities[2] != null)
         {
-            selected = 3;
+            selected = 2;
         }
         else if (Input.GetButtonDown("Ability4") && abilities[3] != null)
         {
-            selected = 4;
+            selected = 3;
         }
     } 
 

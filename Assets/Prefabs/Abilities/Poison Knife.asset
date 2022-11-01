@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Poison Knife
   m_EditorClassIdentifier: 
   cooldown: 2
-  shootDist: 10
-  shootDmg: 3
+  bullet: {fileID: 1601682642467499759, guid: 686bd4f5f959f8d48ab5c00cfd16f011, type: 3}
   abilityModel: {fileID: 0}
-  sound: {fileID: 0}
   activateEffect: {fileID: 0}
+  sound: {fileID: 0}

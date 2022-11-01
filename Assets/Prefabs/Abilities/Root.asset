@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Root
   m_EditorClassIdentifier: 
   cooldown: 20
-  shootDist: 20
-  shootDmg: 4
+  bullet: {fileID: 4747227788673844228, guid: 3d37620a4a3a8f440a9f470f7c6b8e8c, type: 3}
   abilityModel: {fileID: 0}
-  sound: {fileID: 0}
   activateEffect: {fileID: 0}
+  sound: {fileID: 0}

@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Slow
   m_EditorClassIdentifier: 
   cooldown: 20
-  shootDist: 10
-  shootDmg: 1
+  bullet: {fileID: 1785673451558149770, guid: 9ff95516f14918c4798a767acf1f12d6, type: 3}
   abilityModel: {fileID: 0}
-  sound: {fileID: 0}
   activateEffect: {fileID: 0}
+  sound: {fileID: 0}
