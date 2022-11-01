@@ -10322,14 +10322,14 @@ MonoBehaviour:
   model: {fileID: 5725911724830826749}
   anim: {fileID: 5725911724826627405}
   col: {fileID: 8267318069476228322}
-  HP: 0
-  facePlayerSpeed: 0
-  sightRange: 0
-  speedChase: 0
-  animLerpSpeed: 0
-  viewAngle: 0
-  roamDist: 0
-  headPosition: {fileID: 0}
+  HP: 8
+  facePlayerSpeed: 4
+  sightRange: 35
+  speedChase: 2
+  animLerpSpeed: 4
+  viewAngle: 40
+  roamDist: 10
+  headPosition: {fileID: 5725911724819392891}
   shootRate: 0
   bullet: {fileID: 0}
   shootPosition: {fileID: 0}
@@ -10353,9 +10353,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 1.89
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!195 &480798496252468778
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -10372,11 +10372,11 @@ NavMeshAgent:
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!135 &8139922444226267589
 SphereCollider:
@@ -10386,10 +10386,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5725911724819373441}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &2017890101259889471
 AudioSource:
