@@ -21,7 +21,7 @@ public class poisonknifeBullet : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            // Enemy takes damage
+            other.gameObject.GetComponent<IDamage>().takeDamage(dmg);
         }
 
         Destroy(gameObject);

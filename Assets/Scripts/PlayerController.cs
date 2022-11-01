@@ -158,6 +158,7 @@ public class PlayerController : MonoBehaviour, IDamage
         updatePlayerHUD();
     }
 
+    // Change cost based on HP and check for HP amt
     IEnumerator shoot0() // Individual cooldowns
     {
         if (Input.GetButton("Shoot Ability") && selected == 0 && cooldown[selected] != true)
@@ -169,7 +170,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
             cooldown[selected] = false;
         }
-    }IEnumerator shoot1() // Individual cooldowns
+    }IEnumerator shoot1() 
     {
         if (Input.GetButton("Shoot Ability") && selected == 1 && cooldown[selected] != true)
         {
@@ -180,7 +181,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
             cooldown[selected] = false;
         }
-    }IEnumerator shoot2() // Individual cooldowns
+    }IEnumerator shoot2() 
     {
         if (Input.GetButton("Shoot Ability") && selected == 2 && cooldown[selected] != true)
         {
@@ -191,7 +192,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
             cooldown[selected] = false;
         }
-    }IEnumerator shoot3() // Individual cooldowns
+    }IEnumerator shoot3()
     {
         if (Input.GetButton("Shoot Ability") && selected == 3 && cooldown[selected] != true)
         {
