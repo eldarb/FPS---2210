@@ -10,6 +10,7 @@ TagManager:
   - Weapon Handler
   - Range
   - Melee
+  - PocketDimension
   layers:
   - Default
   - TransparentFX

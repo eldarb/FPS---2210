@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, IDamage
 {
@@ -24,15 +25,20 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] AudioClip[] playerJumpAud;
     [Range(0, 1)] [SerializeField] float playerJumpAudVol;
 
+    [Header("----- Useable Objects")]
+    [SerializeField] GameObject teleportToPocketDimension;
+
     Vector3 playerVelocity;
+    Vector3 teleportPosition;
     private int timesJumped;
     int HPOrig;
     float playerSpeedOrig;
     bool isSprinting;
     bool playingSteps;
-
+    bool canTeleport;
     private void Start()
     {
+        teleportPosition = teleportToPocketDimension.transform.localPosition;
         HPOrig = HP;
         playerSpeedOrig = playerSpeed;
         respawn();
@@ -44,6 +50,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         playerMove();
         sprint();
+        StartCoroutine(TeleportToPocketDimension());
     }
 
     void playerMove()
@@ -71,7 +78,6 @@ public class PlayerController : MonoBehaviour, IDamage
 
         playerVelocity.y -= gravityValue * Time.deltaTime;
         playerController.Move(playerVelocity * Time.deltaTime);
-        Debug.Log(playerVelocity.y);
     }
 
     void sprint()
@@ -147,4 +153,20 @@ public class PlayerController : MonoBehaviour, IDamage
         jumpsMax *= 3;
         updatePlayerHUD();
     }
+
+    IEnumerator TeleportToPocketDimension()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && gameManager.instance.inPocketDimension == false)
+        {
+            teleportToPocketDimension.SetActive(true);
+            teleportToPocketDimension.transform.parent = null;
+            yield return new WaitForSeconds(3);
+            teleportToPocketDimension.SetActive(false);
+            teleportToPocketDimension.transform.parent = gameObject.transform;
+            teleportToPocketDimension.transform.localPosition = teleportPosition;
+            teleportToPocketDimension.transform.LookAt(gameObject.transform);
+        }
+    }
+
+    
 }
