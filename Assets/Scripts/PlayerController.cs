@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [Range(0, 1)] [SerializeField] float playerJumpAudVol;
 
     [Header("----- Abilities -----")]
-    [SerializeField] List<ability> abilities = new List<ability>;
+    [SerializeField] List<ability> abilities = new List<ability>();
     [SerializeField] int selected;
 
     Vector3 playerVelocity;
@@ -168,21 +168,21 @@ public class PlayerController : MonoBehaviour, IDamage
     }
 
 
-    void abilitySelect()
+    public void abilitySelect()
     {
-        if (Input.GetButtonDown("Ability1"))
+        if (Input.GetButtonDown("Ability1") && abilities[0] != null)
         {
             selected = 1;
         }
-        else if (Input.GetButtonDown("Ability2"))
+        else if (Input.GetButtonDown("Ability2") && abilities[1] != null)
         {
             selected = 2;
         }
-        else if (Input.GetButtonDown("Ability3"))
+        else if (Input.GetButtonDown("Ability3") && abilities[2] != null)
         {
             selected = 3;
         }
-        else if (Input.GetButtonDown("Ability4"))
+        else if (Input.GetButtonDown("Ability4") && abilities[3] != null)
         {
             selected = 4;
         }
