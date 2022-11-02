@@ -70,13 +70,13 @@ public class enemyAI : MonoBehaviour, IDamage
                     playerDirection = gameManager.instance.player.transform.position - headPosition.transform.position;
                     angle = Vector3.Angle(playerDirection, transform.forward);
                     canSeePlayer();
-                    StartCoroutine(playSteps());
+                    //StartCoroutine(playSteps());
                 }
 
                 if (agent.remainingDistance < 0.1f && agent.destination != gameManager.instance.player.transform.position)
                 {
                     roam();
-                    StartCoroutine(playSteps());
+                   // StartCoroutine(playSteps());
                 }
             }
         }
@@ -94,7 +94,7 @@ public class enemyAI : MonoBehaviour, IDamage
         NavMesh.SamplePosition(randomDirection, out hit, 1, 1);
         NavMeshPath path = new NavMeshPath();
 
-        //agent.CalculatePath(hit.position, path);
+        agent.CalculatePath(hit.position, path);
         agent.CalculatePath(randomDirection, path);
         agent.SetPath(path);
     }
@@ -154,14 +154,17 @@ public class enemyAI : MonoBehaviour, IDamage
         isShooting = true;
 
         if (gameObject.CompareTag("Range"))
-            aud.PlayOneShot(bowSound, enemyGunShotAudVol);
+        {
+           // aud.PlayOneShot(bowSound, enemyGunShotAudVol);
+            anim.SetTrigger("Shoot");
+            Instantiate(bullet, shootPosition.transform.position, transform.rotation);
+        }
         else if (gameObject.CompareTag("Melee"))
-            aud.PlayOneShot(swordSound, enemyGunShotAudVol);
+        {
+           // aud.PlayOneShot(swordSound, enemyGunShotAudVol);
+            anim.SetTrigger("Attack");
+        }
 
-
-        anim.SetTrigger("Shoot");
-        
-        Instantiate(bullet, shootPosition.transform.position, transform.rotation);
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
@@ -172,7 +175,7 @@ public class enemyAI : MonoBehaviour, IDamage
         if(agent.speed != 0 && !playingSteps)
         {
             playingSteps = true;
-            aud.PlayOneShot(enemyStepsAud[Random.Range(0, enemyStepsAud.Length - 1)], enemyStepsAudVol);
+           // aud.PlayOneShot(enemyStepsAud[Random.Range(0, enemyStepsAud.Length - 1)], enemyStepsAudVol);
             yield return new WaitForSeconds(0.75f);
             playingSteps = false;
         }
@@ -180,7 +183,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator flashDamage()
     {
-        aud.PlayOneShot(enemyHurtAud[Random.Range(0, enemyHurtAud.Length)], enemyHurtAudVol);
+        //aud.PlayOneShot(enemyHurtAud[Random.Range(0, enemyHurtAud.Length - 1)], enemyHurtAudVol);
         anim.SetTrigger("Damage");
         model.material.color = Color.red;
         agent.enabled = false;

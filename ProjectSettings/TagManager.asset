@@ -11,6 +11,7 @@ TagManager:
   - Range
   - Melee
   - King
+  - Hybrid Attack
   layers:
   - Default
   - TransparentFX
