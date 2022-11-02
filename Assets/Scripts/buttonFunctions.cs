@@ -42,6 +42,5 @@ public class buttonFunctions : MonoBehaviour
     }
 
     public void optionsApply() {
-
     }
 }
