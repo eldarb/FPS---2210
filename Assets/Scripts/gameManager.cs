@@ -28,6 +28,8 @@ public class gameManager : MonoBehaviour
     public GameObject playerDeadMenu;
     public GameObject winMenu;
     public GameObject currentMenu;
+    public GameObject abilityMenu;
+    public List<GameObject> menuAbilities = new List<GameObject>();
     public GameObject playerDamageFlash;
     public Image playerHPBar;
     public TextMeshProUGUI enemyCountText;
@@ -37,6 +39,7 @@ public class gameManager : MonoBehaviour
     public TextMeshProUGUI waveNumberText;
     public GameObject hiddenWinConditionPanel;
     public GameObject enhancedTraitsNotifier;
+
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip sound;
@@ -53,17 +56,27 @@ public class gameManager : MonoBehaviour
         weaponHandler = GameObject.FindGameObjectWithTag("Weapon Handler");
         weaponHandlerScript = weaponHandler.GetComponent<WeaponHandler>();
         spawnPosition = GameObject.FindGameObjectWithTag("Spawn Point");
-        aud = GameObject.FindGameObjectWithTag("Big Door").GetComponent<AudioSource>();
+        // aud = GameObject.FindGameObjectWithTag("Big Door").GetComponent<AudioSource>();
         waveNumberText.text = waveMax.ToString("F0");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
+        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !abilityMenu.activeSelf)
         {
             isPaused = !isPaused;
             pauseMenu.SetActive(isPaused);
+
+            if (isPaused)
+                cursorLockPause();
+            else
+                cursorUnLockUnPause();
+        }
+        else if (Input.GetButtonDown("Tab") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !pauseMenu.activeSelf)
+        {
+            isPaused = !isPaused;
+            abilityMenu.SetActive(isPaused);
 
             if (isPaused)
                 cursorLockPause();

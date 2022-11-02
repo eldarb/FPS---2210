@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [Range(0, 1)] [SerializeField] float playerJumpAudVol;
 
     [Header("----- Abilities -----")]
-    [SerializeField] List<ability> abilities = new List<ability>();
+    [SerializeField] public List<ability> abilities = new List<ability>();
     [SerializeField] int selected;
     [SerializeField] GameObject shootPosition;
 
