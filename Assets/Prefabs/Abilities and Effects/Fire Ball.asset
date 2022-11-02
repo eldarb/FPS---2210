@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55e780a717fe8054994728ed08a80df9, type: 3}
-  m_Name: Root
+  m_Name: Fire Ball
   m_EditorClassIdentifier: 
-  cooldown: 20
-  bullet: {fileID: 4747227788673844228, guid: 3d37620a4a3a8f440a9f470f7c6b8e8c, type: 3}
-  abilityModel: {fileID: 0}
-  activateEffect: {fileID: 0}
+  cooldown: 5
+  HPcost: 1
+  bullet: {fileID: 2452950129445779521, guid: 86c3497b3064b9949831707aa61f5f1c, type: 3}
+  fireEffect: {fileID: 0}
   sound: {fileID: 0}

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55e780a717fe8054994728ed08a80df9, type: 3}
-  m_Name: Ice Ball
+  m_Name: Root
   m_EditorClassIdentifier: 
-  cooldown: 0
-  bullet: {fileID: 2810658033379040392, guid: a1e5f60ca0f2a804bafc55f2957667f0, type: 3}
-  abilityModel: {fileID: 0}
-  activateEffect: {fileID: 0}
+  cooldown: 20
+  HPcost: 1
+  bullet: {fileID: 4747227788673844228, guid: 3d37620a4a3a8f440a9f470f7c6b8e8c, type: 3}
+  fireEffect: {fileID: 0}
   sound: {fileID: 0}

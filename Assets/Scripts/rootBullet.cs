@@ -8,6 +8,7 @@ public class rootBullet : MonoBehaviour
 
     [SerializeField] int spd;
     [SerializeField] int dmg;
+    [SerializeField] effect efct;
     [SerializeField] int destroyTime;
 
     // Start is called before the first frame update
@@ -19,9 +20,10 @@ public class rootBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Melee"))
         {
             other.gameObject.GetComponent<IDamage>().takeDamage(dmg);
+            other.gameObject.GetComponent<IDamage>().takeEffect(efct);
         }
 
         Destroy(gameObject);

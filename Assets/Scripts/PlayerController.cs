@@ -130,6 +130,10 @@ public class PlayerController : MonoBehaviour, IDamage
             gameManager.instance.cursorLockPause();
         }
     }
+    public void takeEffect(effect efct)
+    {
+
+    }
 
     public void updatePlayerHUD()
     {
@@ -159,11 +163,15 @@ public class PlayerController : MonoBehaviour, IDamage
     }
 
     // Change cost based on HP and check for HP amt
-    IEnumerator shoot0() // Individual cooldowns
+    IEnumerator shoot0() // Slot 0 ability
     {
-        if (Input.GetButton("Shoot Ability") && selected == 0 && cooldown[selected] != true)
+        if (Input.GetButton("Shoot Ability") && selected == 0 && cooldown[selected] != true && HP > abilities[selected].HPcost)
         {
             cooldown[selected] = true;
+
+            HP -= abilities[selected].HPcost;
+            updatePlayerHUD();
+
             Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
 
             yield return new WaitForSeconds(abilities[selected].cooldown);
@@ -172,9 +180,13 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }IEnumerator shoot1() 
     {
-        if (Input.GetButton("Shoot Ability") && selected == 1 && cooldown[selected] != true)
+        if (Input.GetButton("Shoot Ability") && selected == 1 && cooldown[selected] != true && HP > abilities[selected].HPcost)
         {
             cooldown[selected] = true;
+
+            HP -= abilities[selected].HPcost;
+            updatePlayerHUD();
+
             Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
 
             yield return new WaitForSeconds(abilities[selected].cooldown);
@@ -183,9 +195,13 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }IEnumerator shoot2() 
     {
-        if (Input.GetButton("Shoot Ability") && selected == 2 && cooldown[selected] != true)
+        if (Input.GetButton("Shoot Ability") && selected == 2 && cooldown[selected] != true && HP > abilities[selected].HPcost)
         {
             cooldown[selected] = true;
+
+            HP -= abilities[selected].HPcost;
+            updatePlayerHUD();
+
             Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
 
             yield return new WaitForSeconds(abilities[selected].cooldown);
@@ -194,9 +210,13 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }IEnumerator shoot3()
     {
-        if (Input.GetButton("Shoot Ability") && selected == 3 && cooldown[selected] != true)
+        if (Input.GetButton("Shoot Ability") && selected == 3 && cooldown[selected] != true && HP > abilities[selected].HPcost)
         {
             cooldown[selected] = true;
+
+            HP -= abilities[selected].HPcost;
+            updatePlayerHUD();
+
             Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
 
             yield return new WaitForSeconds(abilities[selected].cooldown);

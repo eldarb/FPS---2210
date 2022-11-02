@@ -72,12 +72,13 @@ public class enemyAI : MonoBehaviour, IDamage
                     canSeePlayer();
                     StartCoroutine(playSteps());
                 }
-
+                /*
                 if (agent.remainingDistance < 0.1f && agent.destination != gameManager.instance.player.transform.position)
                 {
                     roam();
                     StartCoroutine(playSteps());
                 }
+                */
             }
         }
     }
@@ -146,6 +147,35 @@ public class enemyAI : MonoBehaviour, IDamage
             }
             else
                 StartCoroutine(flashDamage());
+        }
+    }
+    public void takeEffect(effect efct)
+    {
+        if (efct.lastingdmg == true)
+        {
+            StartCoroutine(LastingDamage(efct));
+        }
+        else
+        {
+            StartCoroutine(NoDamage(efct));
+        }
+    }
+    IEnumerator LastingDamage(effect efct)
+    {
+        for (int i = 0; i < efct.efctdur; i++)
+        {
+            yield return new WaitForSeconds(efct.wait);
+            takeDamage(efct.efctdmg);
+        }
+    }
+    IEnumerator NoDamage(effect efct)
+    {
+        for (int i = 0; i < efct.efctdur; i++)
+        {
+            int temp = speedChase;
+            speedChase = efct.lowspeed;
+            yield return new WaitForSeconds(efct.wait);
+            speedChase = temp;
         }
     }
 

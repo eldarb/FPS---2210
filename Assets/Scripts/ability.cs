@@ -7,8 +7,8 @@ using UnityEngine;
 public class ability : ScriptableObject
 {
     public float cooldown;
-    // public Effect effect;
+    public int HPcost;
     public GameObject bullet;
-    public GameObject activateEffect;
+    public GameObject fireEffect;
     public AudioClip sound;
 }

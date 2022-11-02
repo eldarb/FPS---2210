@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 1047393117909510581}
   - component: {fileID: 6723965593395536806}
   - component: {fileID: 4771255585274481822}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fire Ball
-  m_TagString: Untagged
+  m_TagString: Ability
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,8 +50,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: -4602610764171367157}
   spd: 15
-  dmg: 10
-  destroyTime: 5
+  dmg: 1
+  efct: {fileID: 11400000, guid: 6ac745d1938ebe54abeef003c694dfda, type: 2}
+  destroyTime: 3
 --- !u!54 &-4602610764171367157
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,7 +127,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2452950129445779521}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

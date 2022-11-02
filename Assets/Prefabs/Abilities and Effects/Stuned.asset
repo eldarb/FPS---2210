@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55e780a717fe8054994728ed08a80df9, type: 3}
-  m_Name: Poison Knife
+  m_Script: {fileID: 11500000, guid: 2da0d26f94635e34dae489a612cdf1f9, type: 3}
+  m_Name: Stuned
   m_EditorClassIdentifier: 
-  cooldown: 2
-  bullet: {fileID: 1601682642467499759, guid: 686bd4f5f959f8d48ab5c00cfd16f011, type: 3}
-  abilityModel: {fileID: 0}
-  activateEffect: {fileID: 0}
-  sound: {fileID: 0}
+  efctdmg: 0
+  efctdur: 5
+  lastingdmg: 0
+  wait: 1
+  lowspeed: 0
