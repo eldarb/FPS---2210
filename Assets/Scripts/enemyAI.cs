@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class enemyAI : MonoBehaviour, IDamage
 {
@@ -14,6 +15,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [Header("----- Enemy Stats -----")]
     [SerializeField] int HP;
+    [SerializeField] Slider healthBarSlider;
     [SerializeField] int facePlayerSpeed;
     [SerializeField] int sightRange;
     [SerializeField] int speedChase; // new10/16/22 > 
@@ -21,6 +23,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int viewAngle; // new10/16/22 > 
     [SerializeField] int roamDist; // new10/16/22 > 
     [SerializeField] GameObject headPosition;// new10/16/22
+    [SerializeField] int numSouls;
 
     [Header("----- Enemy Stats -----")]
     [SerializeField] float shootRate;
@@ -38,6 +41,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [Range(0, 1)] [SerializeField] float enemyGunShotAudVol;
 
     bool isShooting;
+    int damageDealt;
     public bool playerInRange;
     Vector3 playerDirection;
     float stoppingDistOrig;
@@ -49,6 +53,8 @@ public class enemyAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
+       
+        setHealthBar();
         gameManager.instance.enemyCountText.text = gameManager.instance.enemyCount.ToString("F0");
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
@@ -143,11 +149,20 @@ public class enemyAI : MonoBehaviour, IDamage
                 agent.enabled = false;
                 col.enabled = false;
                 anim.SetBool("Dead", true);
+                gameManager.instance.playerScript.soulCount += numSouls;
             }
             else
                 StartCoroutine(flashDamage());
         }
     }
+
+    private void setHealthBar()
+    {
+        healthBarSlider.value = ((float)HP % (float)HP) * 100;
+    }
+
+   
+
 
     IEnumerator shoot()
     {
@@ -192,6 +207,8 @@ public class enemyAI : MonoBehaviour, IDamage
         agent.enabled = true;
         agent.SetDestination(gameManager.instance.player.transform.position);
     }
+
+    
 
     void OnTriggerEnter(Collider other)
     {

@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour, IDamage
     float playerSpeedOrig;
     bool isSprinting;
     bool playingSteps;
+    public int soulCount;
 
     private void Start()
     {

@@ -11,6 +11,7 @@ public class gameManager : MonoBehaviour
     public int enemyCount;
     public int waveCount;
     public int waveMax;
+    public int dmgCount;
     public bool isInBossRoom;
 
     [Header("----- Player -----")]
@@ -33,6 +34,7 @@ public class gameManager : MonoBehaviour
     public TextMeshProUGUI enemyText;
     public TextMeshProUGUI waveCountText;
     public TextMeshProUGUI waveText;
+    public TextMeshProUGUI soulCountText;
     public TextMeshProUGUI waveNumberText;
     public GameObject hiddenWinConditionPanel;
     public GameObject enhancedTraitsNotifier;
@@ -52,7 +54,7 @@ public class gameManager : MonoBehaviour
         weaponHandler = GameObject.FindGameObjectWithTag("Weapon Handler");
         weaponHandlerScript = weaponHandler.GetComponent<WeaponHandler>();
         spawnPosition = GameObject.FindGameObjectWithTag("Spawn Point");
-        aud = GameObject.FindGameObjectWithTag("Big Door").GetComponent<AudioSource>();
+        //aud = GameObject.FindGameObjectWithTag("Big Door").GetComponent<AudioSource>();
         waveNumberText.text = waveMax.ToString("F0");
     }
 
@@ -111,8 +113,11 @@ public class gameManager : MonoBehaviour
         {
             winMenu.SetActive(true);
             cursorLockPause();
+            //nextLevel();
+            // within nextLevel -> ontriggerenter
         }
     }
+
 
     public IEnumerator EnhancedTraitsNotifier()
     {

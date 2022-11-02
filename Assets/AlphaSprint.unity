@@ -704,6 +704,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1200814576799888249, guid: 21038419c85ec0142a7e80dc3d9753b0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200814576799888249, guid: 21038419c85ec0142a7e80dc3d9753b0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5725911724819373441, guid: 21038419c85ec0142a7e80dc3d9753b0, type: 3}
       propertyPath: m_Name
       value: Heavy Infantry
@@ -1092,6 +1100,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2523999747749281226, guid: c37781e0e92b7ca4a9268cd0a3275a53, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8435732074007699683, guid: c37781e0e92b7ca4a9268cd0a3275a53, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8435732074007699683, guid: c37781e0e92b7ca4a9268cd0a3275a53, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
