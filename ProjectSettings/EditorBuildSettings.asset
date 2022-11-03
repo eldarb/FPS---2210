@@ -9,6 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScene.unity
     guid: 1b759456c4885424395c38d9f4d21c38
   - enabled: 1
-    path: Assets/Scenes/level.unity
+    path: Assets/Scenes/Prison Room 1.unity
     guid: 3deca9cdf7182504fb8c7bc63b4e29ed
+  - enabled: 1
+    path: Assets/Scenes/Courtyard Room 2.unity
+    guid: f6c934400671c634b90a03cd4367736d
+  - enabled: 1
+    path: Assets/Scenes/Kitchen Room 3.unity
+    guid: 5917e861663b16b4b95646a329f6f6b5
+  - enabled: 1
+    path: Assets/Scenes/Throne Room Room 4.unity
+    guid: 7eba3e77427c0d047aa18f680b02c55c
+  - enabled: 1
+    path: Assets/Scenes/PocketDimension.unity
+    guid: 07c5d95f1443fec4481d1d902bd25b91
   m_configObjects: {}
