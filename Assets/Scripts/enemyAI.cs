@@ -231,4 +231,34 @@ public class enemyAI : MonoBehaviour, IDamage
         }
         agent.stoppingDistance = 0;
     }
+
+    public void takeEffect(effect efct)
+    {
+        if (efct.lastingdmg == true)
+        {
+            StartCoroutine(LastingDamage(efct));
+        }
+        else
+        {
+            StartCoroutine(NoDamage(efct));
+        }
+    }
+    IEnumerator LastingDamage(effect efct)
+    {
+        for (int i = 0; i < efct.efctdur; i++)
+        {
+            yield return new WaitForSeconds(efct.wait);
+            takeDamage(efct.efctdmg);
+        }
+    }
+    IEnumerator NoDamage(effect efct)
+    {
+        for (int i = 0; i < efct.efctdur; i++)
+        {
+            int temp = speedChase;
+            speedChase = efct.lowspeed;
+            yield return new WaitForSeconds(efct.wait);
+            speedChase = temp;
+        }
+    }
 }
