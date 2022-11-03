@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     Vector3 playerVelocity;
     private int timesJumped;
+    public int soulCount;
     int HPOrig;
     float playerSpeedOrig;
     bool isSprinting;

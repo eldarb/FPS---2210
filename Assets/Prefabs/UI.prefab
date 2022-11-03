@@ -3292,6 +3292,7 @@ MonoBehaviour:
   enemyCount: 0
   waveCount: 0
   waveMax: 5
+  dmgCount: 0
   isInBossRoom: 0
   player: {fileID: 0}
   playerScript: {fileID: 0}
@@ -3308,6 +3309,8 @@ MonoBehaviour:
   enemyText: {fileID: 179590073}
   waveCountText: {fileID: 2299448494225282488}
   waveText: {fileID: 15944516}
+  soulCountText: {fileID: 0}
+  dmgCounterText: {fileID: 0}
   waveNumberText: {fileID: 1069679050}
   hiddenWinConditionPanel: {fileID: 1784583467600647770}
   enhancedTraitsNotifier: {fileID: 8545083510009508079}
