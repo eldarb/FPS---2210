@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, IDamage
 {
@@ -24,15 +25,21 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] AudioClip[] playerJumpAud;
     [Range(0, 1)] [SerializeField] float playerJumpAudVol;
 
+    [Header("----- Useable Objects")]
+    [SerializeField] GameObject teleportToPocketDimension;
+
     Vector3 playerVelocity;
+    Vector3 teleportPosition;
     private int timesJumped;
+    public int soulCount;
     int HPOrig;
     float playerSpeedOrig;
     bool isSprinting;
     bool playingSteps;
-
+    bool canTeleport;
     private void Start()
     {
+        teleportPosition = teleportToPocketDimension.transform.localPosition;
         HPOrig = HP;
         playerSpeedOrig = playerSpeed;
         respawn();
@@ -44,6 +51,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         playerMove();
         sprint();
+        StartCoroutine(TeleportToPocketDimension());
     }
 
     void playerMove()
@@ -71,7 +79,6 @@ public class PlayerController : MonoBehaviour, IDamage
 
         playerVelocity.y -= gravityValue * Time.deltaTime;
         playerController.Move(playerVelocity * Time.deltaTime);
-        Debug.Log(playerVelocity.y);
     }
 
     void sprint()
@@ -92,12 +99,15 @@ public class PlayerController : MonoBehaviour, IDamage
     IEnumerator playSteps()
     {
         if (!playingSteps && playerController.velocity.magnitude > 0.3f && playerVelocity.y == 0)
-            {
+        {
             playingSteps = true;
             aud.PlayOneShot(playerStepsAud[Random.Range(0, playerStepsAud.Length)], playerStepsAudVol);
-            if (isSprinting) {
+            if (isSprinting)
+            {
                 yield return new WaitForSeconds(0.225f);
-            } else {
+            }
+            else
+            {
                 yield return new WaitForSeconds(0.3f);
             }
             playingSteps = false;
@@ -108,12 +118,12 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         HP -= damage;
 
-        aud.PlayOneShot(playerHurtAud[Random.Range(0, playerHurtAud.Length-1)], playerHurtAudVol);
+        aud.PlayOneShot(playerHurtAud[Random.Range(0, playerHurtAud.Length - 1)], playerHurtAudVol);
 
         updatePlayerHUD();
         StartCoroutine(gameManager.instance.playerDamage());
-        
-        if(HP <= 0)
+
+        if (HP <= 0)
         {
             gameManager.instance.playerDamageFlash.SetActive(false);
             gameManager.instance.playerDeadMenu.SetActive(true);
@@ -147,4 +157,21 @@ public class PlayerController : MonoBehaviour, IDamage
         jumpsMax *= 3;
         updatePlayerHUD();
     }
+
+    IEnumerator TeleportToPocketDimension()
+    {
+        //if (Input.GetKeyDown(KeyCode.E) && gameManager.instance.inPocketDimension == false)
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            teleportToPocketDimension.SetActive(true);
+            teleportToPocketDimension.transform.parent = null;
+            yield return new WaitForSeconds(3);
+            teleportToPocketDimension.SetActive(false);
+            teleportToPocketDimension.transform.parent = gameObject.transform;
+            teleportToPocketDimension.transform.localPosition = teleportPosition;
+            teleportToPocketDimension.transform.LookAt(gameObject.transform);
+        }
+    }
+
+
 }
