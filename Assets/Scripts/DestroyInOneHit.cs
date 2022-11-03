@@ -8,4 +8,9 @@ public class DestroyInOneHit : MonoBehaviour, IDamage
     {
         Destroy(gameObject);
     }
+
+    public void takeEffect(effect efct)
+    {
+
+    }
 }
