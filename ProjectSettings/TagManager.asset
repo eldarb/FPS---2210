@@ -12,6 +12,8 @@ TagManager:
   - Melee
   - PocketDimension
   - Teleport
+  - King
+  - Hybrid Attack
   layers:
   - Default
   - TransparentFX
