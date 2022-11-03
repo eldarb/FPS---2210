@@ -11,6 +11,7 @@ TagManager:
   - Range
   - Melee
   - PocketDimension
+  - Teleport
   layers:
   - Default
   - TransparentFX

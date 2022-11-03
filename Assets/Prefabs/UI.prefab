@@ -1623,9 +1623,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCount: 0
   waveCount: 0
-  waveMax: 5
+  waveMax: 4
   isInBossRoom: 0
-  inPocketDimension: 0
+  hasPlayerBeatAllWaves: 0
   player: {fileID: 0}
   playerScript: {fileID: 0}
   spawnPosition: {fileID: 0}
@@ -1647,6 +1647,7 @@ MonoBehaviour:
   aud: {fileID: 0}
   sound: {fileID: 8300000, guid: 4594da37506d82f479ff5746785b0de6, type: 3}
   soundVol: 0.3
+  teleportToNextLevel: {fileID: 0}
   isPaused: 0
 --- !u!1 &1676355119821424288
 GameObject:

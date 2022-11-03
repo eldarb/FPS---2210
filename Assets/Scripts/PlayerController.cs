@@ -98,12 +98,15 @@ public class PlayerController : MonoBehaviour, IDamage
     IEnumerator playSteps()
     {
         if (!playingSteps && playerController.velocity.magnitude > 0.3f && playerVelocity.y == 0)
-            {
+        {
             playingSteps = true;
             aud.PlayOneShot(playerStepsAud[Random.Range(0, playerStepsAud.Length)], playerStepsAudVol);
-            if (isSprinting) {
+            if (isSprinting)
+            {
                 yield return new WaitForSeconds(0.225f);
-            } else {
+            }
+            else
+            {
                 yield return new WaitForSeconds(0.3f);
             }
             playingSteps = false;
@@ -114,12 +117,12 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         HP -= damage;
 
-        aud.PlayOneShot(playerHurtAud[Random.Range(0, playerHurtAud.Length-1)], playerHurtAudVol);
+        aud.PlayOneShot(playerHurtAud[Random.Range(0, playerHurtAud.Length - 1)], playerHurtAudVol);
 
         updatePlayerHUD();
         StartCoroutine(gameManager.instance.playerDamage());
-        
-        if(HP <= 0)
+
+        if (HP <= 0)
         {
             gameManager.instance.playerDamageFlash.SetActive(false);
             gameManager.instance.playerDeadMenu.SetActive(true);
@@ -156,7 +159,8 @@ public class PlayerController : MonoBehaviour, IDamage
 
     IEnumerator TeleportToPocketDimension()
     {
-        if (Input.GetKeyDown(KeyCode.E) && gameManager.instance.inPocketDimension == false)
+        //if (Input.GetKeyDown(KeyCode.E) && gameManager.instance.inPocketDimension == false)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             teleportToPocketDimension.SetActive(true);
             teleportToPocketDimension.transform.parent = null;
@@ -168,5 +172,5 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }
 
-    
+
 }

@@ -12,6 +12,7 @@ public class gameManager : MonoBehaviour
     public int waveCount;
     public int waveMax;
     public bool isInBossRoom;
+    public bool hasPlayerBeatAllWaves = false;
 
     [Header("----- Player -----")]
     public GameObject player;
@@ -41,6 +42,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] AudioClip sound;
     [Range(0, 1)] [SerializeField] float soundVol;
 
+    [Header("----- Teleport -----")]
+    [SerializeField] GameObject teleportToNextLevel;
     public bool isPaused;
     // Start is called before the first frame update
     // Creates the instance that holds the playerController
@@ -53,6 +56,8 @@ public class gameManager : MonoBehaviour
         weaponHandlerScript = weaponHandler.GetComponent<WeaponHandler>();
         spawnPosition = GameObject.FindGameObjectWithTag("Spawn Point");
         aud = GameObject.FindGameObjectWithTag("Big Door").GetComponent<AudioSource>();
+        teleportToNextLevel = GameObject.FindGameObjectWithTag("Teleport");
+        teleportToNextLevel.SetActive(false);
         waveNumberText.text = waveMax.ToString("F0");
     }
 
@@ -104,14 +109,19 @@ public class gameManager : MonoBehaviour
         enemyCount--;
         enemyCountText.text = enemyCount.ToString("F0");
     }
-    public void CheckWinCondition()
+    public void HasPlayerBeatAllWaves()
     {
         waveCountText.text = waveCount.ToString("F0");
         if (waveCount == waveMax)
         {
+            teleportToNextLevel.SetActive(true);
+            hasPlayerBeatAllWaves = true;
+        }
+    }
+    public void CheckWinCondition()
+    {
             winMenu.SetActive(true);
             cursorLockPause();
-        }
     }
 
     public IEnumerator EnhancedTraitsNotifier()
