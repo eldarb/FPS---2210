@@ -24,6 +24,7 @@ public class gameManager : MonoBehaviour
     [Header("----- Weapon Handler -----")]
     public GameObject weaponHandler;
     public WeaponHandler weaponHandlerScript;
+
     [Header("----- UI -----")]
     public GameObject pauseMenu;
     public GameObject playerDeadMenu;
@@ -39,6 +40,7 @@ public class gameManager : MonoBehaviour
     public TextMeshProUGUI waveNumberText;
     public GameObject hiddenWinConditionPanel;
     public GameObject enhancedTraitsNotifier;
+
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip sound;
@@ -46,9 +48,9 @@ public class gameManager : MonoBehaviour
 
     [Header("----- Teleport -----")]
     [SerializeField] GameObject teleportToNextLevel;
+
     public bool isPaused;
-    // Start is called before the first frame update
-    // Creates the instance that holds the playerController
+    
     void Awake()
     {
         instance = this;
@@ -66,7 +68,7 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
+        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !abilityMenu.activeSelf)
         {
             isPaused = !isPaused;
             pauseMenu.SetActive(isPaused);
@@ -76,7 +78,17 @@ public class gameManager : MonoBehaviour
             else
                 cursorUnLockUnPause();
         }
-        if(isInBossRoom)
+        else if (Input.GetButtonDown("Tab") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !pauseMenu.activeSelf)
+        {
+            isPaused = !isPaused;
+            abilityMenu.SetActive(isPaused);
+
+            if (isPaused)
+                cursorLockPause();
+            else
+                cursorUnLockUnPause();
+        }
+        if (isInBossRoom)
         {
             aud.PlayOneShot(sound, soundVol);
             StartCoroutine(EnhancedTraitsNotifier());
