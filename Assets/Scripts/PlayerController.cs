@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour, IDamage
     Vector3 playerVelocity;
     Vector3 teleportPosition;
     private int timesJumped;
+    public int soulCount;
     int HPOrig;
     float playerSpeedOrig;
     bool isSprinting;

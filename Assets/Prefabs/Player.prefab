@@ -448,6 +448,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 52774ed56fb79ab46990255d16f42942, type: 3}
   playerJumpAudVol: 0.05
   teleportToPocketDimension: {fileID: 4334794159647356851}
+  soulCount: 0
 --- !u!143 &7726628884606260107
 CharacterController:
   m_ObjectHideFlags: 0

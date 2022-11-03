@@ -57,6 +57,10 @@ public class WeaponHandler : MonoBehaviour
         }
     }
 
+    public void ShootOnAnimation()
+    {
+        StartCoroutine(shoot());
+    }
 
     public void gunPickUp(gunStats stats)
     {

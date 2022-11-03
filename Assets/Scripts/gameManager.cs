@@ -11,6 +11,7 @@ public class gameManager : MonoBehaviour
     public int enemyCount;
     public int waveCount;
     public int waveMax;
+    public int dmgCount;
     public bool isInBossRoom;
     public bool hasPlayerBeatAllWaves = false;
 
@@ -34,6 +35,7 @@ public class gameManager : MonoBehaviour
     public TextMeshProUGUI enemyText;
     public TextMeshProUGUI waveCountText;
     public TextMeshProUGUI waveText;
+    public TextMeshProUGUI soulCountText;
     public TextMeshProUGUI waveNumberText;
     public GameObject hiddenWinConditionPanel;
     public GameObject enhancedTraitsNotifier;
@@ -123,6 +125,7 @@ public class gameManager : MonoBehaviour
             winMenu.SetActive(true);
             cursorLockPause();
     }
+
 
     public IEnumerator EnhancedTraitsNotifier()
     {
