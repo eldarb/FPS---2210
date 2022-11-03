@@ -8,7 +8,7 @@ public class abilityMenu : MonoBehaviour
     [SerializeField] ability fb;
     [SerializeField] ability ib;
     [SerializeField] ability sl;
-    [SerializeField] ability rt;
+    [SerializeField] ability st;
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,15 +21,6 @@ public class abilityMenu : MonoBehaviour
             gameManager.instance.menuAbilities[0].SetActive(false);
         }
 
-        if (gameManager.instance.playerScript.abilities.Contains(fb))
-        {
-            gameManager.instance.menuAbilities[2].SetActive(true);
-        }
-        else
-        {
-            gameManager.instance.menuAbilities[2].SetActive(false);
-        }
-
         if (gameManager.instance.playerScript.abilities.Contains(ib))
         {
             gameManager.instance.menuAbilities[1].SetActive(true);
@@ -37,6 +28,15 @@ public class abilityMenu : MonoBehaviour
         else
         {
             gameManager.instance.menuAbilities[1].SetActive(false);
+        }
+
+        if (gameManager.instance.playerScript.abilities.Contains(fb))
+        {
+            gameManager.instance.menuAbilities[2].SetActive(true);
+        }
+        else
+        {
+            gameManager.instance.menuAbilities[2].SetActive(false);
         }
 
         if (gameManager.instance.playerScript.abilities.Contains(sl))
@@ -48,7 +48,7 @@ public class abilityMenu : MonoBehaviour
             gameManager.instance.menuAbilities[3].SetActive(false);
         }
 
-        if (gameManager.instance.playerScript.abilities.Contains(rt))
+        if (gameManager.instance.playerScript.abilities.Contains(st))
         {
             gameManager.instance.menuAbilities[4].SetActive(true);
         }
