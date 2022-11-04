@@ -16,7 +16,7 @@ public class buttonFunctions : MonoBehaviour
     public void restart()
     {
         gameManager.instance.cursorUnLockUnPause();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Prison Room 1");
     }
 
     public void quit()

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class spawner : MonoBehaviour
 {
-
     [SerializeField] int timer;
     [SerializeField] int maxEnemies;
     [SerializeField] GameObject[] enemyTypes;
@@ -24,18 +23,22 @@ public class spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameManager.instance.enemyCount <= 0)
+        if (gameManager.instance.enemyCount == 0 && !gameManager.instance.hasPlayerBeatAllWaves)
         {
             gameManager.instance.waveCount++;
-            gameManager.instance.CheckWinCondition();
-            maxEnemies = (maxEnemies * 2) - 1;
-            gameManager.instance.enemyCount = maxEnemies;
-            enemies = 0;
+            gameManager.instance.HasPlayerBeatAllWaves();
+            if (!gameManager.instance.hasPlayerBeatAllWaves)
+            {
+                maxEnemies = (maxEnemies * 2) - 1;
+                gameManager.instance.enemyCount = maxEnemies;
+                enemies = 0;
+            }
         }
         if (startSpawning && !isSpawning && enemies < maxEnemies)
         {
             randomEnemyToSpawn = Random.Range(0, enemyTypes.Length - 1);
             StartCoroutine(spawn());
+
         }
     }
 
@@ -57,7 +60,7 @@ public class spawner : MonoBehaviour
         gameManager.instance.waveText.gameObject.SetActive(true);
         gameManager.instance.waveCountText.gameObject.SetActive(true);
         gameManager.instance.waveNumberText.gameObject.SetActive(true);
-        
+
 
         if (other.CompareTag("Player"))
         {
