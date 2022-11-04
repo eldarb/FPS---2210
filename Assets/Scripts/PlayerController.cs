@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour, IDamage
     [Range(15, 35)] [SerializeField] float gravityValue;
     [Range(1, 5)] [SerializeField] int jumpsMax;
 
+    [Header("----- Control Variables -----")]
+    [Range(0, 5)] [SerializeField] float damageDelay;
+
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] playerHurtAud;
@@ -46,6 +49,8 @@ public class PlayerController : MonoBehaviour, IDamage
     bool isSprinting;
     bool playingSteps;
     bool canTeleport;
+    bool isInvincible;
+
     private void Start()
     {
         teleportPosition = teleportToPocketDimension.transform.localPosition;
@@ -130,19 +135,31 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public void takeDamage(int damage)
     {
-        HP -= damage;
-
-        aud.PlayOneShot(playerHurtAud[Random.Range(0, playerHurtAud.Length - 1)], playerHurtAudVol);
-
-        updatePlayerHUD();
-        StartCoroutine(gameManager.instance.playerDamage());
-
-        if (HP <= 0)
+        if (!isInvincible)
         {
-            gameManager.instance.playerDamageFlash.SetActive(false);
-            gameManager.instance.playerDeadMenu.SetActive(true);
-            gameManager.instance.cursorLockPause();
+            HP -= damage;
+
+            aud.PlayOneShot(playerHurtAud[Random.Range(0, playerHurtAud.Length - 1)], playerHurtAudVol);
+
+            updatePlayerHUD();
+            StartCoroutine(gameManager.instance.playerDamage());
+
+            if (HP <= 0)
+            {
+                gameManager.instance.playerDamageFlash.SetActive(false);
+                gameManager.instance.playerDeadMenu.SetActive(true);
+                gameManager.instance.cursorLockPause();
+            }
+
+            StartCoroutine(delayDamage()); 
         }
+    }
+
+    IEnumerator delayDamage()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(damageDelay);
+        isInvincible = false;
     }
 
     public void updatePlayerHUD()
