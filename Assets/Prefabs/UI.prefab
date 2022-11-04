@@ -3008,7 +3008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCount: 0
   waveCount: 0
-  waveMax: 5
+  waveMax: 3
   dmgCount: 0
   isInBossRoom: 0
   hasPlayerBeatAllWaves: 0
