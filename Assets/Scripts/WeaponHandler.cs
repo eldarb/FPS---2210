@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponHandler : MonoBehaviour
 {
     [Header("----- Gun Stats -----")]
+    [SerializeField] string gunType;
     [SerializeField] float shootRate;
     [SerializeField] int shootDistance;
     [SerializeField] int shootDamage;
@@ -16,7 +17,7 @@ public class WeaponHandler : MonoBehaviour
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
     [Range(0, 1)] [SerializeField] float gunShotAudVol;
-    
+
 
     bool isShooting;
     int selectGun;
@@ -32,6 +33,16 @@ public class WeaponHandler : MonoBehaviour
         if (gunStat.Count > 0 && Input.GetButton("Shoot") && !isShooting)
         {
             isShooting = true;
+            if (gunType == "Melee")
+            {
+                gunModel.GetComponent<Animator>().SetTrigger("Attack");
+            }
+            else if (gunType == "Range")
+            {
+            }
+            aud.PlayOneShot(sound, gunShotAudVol);
+            //yield return new WaitForSeconds(shootRate);
+            yield return new WaitForSeconds(gunModel.GetComponent<Animator>().speed);
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
             {
@@ -41,26 +52,28 @@ public class WeaponHandler : MonoBehaviour
                     hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
                 }
             }
-            aud.PlayOneShot(sound, gunShotAudVol);
-            
-            yield return new WaitForSeconds(shootRate);
+
             isShooting = false;
         }
     }
 
+    public void ShootOnAnimation()
+    {
+        StartCoroutine(shoot());
+    }
 
     public void gunPickUp(gunStats stats)
     {
-        if(gunStat.Count > 0)
+        if (gunStat.Count > 0)
             Destroy(gunModel);
-
+        gunType = stats.gunType;
         shootRate = stats.shootRate;
         shootDistance = stats.shootDistance;
         shootDamage = stats.shootDamage;
         sound = stats.sound;
         hitSound = stats.hitSound;
         gunModel = Instantiate(stats.gunModel, transform);
-        
+
         gunStat.Add(stats);
     }
 
@@ -84,6 +97,7 @@ public class WeaponHandler : MonoBehaviour
     void changeGun()
     {
         Destroy(gunModel);
+        gunType = gunStat[selectGun].gunType;
         shootRate = gunStat[selectGun].shootRate;
         shootDistance = gunStat[selectGun].shootDistance;
         shootDamage = gunStat[selectGun].shootDamage;
