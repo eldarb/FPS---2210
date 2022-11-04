@@ -3034,10 +3034,9 @@ MonoBehaviour:
   enemyText: {fileID: 179590073}
   waveCountText: {fileID: 2299448494225282488}
   waveText: {fileID: 15944516}
-  soulCountText: {fileID: 0}
   waveNumberText: {fileID: 1069679050}
-  soulsText: {fileID: 0}
-  soulsCount: {fileID: 0}
+  soulsText: {fileID: 5542550550303462001}
+  soulsCount: {fileID: 2356258483958515172}
   hiddenWinConditionPanel: {fileID: 1784583467600647770}
   enhancedTraitsNotifier: {fileID: 8545083510009508079}
   aud: {fileID: 0}
@@ -3440,9 +3439,9 @@ RectTransform:
   m_Father: {fileID: 6468440781980947398}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 735, y: -444.02}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -371, y: 140}
   m_SizeDelta: {x: 150, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6931293656607813351
@@ -4895,9 +4894,9 @@ RectTransform:
   m_Father: {fileID: 6468440781980947398}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 885, y: -444.02}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -221, y: 140.00002}
   m_SizeDelta: {x: 150, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6546366543725422004

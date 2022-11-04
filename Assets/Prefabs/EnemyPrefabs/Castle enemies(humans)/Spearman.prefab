@@ -4290,7 +4290,7 @@ MonoBehaviour:
   viewAngle: 50
   roamDist: 10
   headPosition: {fileID: 8767451820191822478}
-  numSouls: 0
+  numSouls: 2
   shootRate: 2
   bullet: {fileID: 5851684014553905639, guid: be62a7b4771a6a4488a7e8ca21369736, type: 3}
   shootPosition: {fileID: 8767451820191759012}

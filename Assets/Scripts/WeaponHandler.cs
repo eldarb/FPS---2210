@@ -41,8 +41,7 @@ public class WeaponHandler : MonoBehaviour
             {
             }
             aud.PlayOneShot(sound, gunShotAudVol);
-            //yield return new WaitForSeconds(shootRate);
-            yield return new WaitForSeconds(gunModel.GetComponent<Animator>().speed);
+            //yield return new WaitForSeconds(gunModel.GetComponent<Animator>().speed);
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
             {
@@ -52,6 +51,7 @@ public class WeaponHandler : MonoBehaviour
                     hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
                 }
             }
+            yield return new WaitForSeconds(shootRate);
 
             isShooting = false;
         }

@@ -2008,6 +2008,7 @@ MonoBehaviour:
   anim: {fileID: 3972414094602818663}
   col: {fileID: 5503972421581178443}
   HP: 3
+  healthBarSlider: {fileID: 0}
   facePlayerSpeed: 4
   sightRange: 75
   speedChase: 4
@@ -2015,6 +2016,7 @@ MonoBehaviour:
   viewAngle: 50
   roamDist: 10
   headPosition: {fileID: 5586660849687888341}
+  numSouls: 5
   shootRate: 1.5
   bullet: {fileID: 6932166732833295826, guid: 1ed771777c0bb394f83642bddcde1f65, type: 3}
   shootPosition: {fileID: 4225141131241200456}

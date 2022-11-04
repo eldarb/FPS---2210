@@ -153,7 +153,7 @@ public class enemyAI : MonoBehaviour, IDamage
                 col.enabled = false;
                 anim.SetBool("Dead", true);
                 gameManager.instance.playerScript.soulCount += numSouls;
-                
+                gameManager.instance.soulsCount.text = gameManager.instance.playerScript.soulCount.ToString("F0");
             }
             else
                 StartCoroutine(flashDamage());

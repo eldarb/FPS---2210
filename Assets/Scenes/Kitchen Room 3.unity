@@ -323,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6468440781980947398, guid: fd4b393b4b01ebb4c91321fa15304df0, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6468440781980947398, guid: fd4b393b4b01ebb4c91321fa15304df0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -396,10 +396,6 @@ PrefabInstance:
     - target: {fileID: 6468440781980947398, guid: fd4b393b4b01ebb4c91321fa15304df0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7101315575829580493, guid: fd4b393b4b01ebb4c91321fa15304df0, type: 3}
-      propertyPath: waveMax
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd4b393b4b01ebb4c91321fa15304df0, type: 3}
@@ -907,6 +903,7 @@ MonoBehaviour:
   timer: 1
   maxEnemies: 2
   enemyTypes:
+  - {fileID: 2129668336644961826, guid: a07d5874fda92214085953d2664a4b14, type: 3}
   - {fileID: 2523999747748941056, guid: c37781e0e92b7ca4a9268cd0a3275a53, type: 3}
   - {fileID: 9068325829378849587, guid: 6ad2de187064bba43b79f351a4237474, type: 3}
   - {fileID: 5725911724819373441, guid: 21038419c85ec0142a7e80dc3d9753b0, type: 3}
@@ -939,7 +936,7 @@ Transform:
   - {fileID: 160470059815720210}
   - {fileID: 160470059765179378}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7817223040023565939
 BoxCollider:

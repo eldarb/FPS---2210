@@ -38,7 +38,6 @@ public class gameManager : MonoBehaviour
     public TextMeshProUGUI enemyText;
     public TextMeshProUGUI waveCountText;
     public TextMeshProUGUI waveText;
-    public TextMeshProUGUI soulCountText;
     public TextMeshProUGUI waveNumberText;
     public TextMeshProUGUI soulsText;
     public TextMeshProUGUI soulsCount;
@@ -153,6 +152,6 @@ public class gameManager : MonoBehaviour
     }
 
     public void updateSoulsCount() {
-        //soulsCount.text = playerScript.soulCount.ToString("F0");
+        soulsCount.text = playerScript.soulCount.ToString("F0");
     }
 }
