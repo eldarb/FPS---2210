@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class enemyAI : MonoBehaviour, IDamage
 {
@@ -14,6 +15,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [Header("----- Enemy Stats -----")]
     [SerializeField] int HP;
+    [SerializeField] Slider healthBarSlider;
     [SerializeField] int facePlayerSpeed;
     [SerializeField] int sightRange;
     [SerializeField] int speedChase; // new10/16/22 > 
@@ -21,6 +23,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int viewAngle; // new10/16/22 > 
     [SerializeField] int roamDist; // new10/16/22 > 
     [SerializeField] GameObject headPosition;// new10/16/22
+    [SerializeField] int numSouls;
 
     [Header("----- Enemy Stats -----")]
     [SerializeField] float shootRate;
@@ -38,6 +41,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [Range(0, 1)] [SerializeField] float enemyGunShotAudVol;
 
     bool isShooting;
+    int damageDealt;
     public bool playerInRange;
     Vector3 playerDirection;
     float stoppingDistOrig;
@@ -49,6 +53,8 @@ public class enemyAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
+       
+        //setHealthBar();
         gameManager.instance.enemyCountText.text = gameManager.instance.enemyCount.ToString("F0");
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
@@ -94,7 +100,6 @@ public class enemyAI : MonoBehaviour, IDamage
         NavMesh.SamplePosition(randomDirection, out hit, 1, 1);
         NavMeshPath path = new NavMeshPath();
 
-        //agent.CalculatePath(hit.position, path);
         agent.CalculatePath(randomDirection, path);
         agent.SetPath(path);
     }
@@ -133,35 +138,52 @@ public class enemyAI : MonoBehaviour, IDamage
 
     public void takeDamage(int dmg)
     {
-        if (!gameManager.instance.pauseMenu.activeSelf && !gameManager.instance.winMenu.activeSelf && !gameManager.instance.playerDeadMenu.activeSelf)
+        if (!gameManager.instance.pauseMenu.activeSelf && !gameManager.instance.winMenu.activeSelf && !gameManager.instance.playerDeadMenu.activeSelf && !gameManager.instance.abilityMenu.activeSelf)
         {
             HP -= dmg;
 
             if (HP <= 0)
             {
+                if(gameObject.CompareTag("King"))
+                {
+                    gameManager.instance.CheckWinCondition();
+                }
                 gameManager.instance.checkEnemyTotal();
                 agent.enabled = false;
                 col.enabled = false;
                 anim.SetBool("Dead", true);
+                gameManager.instance.playerScript.soulCount += numSouls;
+                
             }
             else
                 StartCoroutine(flashDamage());
         }
     }
 
+    private void setHealthBar()
+    {
+        healthBarSlider.value = ((float)HP % (float)HP) * 100;
+    }
+
+   
+
+
     IEnumerator shoot()
     {
         isShooting = true;
 
         if (gameObject.CompareTag("Range"))
+        {
             aud.PlayOneShot(bowSound, enemyGunShotAudVol);
+            anim.SetTrigger("Shoot");
+        }
         else if (gameObject.CompareTag("Melee"))
+        {
             aud.PlayOneShot(swordSound, enemyGunShotAudVol);
+            anim.SetTrigger("Attack");
+        }
 
-
-        anim.SetTrigger("Shoot");
-        
-        Instantiate(bullet, shootPosition.transform.position, transform.rotation);
+            Instantiate(bullet, shootPosition.transform.position, transform.rotation);
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
@@ -180,7 +202,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator flashDamage()
     {
-        aud.PlayOneShot(enemyHurtAud[Random.Range(0, enemyHurtAud.Length)], enemyHurtAudVol);
+        aud.PlayOneShot(enemyHurtAud[Random.Range(0, enemyHurtAud.Length - 1)], enemyHurtAudVol);
         anim.SetTrigger("Damage");
         model.material.color = Color.red;
         agent.enabled = false;
@@ -189,6 +211,8 @@ public class enemyAI : MonoBehaviour, IDamage
         agent.enabled = true;
         agent.SetDestination(gameManager.instance.player.transform.position);
     }
+
+    
 
     void OnTriggerEnter(Collider other)
     {
@@ -205,5 +229,35 @@ public class enemyAI : MonoBehaviour, IDamage
             playerInRange = false;
         }
         agent.stoppingDistance = 0;
+    }
+
+    public void takeEffect(effect efct)
+    {
+        if (efct.lastingdmg == true)
+        {
+            StartCoroutine(LastingDamage(efct));
+        }
+        else
+        {
+            StartCoroutine(NoDamage(efct));
+        }
+    }
+    IEnumerator LastingDamage(effect efct)
+    {
+        for (int i = 0; i < efct.efctdur; i++)
+        {
+            yield return new WaitForSeconds(efct.wait);
+            takeDamage(efct.efctdmg);
+        }
+    }
+    IEnumerator NoDamage(effect efct)
+    {
+        for (int i = 0; i < efct.efctdur; i++)
+        {
+            int temp = speedChase;
+            speedChase = efct.lowspeed;
+            yield return new WaitForSeconds(efct.wait);
+            speedChase = temp;
+        }
     }
 }

@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, IDamage
 {
+
+    public int soulCount;
+
     [Header("----- Component -----")]
     [SerializeField] CharacterController playerController;
 
@@ -27,16 +31,29 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] AudioClip[] playerJumpAud;
     [Range(0, 1)] [SerializeField] float playerJumpAudVol;
 
+    [Header("----- Useable Objects")]
+    [SerializeField] GameObject teleportToPocketDimension;
+
+    [Header("----- Abilities -----")]
+    [SerializeField] public List<ability> abilities = new List<ability>();
+    [SerializeField] int selected;
+    [SerializeField] GameObject shootPosition;
+
+    bool[] cooldown = new bool[4];
+
     Vector3 playerVelocity;
+    Vector3 teleportPosition;
     private int timesJumped;
     int HPOrig;
     float playerSpeedOrig;
     bool isSprinting;
     bool playingSteps;
+    bool canTeleport;
     bool isInvincible;
 
     private void Start()
     {
+        teleportPosition = teleportToPocketDimension.transform.localPosition;
         HPOrig = HP;
         playerSpeedOrig = playerSpeed;
         respawn();
@@ -48,6 +65,12 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         playerMove();
         sprint();
+        StartCoroutine(shoot0());
+        StartCoroutine(shoot1());
+        StartCoroutine(shoot2());
+        StartCoroutine(shoot3());
+        abilitySelect();
+        StartCoroutine(TeleportToPocketDimension());
     }
 
     void playerMove()
@@ -75,7 +98,6 @@ public class PlayerController : MonoBehaviour, IDamage
 
         playerVelocity.y -= gravityValue * Time.deltaTime;
         playerController.Move(playerVelocity * Time.deltaTime);
-        Debug.Log(playerVelocity.y);
     }
 
     void sprint()
@@ -96,12 +118,15 @@ public class PlayerController : MonoBehaviour, IDamage
     IEnumerator playSteps()
     {
         if (!playingSteps && playerController.velocity.magnitude > 0.3f && playerVelocity.y == 0)
-            {
+        {
             playingSteps = true;
             aud.PlayOneShot(playerStepsAud[Random.Range(0, playerStepsAud.Length)], playerStepsAudVol);
-            if (isSprinting) {
+            if (isSprinting)
+            {
                 yield return new WaitForSeconds(0.225f);
-            } else {
+            }
+            else
+            {
                 yield return new WaitForSeconds(0.3f);
             }
             playingSteps = false;
@@ -163,4 +188,109 @@ public class PlayerController : MonoBehaviour, IDamage
         jumpsMax *= 3;
         updatePlayerHUD();
     }
+
+    IEnumerator TeleportToPocketDimension()
+    {
+        //if (Input.GetKeyDown(KeyCode.E) && gameManager.instance.inPocketDimension == false)
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            teleportToPocketDimension.SetActive(true);
+            teleportToPocketDimension.transform.parent = null;
+            yield return new WaitForSeconds(3);
+            teleportToPocketDimension.SetActive(false);
+            teleportToPocketDimension.transform.parent = gameObject.transform;
+            teleportToPocketDimension.transform.localPosition = teleportPosition;
+            teleportToPocketDimension.transform.LookAt(gameObject.transform);
+        }
+    }
+    IEnumerator shoot0() // Slot 0 ability
+    {
+        if (Input.GetButton("Shoot Ability") && selected == 0 && cooldown[selected] != true && HP > abilities[selected].HPcost)
+        {
+            cooldown[selected] = true;
+
+            HP -= abilities[selected].HPcost;
+            updatePlayerHUD();
+
+            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(abilities[selected].cooldown);
+
+            cooldown[selected] = false;
+        }
+    }
+    IEnumerator shoot1()
+    {
+        if (Input.GetButton("Shoot Ability") && selected == 1 && cooldown[selected] != true && HP > abilities[selected].HPcost)
+        {
+            cooldown[selected] = true;
+
+            HP -= abilities[selected].HPcost;
+            updatePlayerHUD();
+
+            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(abilities[selected].cooldown);
+
+            cooldown[selected] = false;
+        }
+    }
+    IEnumerator shoot2()
+    {
+        if (Input.GetButton("Shoot Ability") && selected == 2 && cooldown[selected] != true && HP > abilities[selected].HPcost)
+        {
+            cooldown[selected] = true;
+
+            HP -= abilities[selected].HPcost;
+            updatePlayerHUD();
+
+            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(abilities[selected].cooldown);
+
+            cooldown[selected] = false;
+        }
+    }
+    IEnumerator shoot3()
+    {
+        if (Input.GetButton("Shoot Ability") && selected == 3 && cooldown[selected] != true && HP > abilities[selected].HPcost)
+        {
+            cooldown[selected] = true;
+
+            HP -= abilities[selected].HPcost;
+            updatePlayerHUD();
+
+            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(abilities[selected].cooldown);
+
+            cooldown[selected] = false;
+        }
+    }
+
+
+    public void abilitySelect()
+    {
+        if (Input.GetButtonDown("Ability1") && abilities[0] != null)
+        {
+            selected = 0;
+        }
+        else if (Input.GetButtonDown("Ability2") && abilities[1] != null)
+        {
+            selected = 1;
+        }
+        else if (Input.GetButtonDown("Ability3") && abilities[2] != null)
+        {
+            selected = 2;
+        }
+        else if (Input.GetButtonDown("Ability4") && abilities[3] != null)
+        {
+            selected = 3;
+        }
+    }
+    public void takeEffect(effect efct)
+    {
+
+    }
+
 }
