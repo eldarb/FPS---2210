@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8e9546b1d881449820090605ce98a8, type: 3}
   m_Name: Iceball
   m_EditorClassIdentifier: 
-  cooldown: 0
-  HPcost: 0
-  bullet: {fileID: 0}
+  cooldown: 1
+  HPcost: 1
+  bullet: {fileID: 5254324815120206836, guid: 174d0a71c5883c7409c3f4d4fb68ed7a, type: 3}
   fireEffect: {fileID: 0}
   sound: {fileID: 0}

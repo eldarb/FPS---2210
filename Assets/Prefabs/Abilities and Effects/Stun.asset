@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8e9546b1d881449820090605ce98a8, type: 3}
   m_Name: Stun
   m_EditorClassIdentifier: 
-  cooldown: 0
-  HPcost: 0
-  bullet: {fileID: 0}
+  cooldown: 2
+  HPcost: 2
+  bullet: {fileID: 5254324815120206836, guid: cffa4ae26f4185d49b1e58e0b2912075, type: 3}
   fireEffect: {fileID: 0}
   sound: {fileID: 0}

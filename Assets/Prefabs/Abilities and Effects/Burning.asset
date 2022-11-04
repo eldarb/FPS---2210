@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9044016a3aad51547b668e16be3ae4de, type: 3}
   m_Name: Burning
   m_EditorClassIdentifier: 
-  efctdmg: 0
-  efctdur: 0
-  lastingdmg: 0
-  wait: 0
-  lowspeed: 0
+  efctdmg: 1
+  efctdur: 3
+  lastingdmg: 1
+  wait: 1
+  lowspeed: 2
