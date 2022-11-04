@@ -40,6 +40,8 @@ public class gameManager : MonoBehaviour
     public TextMeshProUGUI waveText;
     public TextMeshProUGUI soulCountText;
     public TextMeshProUGUI waveNumberText;
+    public TextMeshProUGUI soulsText;
+    public TextMeshProUGUI soulsCount;
     public GameObject hiddenWinConditionPanel;
     public GameObject enhancedTraitsNotifier;
 
@@ -106,6 +108,7 @@ public class gameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
     }
+    
     public void cursorUnLockUnPause()
     {
         Time.timeScale = 1;
@@ -125,6 +128,7 @@ public class gameManager : MonoBehaviour
         enemyCount--;
         enemyCountText.text = enemyCount.ToString("F0");
     }
+
     public void HasPlayerBeatAllWaves()
     {
         waveCountText.text = waveCount.ToString("F0");
@@ -146,5 +150,9 @@ public class gameManager : MonoBehaviour
         enhancedTraitsNotifier.SetActive(true);
         yield return new WaitForSeconds(2);
         enhancedTraitsNotifier.SetActive(false);
+    }
+
+    public void updateSoulsCount() {
+        //soulsCount.text = playerScript.soulCount.ToString("F0");
     }
 }
