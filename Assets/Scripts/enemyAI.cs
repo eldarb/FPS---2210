@@ -101,7 +101,6 @@ public class enemyAI : MonoBehaviour, IDamage
         NavMeshPath path = new NavMeshPath();
 
         agent.CalculatePath(randomDirection, path);
-        agent.CalculatePath(hit.position, path);
         agent.SetPath(path);
     }
 
