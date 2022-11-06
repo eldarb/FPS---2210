@@ -72,4 +72,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Added to ignore scenes created simply for testing
-/[Aa]ssets/[Ss]cenes/test_scenes
+/[Aa]ssets/[Ss]cenes/test_scenes/*
+/[Aa]ssets/[Ss]cenes/test_scenes.meta
