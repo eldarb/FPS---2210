@@ -15,7 +15,7 @@ MonoBehaviour:
   gunType: Melee
   shootRate: 1
   shootDistance: 8
-  shootDamage: 10
+  shootDamage: 5
   ammoCount: 0
   gunModel: {fileID: 8360672952631964172, guid: 942d968fa561fab46a682387b5e72a70, type: 3}
   sound: {fileID: 8300000, guid: b7fb5876676a4b64990c75d615c10916, type: 3}

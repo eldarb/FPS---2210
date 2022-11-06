@@ -13996,7 +13996,8 @@ MonoBehaviour:
   anim: {fileID: 2129668336652302856}
   col: {fileID: 363386370164439306}
   HP: 4
-  healthBarSlider: {fileID: 0}
+  healthBar: {fileID: 556690485023207374}
+  healthBarSlider: {fileID: 7655555925121395098}
   facePlayerSpeed: 5
   sightRange: 50
   speedChase: 2
@@ -19592,11 +19593,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
+--- !u!1 &556690485023207374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1262239148143224433, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
+  m_PrefabInstance: {fileID: 1602609505735985599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5733662291789303786 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6462546320118351445, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
   m_PrefabInstance: {fileID: 1602609505735985599}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7655555925121395098 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8935250886787178533, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
+  m_PrefabInstance: {fileID: 1602609505735985599}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1878880452948042986
 PrefabInstance:
   m_ObjectHideFlags: 0

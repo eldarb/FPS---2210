@@ -100,51 +100,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.09100516, y: -0.05209069, z: 0.00000014901161}
     m_Extent: {x: 0.56203955, y: 0.351475, z: 0.7707151}
   m_DirtyAABB: 0
---- !u!1 &746998780073612574
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8367043845625800089}
-  - component: {fileID: 7667076601992666427}
-  m_Layer: 7
-  m_Name: SightDistanceCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8367043845625800089
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 746998780073612574}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8536032251664389557}
-  m_RootOrder: 63
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &7667076601992666427
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 746998780073612574}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4.47
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &912265803690182962
 GameObject:
   m_ObjectHideFlags: 0
@@ -9547,7 +9502,6 @@ Transform:
   - {fileID: 8536032251664390195}
   - {fileID: 2509146256180983737}
   - {fileID: 6829371347143667823}
-  - {fileID: 8367043845625800089}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -9588,7 +9542,8 @@ MonoBehaviour:
   anim: {fileID: 8536032251655027513}
   col: {fileID: 3307986909769914235}
   HP: 5
-  healthBarSlider: {fileID: 0}
+  healthBar: {fileID: 1651978272889114699}
+  healthBarSlider: {fileID: 8892707087321306655}
   facePlayerSpeed: 5
   sightRange: 50
   speedChase: 3
@@ -19667,8 +19622,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
+--- !u!1 &1651978272889114699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1262239148143224433, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
+  m_PrefabInstance: {fileID: 534062131609548346}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6829371347143667823 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6462546320118351445, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
   m_PrefabInstance: {fileID: 534062131609548346}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8892707087321306655 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8935250886787178533, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
+  m_PrefabInstance: {fileID: 534062131609548346}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

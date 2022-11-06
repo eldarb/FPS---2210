@@ -5560,7 +5560,8 @@ MonoBehaviour:
   anim: {fileID: 1408375398042077409}
   col: {fileID: 1977134314633627784}
   HP: 6
-  healthBarSlider: {fileID: 0}
+  healthBar: {fileID: 6091257643121425188}
+  healthBarSlider: {fileID: 4110733178501086576}
   facePlayerSpeed: 5
   sightRange: 50
   speedChase: 3
@@ -19592,5 +19593,21 @@ PrefabInstance:
 --- !u!224 &2063689865238682368 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6462546320118351445, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
+  m_PrefabInstance: {fileID: 4975388371569974613}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4110733178501086576 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8935250886787178533, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
+  m_PrefabInstance: {fileID: 4975388371569974613}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6091257643121425188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1262239148143224433, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
   m_PrefabInstance: {fileID: 4975388371569974613}
   m_PrefabAsset: {fileID: 0}

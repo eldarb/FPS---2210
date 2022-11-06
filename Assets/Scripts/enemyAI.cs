@@ -15,6 +15,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [Header("----- Enemy Stats -----")]
     [SerializeField] int HP;
+    [SerializeField] GameObject healthBar;
     [SerializeField] Slider healthBarSlider;
     [SerializeField] int facePlayerSpeed;
     [SerializeField] int sightRange;
@@ -42,6 +43,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     bool isShooting;
     int damageDealt;
+    Color origColor;
     public bool playerInRange;
     Vector3 playerDirection;
     float stoppingDistOrig;
@@ -49,12 +51,15 @@ public class enemyAI : MonoBehaviour, IDamage
     float angle;
     float speedPatrol;
     bool playingSteps;
+    int maxHP;
 
     // Start is called before the first frame update
     void Start()
     {
-       
-        //setHealthBar();
+        origColor = model.material.color;
+        maxHP = HP;
+        healthBar.SetActive(false);
+        setHealthBar();
         gameManager.instance.enemyCountText.text = gameManager.instance.enemyCount.ToString("F0");
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
@@ -96,12 +101,12 @@ public class enemyAI : MonoBehaviour, IDamage
         Vector3 randomDirection = Random.insideUnitSphere * roamDist;
         randomDirection += startingPos;
 
-        NavMeshHit hit;
-        NavMesh.SamplePosition(randomDirection, out hit, 1, 1);
-        NavMeshPath path = new NavMeshPath();
+        if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, 1, 1)) {
+            NavMeshPath path = new();
 
-        agent.CalculatePath(randomDirection, path);
-        agent.SetPath(path);
+            agent.CalculatePath(hit.position, path);
+            agent.SetPath(path);
+        }
     }
 
     void canSeePlayer() //new10/16/22
@@ -140,10 +145,15 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         if (!gameManager.instance.pauseMenu.activeSelf && !gameManager.instance.winMenu.activeSelf && !gameManager.instance.playerDeadMenu.activeSelf && !gameManager.instance.abilityMenu.activeSelf)
         {
+            healthBar.SetActive(true);
+
             HP -= dmg;
+
+            setHealthBar();
 
             if (HP <= 0)
             {
+                healthBar.SetActive(false);
                 if(gameObject.CompareTag("King"))
                 {
                     gameManager.instance.CheckWinCondition();
@@ -162,11 +172,8 @@ public class enemyAI : MonoBehaviour, IDamage
 
     private void setHealthBar()
     {
-        healthBarSlider.value = ((float)HP % (float)HP) * 100;
+        healthBarSlider.value = ((float)maxHP / (float)HP);
     }
-
-   
-
 
     IEnumerator shoot()
     {
@@ -207,7 +214,7 @@ public class enemyAI : MonoBehaviour, IDamage
         model.material.color = Color.red;
         agent.enabled = false;
         yield return new WaitForSeconds(0.5f);
-        model.material.color = Color.white;
+        model.material.color = origColor;
         agent.enabled = true;
         agent.SetDestination(gameManager.instance.player.transform.position);
     }
