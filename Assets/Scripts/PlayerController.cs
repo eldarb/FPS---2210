@@ -31,9 +31,6 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] AudioClip[] playerJumpAud;
     [Range(0, 1)] [SerializeField] float playerJumpAudVol;
 
-    [Header("----- Useable Objects")]
-    [SerializeField] GameObject teleportToPocketDimension;
-
     [Header("----- Abilities -----")]
     [SerializeField] public List<ability> abilities = new List<ability>();
     [SerializeField] int selected;
@@ -59,7 +56,6 @@ public class PlayerController : MonoBehaviour, IDamage
     private void Start()
     {
         HPOrig = HP;
-        teleportPosition = teleportToPocketDimension.transform.localPosition;
         respawn();
         LoadPlayerStats();
         updatePlayerHUD();
@@ -77,7 +73,6 @@ public class PlayerController : MonoBehaviour, IDamage
         StartCoroutine(shoot2());
         StartCoroutine(shoot3());
         abilitySelect();
-        StartCoroutine(TeleportToPocketDimension());
     }
 
     void playerMove()
@@ -194,20 +189,6 @@ public class PlayerController : MonoBehaviour, IDamage
         updatePlayerHUD();
     }
 
-    IEnumerator TeleportToPocketDimension()
-    {
-        //if (Input.GetKeyDown(KeyCode.E) && gameManager.instance.inPocketDimension == false)
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            teleportToPocketDimension.SetActive(true);
-            teleportToPocketDimension.transform.parent = null;
-            yield return new WaitForSeconds(3);
-            teleportToPocketDimension.SetActive(false);
-            teleportToPocketDimension.transform.parent = gameObject.transform;
-            teleportToPocketDimension.transform.localPosition = teleportPosition;
-            teleportToPocketDimension.transform.LookAt(gameObject.transform);
-        }
-    }
     IEnumerator shoot0() // Slot 0 ability
     {
         if (Input.GetButton("Shoot Ability") && selected == 0 && cooldown[selected] != true && HP > abilities[selected].HPcost)
