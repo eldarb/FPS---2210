@@ -52,10 +52,12 @@ public class enemyAI : MonoBehaviour, IDamage
     float speedPatrol;
     bool playingSteps;
     int maxHP;
+    bool alive;
 
     // Start is called before the first frame update
     void Start()
     {
+        alive = true;
         origColor = model.material.color;
         maxHP = HP;
         healthBar.SetActive(false);
@@ -143,16 +145,17 @@ public class enemyAI : MonoBehaviour, IDamage
 
     public void takeDamage(int dmg)
     {
-        if (!gameManager.instance.pauseMenu.activeSelf && !gameManager.instance.winMenu.activeSelf && !gameManager.instance.playerDeadMenu.activeSelf && !gameManager.instance.abilityMenu.activeSelf)
+        if (alive && !gameManager.instance.pauseMenu.activeSelf && !gameManager.instance.winMenu.activeSelf && !gameManager.instance.playerDeadMenu.activeSelf && !gameManager.instance.abilityMenu.activeSelf)
         {
             healthBar.SetActive(true);
 
             HP -= dmg;
 
             setHealthBar();
-
             if (HP <= 0)
             {
+                alive = false;
+                Debug.Log("Enemy died " + HP);
                 healthBar.SetActive(false);
                 if(gameObject.CompareTag("King"))
                 {
