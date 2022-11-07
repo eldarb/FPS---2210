@@ -51,12 +51,19 @@ public class PlayerController : MonoBehaviour, IDamage
     bool canTeleport;
     bool isInvincible;
 
+    private void OnDestroy()
+    {
+        SavePlayerStats();
+    }
+
     private void Start()
     {
-        teleportPosition = teleportToPocketDimension.transform.localPosition;
         HPOrig = HP;
-        playerSpeedOrig = playerSpeed;
+        teleportPosition = teleportToPocketDimension.transform.localPosition;
         respawn();
+        LoadPlayerStats();
+        updatePlayerHUD();
+        playerSpeedOrig = playerSpeed;
     }
 
 
@@ -171,8 +178,6 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         playerController.enabled = false;
         gameManager.instance.playerDeadMenu.SetActive(false);
-        HP = HPOrig;
-        updatePlayerHUD();
         transform.position = gameManager.instance.spawnPosition.transform.position;
         playerController.enabled = true;
     }
@@ -293,4 +298,17 @@ public class PlayerController : MonoBehaviour, IDamage
 
     }
 
+    public void Restart()
+    {
+        HP = HPOrig;
+    }
+
+    void SavePlayerStats()
+    {
+        PlayerPrefs.SetInt("Health", HP);
+    }
+    void LoadPlayerStats()
+    {
+        HP = PlayerPrefs.GetInt("Health", HP);
+    }
 }
