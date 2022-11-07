@@ -172,7 +172,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     private void setHealthBar()
     {
-        healthBarSlider.value = ((float)maxHP / (float)HP);
+        healthBarSlider.value = ((float)HP / (float)maxHP);
     }
 
     IEnumerator shoot()
