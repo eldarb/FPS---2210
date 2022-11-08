@@ -187,7 +187,7 @@ public class PlayerController : MonoBehaviour, IDamage
         updatePlayerHUD();
     }
 
-    }
+    
     IEnumerator shoot0() // Separate co-routines for each ability to have their own cooldown timer
     {
         if (Input.GetButton("Shoot Ability") && selected == 0 && coolingdown[selected] != true && HP > abilities[selected].HPcost)
@@ -232,8 +232,15 @@ public class PlayerController : MonoBehaviour, IDamage
 
             gameManager.instance.abilityBar.cooldown(selected);
 
+            HP -= abilities[selected].HPcost;
             updatePlayerHUD();
 
+            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(abilities[selected].cooldown);
+
+            coolingdown[selected] = false;
+        }
     }
 
 
@@ -252,6 +259,7 @@ public class PlayerController : MonoBehaviour, IDamage
             selected = 2;
         }
         gameManager.instance.abilityBar.updateAbilities();
+    }
     
     public void takeEffect(effect efct)
     {
