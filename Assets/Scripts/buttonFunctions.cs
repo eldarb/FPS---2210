@@ -43,5 +43,14 @@ public class buttonFunctions : MonoBehaviour
     }
 
     public void optionsApply() {
+        MainMenu.instance.applyOptions();
+    }
+
+    public void sensUpdate() {
+        MainMenu.instance.sensChange();
+    }
+
+    public void volUpdate() {
+        MainMenu.instance.volChange();
     }
 }
