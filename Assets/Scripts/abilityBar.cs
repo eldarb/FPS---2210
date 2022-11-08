@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class abilityBar : MonoBehaviour
 {
     [SerializeField] List<Image> A = new List<Image>();
+    [SerializeField] List<Image> Abckgrnd = new List<Image>();
+    [SerializeField] Color selectedColor;
+    [SerializeField] Color defaultColor;
 
     
     float timer;
@@ -36,6 +39,14 @@ public class abilityBar : MonoBehaviour
         for(int i = 0; i < A.Count; i++)
         {
             A[i].color = gameManager.instance.playerScript.abilities[i].color;
+            if (i == gameManager.instance.playerScript.selected)
+            {
+                Abckgrnd[i].color = selectedColor;
+            }
+            else
+            {
+                Abckgrnd[i].color = defaultColor;
+            }
         }
     }
 }

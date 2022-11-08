@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     [Header("----- Abilities -----")]
     [SerializeField] public List<ability> abilities = new List<ability>();
-    [SerializeField] int selected;
+    [SerializeField] public int selected;
     [SerializeField] GameObject shootPosition;
 
     bool[] coolingdown = new bool[4];
@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviour, IDamage
     }
     IEnumerator shoot0() // Separate co-routines for each ability to have their own cooldown timer
     {
-        if (Input.GetButton("Shoot Ability") && coolingdown[selected] != true && HP > abilities[selected].HPcost)
+        if (Input.GetButton("Shoot Ability") && selected == 0 && coolingdown[selected] != true && HP > abilities[selected].HPcost)
         {
             coolingdown[selected] = true;
 
@@ -277,6 +277,7 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             selected = 2;
         }
+        gameManager.instance.abilityBar.updateAbilities();
     }
     public void takeEffect(effect efct)
     {
