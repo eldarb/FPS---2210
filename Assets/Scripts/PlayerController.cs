@@ -31,9 +31,6 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] AudioClip[] playerJumpAud;
     [Range(0, 1)] [SerializeField] float playerJumpAudVol;
 
-    [Header("----- Useable Objects")]
-    [SerializeField] GameObject teleportToPocketDimension;
-
     [Header("----- Abilities -----")]
     [SerializeField] public List<ability> abilities = new List<ability>();
     [SerializeField] public int selected;
@@ -42,7 +39,6 @@ public class PlayerController : MonoBehaviour, IDamage
     bool[] coolingdown = new bool[4];
 
     Vector3 playerVelocity;
-    Vector3 teleportPosition;
     private int timesJumped;
     int HPOrig;
     float playerSpeedOrig;
@@ -59,9 +55,8 @@ public class PlayerController : MonoBehaviour, IDamage
     private void Start()
     {
         HPOrig = HP;
-        teleportPosition = teleportToPocketDimension.transform.localPosition;
         respawn();
-        //LoadPlayerStats(); There should be a condition controlling if these need to be reset.
+        LoadPlayerStats();
         updatePlayerHUD();
         playerSpeedOrig = playerSpeed;
     }
@@ -76,7 +71,6 @@ public class PlayerController : MonoBehaviour, IDamage
         StartCoroutine(shoot1());
         StartCoroutine(shoot2());
         abilitySelect();
-        StartCoroutine(TeleportToPocketDimension());
     }
 
     void playerMove()
@@ -193,19 +187,6 @@ public class PlayerController : MonoBehaviour, IDamage
         updatePlayerHUD();
     }
 
-    IEnumerator TeleportToPocketDimension()
-    {
-        //if (Input.GetKeyDown(KeyCode.E) && gameManager.instance.inPocketDimension == false)
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            teleportToPocketDimension.SetActive(true);
-            teleportToPocketDimension.transform.parent = null;
-            yield return new WaitForSeconds(3);
-            teleportToPocketDimension.SetActive(false);
-            teleportToPocketDimension.transform.parent = gameObject.transform;
-            teleportToPocketDimension.transform.localPosition = teleportPosition;
-            teleportToPocketDimension.transform.LookAt(gameObject.transform);
-        }
     }
     IEnumerator shoot0() // Separate co-routines for each ability to have their own cooldown timer
     {
@@ -251,15 +232,8 @@ public class PlayerController : MonoBehaviour, IDamage
 
             gameManager.instance.abilityBar.cooldown(selected);
 
-            HP -= abilities[selected].HPcost;
             updatePlayerHUD();
 
-            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
-
-            yield return new WaitForSeconds(abilities[selected].cooldown);
-
-            coolingdown[selected] = false;
-        }
     }
 
 
@@ -278,15 +252,10 @@ public class PlayerController : MonoBehaviour, IDamage
             selected = 2;
         }
         gameManager.instance.abilityBar.updateAbilities();
-    }
+    
     public void takeEffect(effect efct)
     {
 
-    }
-
-    public void Restart()
-    {
-        HP = HPOrig;
     }
 
     void SavePlayerStats()

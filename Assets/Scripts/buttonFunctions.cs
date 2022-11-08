@@ -16,7 +16,6 @@ public class buttonFunctions : MonoBehaviour
     public void restart()
     {
         gameManager.instance.cursorUnLockUnPause();
-        gameManager.instance.playerScript.Restart();
         SceneManager.LoadScene("Prison Room 1");
     }
 
@@ -32,6 +31,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void startGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
     }
 
     public void optionsMenu() {
