@@ -33,10 +33,10 @@ public class PlayerController : MonoBehaviour, IDamage
 
     [Header("----- Abilities -----")]
     [SerializeField] public List<ability> abilities = new List<ability>();
-    [SerializeField] int selected;
+    [SerializeField] public int selected;
     [SerializeField] GameObject shootPosition;
 
-    bool[] cooldown = new bool[4];
+    bool[] coolingdown = new bool[4];
 
     Vector3 playerVelocity;
     private int timesJumped;
@@ -70,7 +70,6 @@ public class PlayerController : MonoBehaviour, IDamage
         StartCoroutine(shoot0());
         StartCoroutine(shoot1());
         StartCoroutine(shoot2());
-        StartCoroutine(shoot3());
         abilitySelect();
     }
 
@@ -188,11 +187,14 @@ public class PlayerController : MonoBehaviour, IDamage
         updatePlayerHUD();
     }
 
-    IEnumerator shoot0() // Slot 0 ability
+    }
+    IEnumerator shoot0() // Separate co-routines for each ability to have their own cooldown timer
     {
-        if (Input.GetButton("Shoot Ability") && selected == 0 && cooldown[selected] != true && HP > abilities[selected].HPcost)
+        if (Input.GetButton("Shoot Ability") && selected == 0 && coolingdown[selected] != true && HP > abilities[selected].HPcost)
         {
-            cooldown[selected] = true;
+            coolingdown[selected] = true;
+
+            gameManager.instance.abilityBar.cooldown(selected);
 
             HP -= abilities[selected].HPcost;
             updatePlayerHUD();
@@ -201,14 +203,16 @@ public class PlayerController : MonoBehaviour, IDamage
 
             yield return new WaitForSeconds(abilities[selected].cooldown);
 
-            cooldown[selected] = false;
+            coolingdown[selected] = false;
         }
     }
     IEnumerator shoot1()
     {
-        if (Input.GetButton("Shoot Ability") && selected == 1 && cooldown[selected] != true && HP > abilities[selected].HPcost)
+        if (Input.GetButton("Shoot Ability") && selected == 1 && coolingdown[selected] != true && HP > abilities[selected].HPcost)
         {
-            cooldown[selected] = true;
+            coolingdown[selected] = true;
+
+            gameManager.instance.abilityBar.cooldown(selected);
 
             HP -= abilities[selected].HPcost;
             updatePlayerHUD();
@@ -217,40 +221,19 @@ public class PlayerController : MonoBehaviour, IDamage
 
             yield return new WaitForSeconds(abilities[selected].cooldown);
 
-            cooldown[selected] = false;
+            coolingdown[selected] = false;
         }
     }
     IEnumerator shoot2()
     {
-        if (Input.GetButton("Shoot Ability") && selected == 2 && cooldown[selected] != true && HP > abilities[selected].HPcost)
+        if (Input.GetButton("Shoot Ability") && selected == 2 && coolingdown[selected] != true && HP > abilities[selected].HPcost)
         {
-            cooldown[selected] = true;
+            coolingdown[selected] = true;
 
-            HP -= abilities[selected].HPcost;
+            gameManager.instance.abilityBar.cooldown(selected);
+
             updatePlayerHUD();
 
-            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
-
-            yield return new WaitForSeconds(abilities[selected].cooldown);
-
-            cooldown[selected] = false;
-        }
-    }
-    IEnumerator shoot3()
-    {
-        if (Input.GetButton("Shoot Ability") && selected == 3 && cooldown[selected] != true && HP > abilities[selected].HPcost)
-        {
-            cooldown[selected] = true;
-
-            HP -= abilities[selected].HPcost;
-            updatePlayerHUD();
-
-            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
-
-            yield return new WaitForSeconds(abilities[selected].cooldown);
-
-            cooldown[selected] = false;
-        }
     }
 
 
@@ -268,11 +251,8 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             selected = 2;
         }
-        else if (Input.GetButtonDown("Ability4") && abilities[3] != null)
-        {
-            selected = 3;
-        }
-    }
+        gameManager.instance.abilityBar.updateAbilities();
+    
     public void takeEffect(effect efct)
     {
 
