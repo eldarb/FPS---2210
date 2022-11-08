@@ -67,9 +67,9 @@ public class gameManager : MonoBehaviour
         weaponHandler = GameObject.FindGameObjectWithTag("Weapon Handler");
         weaponHandlerScript = weaponHandler.GetComponent<WeaponHandler>();
         spawnPosition = GameObject.FindGameObjectWithTag("Spawn Point");
-        //aud = GameObject.FindGameObjectWithTag("Big Door").GetComponent<AudioSource>();
-        //teleportToNextLevel = GameObject.FindGameObjectWithTag("Teleport");
-        //teleportToNextLevel.SetActive(false);
+        aud = GameObject.FindGameObjectWithTag("Big Door").GetComponent<AudioSource>();
+        teleportToNextLevel = GameObject.FindGameObjectWithTag("Teleport");
+        teleportToNextLevel.SetActive(false);
         waveNumberText.text = waveMax.ToString("F0");
     }
 
