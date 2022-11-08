@@ -18,9 +18,9 @@ public class slowBullet : MonoBehaviour
         Destroy(gameObject, destroyTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Melee"))
+        if (other.gameObject.CompareTag("Melee"))
         {
             other.gameObject.GetComponent<IDamage>().takeDamage(dmg);
             other.gameObject.GetComponent<IDamage>().takeEffect(efct);
