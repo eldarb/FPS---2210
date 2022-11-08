@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponHandler : MonoBehaviour
 {
     [Header("----- Gun Stats -----")]
+    [SerializeField] string gunName;
     [SerializeField] string gunType;
     [SerializeField] float shootRate;
     [SerializeField] int shootDistance;
@@ -22,6 +23,15 @@ public class WeaponHandler : MonoBehaviour
     bool isShooting;
     int selectGun;
 
+    private void OnDestroy()
+    {
+        SaveGunStats();
+    }
+
+    private void Start()
+    {
+        LoadGunStats();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -64,17 +74,27 @@ public class WeaponHandler : MonoBehaviour
 
     public void gunPickUp(gunStats stats)
     {
-        if (gunStat.Count > 0)
-            Destroy(gunModel);
-        gunType = stats.gunType;
-        shootRate = stats.shootRate;
-        shootDistance = stats.shootDistance;
-        shootDamage = stats.shootDamage;
-        sound = stats.sound;
-        hitSound = stats.hitSound;
-        gunModel = Instantiate(stats.gunModel, transform);
+        bool toAddGun = true;
+        for (int i = 0; i < gunStat.Count; i++)
+            if (gunStat[i].gunName == stats.gunName)
+            {
+                toAddGun = false;
+            }
+        if (toAddGun)
+        {
+            if (gunStat.Count > 0)
+                Destroy(gunModel);
+            gunName = stats.gunName;
+            gunType = stats.gunType;
+            shootRate = stats.shootRate;
+            shootDistance = stats.shootDistance;
+            shootDamage = stats.shootDamage;
+            sound = stats.sound;
+            hitSound = stats.hitSound;
+            gunModel = Instantiate(stats.gunModel, transform);
 
-        gunStat.Add(stats);
+            gunStat.Add(stats);
+        }
     }
 
     void gunSelect()
@@ -97,6 +117,7 @@ public class WeaponHandler : MonoBehaviour
     void changeGun()
     {
         Destroy(gunModel);
+        gunName = gunStat[selectGun].gunName;
         gunType = gunStat[selectGun].gunType;
         shootRate = gunStat[selectGun].shootRate;
         shootDistance = gunStat[selectGun].shootDistance;
@@ -104,5 +125,37 @@ public class WeaponHandler : MonoBehaviour
         sound = gunStat[selectGun].sound;
         hitSound = gunStat[selectGun].hitSound;
         gunModel = Instantiate(gunStat[selectGun].gunModel, transform);
+    }
+
+    void SaveGunStats()
+    {
+        for (int i = 0; i < gunStat.Count; i++)
+        {
+            PlayerPrefs.SetString("Weapon_" + i + "_name", gunStat[i].gunName);
+        }
+    }
+
+    void LoadGunStats()
+    {
+        int i = 0;
+        while (PlayerPrefs.HasKey("Weapon_" + i + "_name"))
+        {
+            string name;
+            name = PlayerPrefs.GetString("Weapon_" + i + "_name");
+            for (int j = 0; j < gameManager.instance.GunList.Count; j++)
+            {
+                if (gameManager.instance.GunList[j].gunName == name)
+                {
+                    gunPickUp(gameManager.instance.GunList[j]);
+                }
+            }
+            i++;
+        }
+    }
+
+    public void ClearGuns()
+    {
+        gunStat.Clear();
+        Destroy(gunModel);
     }
 }

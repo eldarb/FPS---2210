@@ -3840,6 +3840,9 @@ MonoBehaviour:
   sound: {fileID: 8300000, guid: 4594da37506d82f479ff5746785b0de6, type: 3}
   soundVol: 0.3
   teleportToNextLevel: {fileID: 0}
+  GunList:
+  - {fileID: 11400000, guid: 6592f0fab5ef4714f86059ec3c542f6a, type: 2}
+  - {fileID: 11400000, guid: 7449ea03e7e338746bcb07a7a60cddbc, type: 2}
   isPaused: 0
 --- !u!1 &972814644294932497
 GameObject:

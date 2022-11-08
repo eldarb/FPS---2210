@@ -52,6 +52,10 @@ public class gameManager : MonoBehaviour
     [Header("----- Teleport -----")]
     [SerializeField] GameObject teleportToNextLevel;
 
+    [Header("----- Gun List -----")]
+    public List<gunStats> GunList = new List<gunStats>();
+
+
     public bool isPaused;
     
     void Awake()

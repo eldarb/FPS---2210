@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour, IDamage
     bool[] cooldown = new bool[4];
 
     Vector3 playerVelocity;
-    Vector3 teleportPosition;
     private int timesJumped;
     int HPOrig;
     float playerSpeedOrig;
@@ -277,11 +276,6 @@ public class PlayerController : MonoBehaviour, IDamage
     public void takeEffect(effect efct)
     {
 
-    }
-
-    public void Restart()
-    {
-        HP = HPOrig;
     }
 
     void SavePlayerStats()
