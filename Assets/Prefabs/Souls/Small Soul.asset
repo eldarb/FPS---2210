@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc445e06fffd634f8669f9aeb74857c, type: 3}
   m_Name: Small Soul
   m_EditorClassIdentifier: 
-  soulsAmount: 0
+  soulsAmount: 1
