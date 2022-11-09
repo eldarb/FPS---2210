@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9172921411455969462}
+  - component: {fileID: -7565892452425786347}
   - component: {fileID: 5252069048915027731}
   - component: {fileID: 8000626805569983449}
   - component: {fileID: 5379008505611229595}
+  - component: {fileID: 1516142506519046755}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -34,6 +36,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 177.728, y: 83.32, z: 142.319}
+--- !u!114 &-7565892452425786347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8360672952631964172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c1d0b71552b5a43982b771a8de18b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col: {fileID: 1516142506519046755}
 --- !u!33 &5252069048915027731
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -104,3 +119,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &1516142506519046755
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8360672952631964172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.15472935
+  m_Height: 1.2076373
+  m_Direction: 1
+  m_Center: {x: 0.0000040655173, y: 0.8569906, z: 0.003852975}
