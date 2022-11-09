@@ -17,3 +17,4 @@ MonoBehaviour:
   bullet: {fileID: 5254324815120206836, guid: cffa4ae26f4185d49b1e58e0b2912075, type: 3}
   fireEffect: {fileID: 0}
   sound: {fileID: 0}
+  color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}

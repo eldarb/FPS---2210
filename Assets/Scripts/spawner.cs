@@ -38,7 +38,7 @@ public class spawner : MonoBehaviour
         {
             randomEnemyToSpawn = Random.Range(0, enemyTypes.Length - 1);
             StartCoroutine(spawn());
-
+            enemies++;
         }
     }
 
@@ -47,7 +47,7 @@ public class spawner : MonoBehaviour
         isSpawning = true;
 
         Instantiate(enemyTypes[randomEnemyToSpawn], spawnPos[Random.Range(0, spawnPos.Length - 1)].transform.position, enemyTypes[randomEnemyToSpawn].transform.rotation);
-        enemies++;
+        //enemies++;
 
         yield return new WaitForSeconds(timer);
         isSpawning = false;

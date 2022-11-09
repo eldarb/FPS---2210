@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stunned
   m_EditorClassIdentifier: 
   efctdmg: 0
-  efctdur: 5
+  efctdur: 1
   lastingdmg: 0
-  wait: 1
+  wait: 5
   lowspeed: 0

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709a3e0dd440df64fa85a63adc4ecbc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunName: 
   gunType: 
   shootRate: 0
   shootDistance: 0
@@ -175,7 +176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3428803173978886206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.289, y: 0.36, z: 0.849}
+  m_LocalPosition: {x: -0.289, y: 0.36, z: 1.452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

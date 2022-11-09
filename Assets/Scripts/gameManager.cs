@@ -30,6 +30,7 @@ public class gameManager : MonoBehaviour
     public GameObject playerDeadMenu;
     public GameObject winMenu;
     public GameObject abilityMenu;
+    public abilityBar abilityBar;
     public List<GameObject> menuAbilities = new List<GameObject>();
     public GameObject currentMenu;
     public GameObject playerDamageFlash;
@@ -51,6 +52,10 @@ public class gameManager : MonoBehaviour
 
     [Header("----- Teleport -----")]
     [SerializeField] GameObject teleportToNextLevel;
+
+    [Header("----- Gun List -----")]
+    public List<gunStats> GunList = new List<gunStats>();
+
 
     public bool isPaused;
     

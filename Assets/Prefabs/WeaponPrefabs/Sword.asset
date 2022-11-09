@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ddef52fb011f949a002ebb0e9360f7, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
+  gunName: Sword
   gunType: Melee
   shootRate: 1
   shootDistance: 8

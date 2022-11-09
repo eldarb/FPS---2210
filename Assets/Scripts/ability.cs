@@ -11,4 +11,5 @@ public class ability : ScriptableObject
     public GameObject bullet;
     public GameObject fireEffect;
     public AudioClip sound;
+    public Color color;
 }

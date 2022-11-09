@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class MainMenu : MonoBehaviour
 
     public GameObject mainMenu;
     public GameObject optionsMenu;
+    public Slider sensOption;
+    public TMP_Text sensOptText;
+    public Slider volOption;
+    public TMP_Text volOptText;
 
     private void Awake() {
         instance = this;
@@ -22,5 +27,18 @@ public class MainMenu : MonoBehaviour
     public void openMainMenu() {
         optionsMenu.SetActive(false);
         mainMenu.SetActive(true);
+    }
+
+    public void sensChange() {
+        sensOptText.text = sensOption.value.ToString("F");
+    }
+
+    public void volChange() {
+        volOptText.text = volOption.value.ToString("F");
+    }
+
+    public void applyOptions() {
+        PlayerPrefs.SetFloat("sensitivity", sensOption.value);
+        PlayerPrefs.SetFloat("volume", volOption.value);
     }
 }
