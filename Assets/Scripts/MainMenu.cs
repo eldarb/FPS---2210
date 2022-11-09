@@ -18,6 +18,11 @@ public class MainMenu : MonoBehaviour
     private void Awake() {
         instance = this;
     }
+    private void Start()
+    {
+        sensOption.value = PlayerPrefs.GetFloat("sensitivity");
+        volOption.value = PlayerPrefs.GetFloat("volume");
+    }
 
     public void openOptionsMenu() {
         mainMenu.SetActive(false);
@@ -38,7 +43,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void applyOptions() {
-        PlayerPrefs.SetInt("sensitivity", (int)(sensOption.value * 200));
+        PlayerPrefs.SetFloat("sensitivity", sensOption.value);
         PlayerPrefs.SetFloat("volume", volOption.value);
         PlayerPrefs.Save();
     }

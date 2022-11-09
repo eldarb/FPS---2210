@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class playerCamera : MonoBehaviour
 {
-    [SerializeField] int sensitivity;
+    [SerializeField] float sensitivity;
 
     [SerializeField] int lockVerticalMin;
     [SerializeField] int lockVerticalMax;
@@ -16,6 +16,7 @@ public class playerCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sensitivity = PlayerPrefs.GetFloat("sensitivity") * 300;
         Cursor.lockState = CursorLockMode.Locked; 
         Cursor.visible = false; //makes the mouse cursor invisible 
     }
