@@ -230,8 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ff38d309f197447ac9164db0f35dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hzntlSens: 100
-  vrtclSens: 100
+  sensitivity: 100
   lockVerticalMin: -85
   lockVerticalMax: 85
   invert: 0
@@ -347,6 +346,7 @@ MonoBehaviour:
   jumpsMax: 1
   damageDelay: 0.5
   aud: {fileID: 2094630005}
+  audioVolume: 0
   playerHurtAud:
   - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}
   - {fileID: 8300000, guid: fd0d8e6ee12442144951f581b2b04baa, type: 3}
@@ -354,7 +354,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6765536c6ec1df44d995667ca501004e, type: 3}
   - {fileID: 8300000, guid: 13c124c029c2d974f85327a99f7bc857, type: 3}
   - {fileID: 8300000, guid: 958bf8dcaea36c9419b70a0e6e4cb3eb, type: 3}
-  playerHurtAudVol: 0.05
   playerStepsAud:
   - {fileID: 8300000, guid: c88cbfb42b4c9084ca80e933057b17e8, type: 3}
   - {fileID: 8300000, guid: d6255fc681fff7440aa693f0345f05eb, type: 3}
@@ -365,12 +364,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e84ef2215845c3440853a2807866cf33, type: 3}
   - {fileID: 8300000, guid: 914e0bfbe73f4044eabdd5547bf5209e, type: 3}
   - {fileID: 8300000, guid: 40fda127ca6f4084dbb59236db5bf339, type: 3}
-  playerStepsAudVol: 0.05
   playerJumpAud:
   - {fileID: 8300000, guid: 9152c3cc3c408a747ab6aff59d3e5012, type: 3}
   - {fileID: 8300000, guid: 363d4369fd2d26a4881cdfd964b9a573, type: 3}
   - {fileID: 8300000, guid: 52774ed56fb79ab46990255d16f42942, type: 3}
-  playerJumpAudVol: 0.05
   abilities:
   - {fileID: 11400000, guid: 85bf104825597464f97bd9a40a1edf7a, type: 2}
   - {fileID: 11400000, guid: 5da70d58c63a5534fa940f8adc61757e, type: 2}
