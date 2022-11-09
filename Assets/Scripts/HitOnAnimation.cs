@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class HitOnAnimation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] CapsuleCollider col;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        //col = GetComponent<CapsuleCollider>();
+        col.enabled = false;
+    }
+    public void EnableColliderOnTheSword()
+    { col.enabled = true; }
+    public void DisableColliderOnTheSword()
+    { col.enabled = false; }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Melee") || collision.gameObject.CompareTag("Range"))
+        {
+            collision.gameObject.GetComponent<IDamage>().takeDamage(gameManager.instance.weaponHandlerScript.GetDamage());
+        }
     }
 }

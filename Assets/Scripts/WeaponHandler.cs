@@ -46,22 +46,23 @@ public class WeaponHandler : MonoBehaviour
             if (gunType == "Melee")
             {
                 gunModel.GetComponent<Animator>().SetTrigger("Attack");
+                gunModel.GetComponent<Animator>().speed = 1/shootRate;
             }
             else if (gunType == "Range")
             {
-            }
-            aud.PlayOneShot(sound, gunShotAudVol);
-            //yield return new WaitForSeconds(gunModel.GetComponent<Animator>().speed);
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
-            {
-                if (hit.collider.GetComponent<IDamage>() != null)
+                RaycastHit hit;
+                if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
                 {
-                    aud.PlayOneShot(hitSound, gunShotAudVol);
-                    hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
+                    if (hit.collider.GetComponent<IDamage>() != null)
+                    {
+                        aud.PlayOneShot(hitSound, gunShotAudVol);
+                        hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
+                    }
                 }
             }
+            aud.PlayOneShot(sound, gunShotAudVol);
             yield return new WaitForSeconds(shootRate);
+            gunModel.GetComponent<Animator>().speed = 1;
 
             isShooting = false;
         }
@@ -157,5 +158,10 @@ public class WeaponHandler : MonoBehaviour
     {
         gunStat.Clear();
         Destroy(gunModel);
+    }
+
+    public int GetDamage()
+    {
+        return shootDamage;
     }
 }
