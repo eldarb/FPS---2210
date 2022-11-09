@@ -4531,11 +4531,11 @@ MonoBehaviour:
   HP: 8
   healthBar: {fileID: 1494692177860494200}
   healthBarSlider: {fileID: 8735305541384176940}
-  facePlayerSpeed: 3
+  facePlayerSpeed: 10
   sightRange: 100
   speedChase: 2
   animLerpSpeed: 4
-  viewAngle: 180
+  viewAngle: 160
   roamDist: 10
   headPosition: {fileID: 9068325829378866935}
   numSouls: 3

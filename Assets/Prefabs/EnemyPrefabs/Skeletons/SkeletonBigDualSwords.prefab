@@ -2063,11 +2063,11 @@ MonoBehaviour:
   HP: 10
   healthBar: {fileID: 1713623122298882434}
   healthBarSlider: {fileID: 8812488531191517142}
-  facePlayerSpeed: 4
+  facePlayerSpeed: 10
   sightRange: 50
   speedChase: 5
   animLerpSpeed: 4
-  viewAngle: 50
+  viewAngle: 160
   roamDist: 15
   headPosition: {fileID: 5967474454249556393}
   numSouls: 3
