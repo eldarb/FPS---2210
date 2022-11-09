@@ -5,14 +5,18 @@ using UnityEngine;
 public class HitOnAnimation : MonoBehaviour
 {
     [SerializeField] CapsuleCollider col;
+    [SerializeField] AudioClip sound;
+    [SerializeField] AudioClip hitSound;
 
+    [Header("----- Audio -----")]
+    [SerializeField] AudioSource aud;
+    [Range(0, 1)] [SerializeField] float gunShotAudVol;
     private void Start()
     {
-        //col = GetComponent<CapsuleCollider>();
         col.enabled = false;
     }
     public void EnableColliderOnTheSword()
-    { col.enabled = true; }
+    { col.enabled = true; aud.PlayOneShot(sound, gunShotAudVol); }
     public void DisableColliderOnTheSword()
     { col.enabled = false; }
 
@@ -21,6 +25,7 @@ public class HitOnAnimation : MonoBehaviour
         if(collision.gameObject.CompareTag("Melee") || collision.gameObject.CompareTag("Range"))
         {
             collision.gameObject.GetComponent<IDamage>().takeDamage(gameManager.instance.weaponHandlerScript.GetDamage());
+            aud.PlayOneShot(hitSound, gunShotAudVol);
         }
     }
 }

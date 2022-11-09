@@ -11,17 +11,12 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] int shootDistance;
     [SerializeField] int shootDamage;
     [SerializeField] GameObject gunModel;
-    [SerializeField] AudioClip sound;
-    [SerializeField] AudioClip hitSound;
     [SerializeField] List<gunStats> gunStat = new List<gunStats>();
 
-    [Header("----- Audio -----")]
-    [SerializeField] AudioSource aud;
-    [Range(0, 1)] [SerializeField] float gunShotAudVol;
-
-
+    bool justDidHeavyAttack;
     bool isShooting;
     int selectGun;
+    float defaultShootRate;
 
     private void OnDestroy()
     {
@@ -40,10 +35,19 @@ public class WeaponHandler : MonoBehaviour
     }
     IEnumerator shoot()
     {
-        if (gunStat.Count > 0 && Input.GetButton("Shoot") && !isShooting)
+        if (gunStat.Count > 0 && Input.GetButtonDown("Shoot") && !isShooting)
         {
+
             isShooting = true;
-            if (gunType == "Melee")
+            defaultShootRate = shootRate;
+            if (gunType == "Melee" && Input.GetButton("Sprint") && Input.GetButtonDown("Shoot"))
+            {
+                justDidHeavyAttack = true;
+                gunModel.GetComponent<Animator>().SetTrigger("HeavyAttack");
+                shootDamage *= 2;
+                shootRate = 2;
+            }
+            else if (gunType == "Melee")
             {
                 gunModel.GetComponent<Animator>().SetTrigger("Attack");
                 gunModel.GetComponent<Animator>().speed = 1/shootRate;
@@ -55,15 +59,18 @@ public class WeaponHandler : MonoBehaviour
                 {
                     if (hit.collider.GetComponent<IDamage>() != null)
                     {
-                        aud.PlayOneShot(hitSound, gunShotAudVol);
                         hit.collider.GetComponent<IDamage>().takeDamage(shootDamage);
                     }
                 }
             }
-            aud.PlayOneShot(sound, gunShotAudVol);
             yield return new WaitForSeconds(shootRate);
+            if(justDidHeavyAttack)
+            {
+                shootDamage /= 2;
+                justDidHeavyAttack = false;
+            }
             gunModel.GetComponent<Animator>().speed = 1;
-
+            shootRate = defaultShootRate;
             isShooting = false;
         }
     }
@@ -90,8 +97,6 @@ public class WeaponHandler : MonoBehaviour
             shootRate = stats.shootRate;
             shootDistance = stats.shootDistance;
             shootDamage = stats.shootDamage;
-            sound = stats.sound;
-            hitSound = stats.hitSound;
             gunModel = Instantiate(stats.gunModel, transform);
 
             gunStat.Add(stats);
@@ -123,8 +128,6 @@ public class WeaponHandler : MonoBehaviour
         shootRate = gunStat[selectGun].shootRate;
         shootDistance = gunStat[selectGun].shootDistance;
         shootDamage = gunStat[selectGun].shootDamage;
-        sound = gunStat[selectGun].sound;
-        hitSound = gunStat[selectGun].hitSound;
         gunModel = Instantiate(gunStat[selectGun].gunModel, transform);
     }
 
