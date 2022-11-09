@@ -9552,9 +9552,9 @@ MonoBehaviour:
   roamDist: 10
   headPosition: {fileID: 8536032251664631287}
   numSouls: 2
-  shootRate: 1.5
-  bullet: {fileID: 5851684014553905639, guid: be62a7b4771a6a4488a7e8ca21369736, type: 3}
-  shootPosition: {fileID: 8536032251664629471}
+  shootRate: 2
+  bullet: {fileID: 3131189606958772970, guid: c1dd826fe4be3744c92b73616c3abccd, type: 3}
+  shootPosition: {fileID: 8122331957360901219}
   aud: {fileID: 2642452124299701171}
   enemyHurtAud:
   - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}

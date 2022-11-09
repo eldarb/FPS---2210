@@ -1261,6 +1261,37 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.066609025, y: -0.043437093, z: 0.00000014901161}
     m_Extent: {x: 0.52085996, y: 0.34276873, z: 0.7707151}
   m_DirtyAABB: 0
+--- !u!1 &595765123718862377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6139465640424263701}
+  m_Layer: 7
+  m_Name: Shoot Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6139465640424263701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595765123718862377}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 593355981681568543}
+  m_RootOrder: 41
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &620687730586961032
 GameObject:
   m_ObjectHideFlags: 0
@@ -6885,6 +6916,7 @@ Transform:
   - {fileID: 7586143979655916550}
   - {fileID: 8385208897016045866}
   - {fileID: 943066027812092491}
+  - {fileID: 6139465640424263701}
   m_Father: {fileID: 5008336727634930373}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11362,17 +11394,17 @@ MonoBehaviour:
   HP: 35
   healthBar: {fileID: 8188887756273781774}
   healthBarSlider: {fileID: 2026895266311047770}
-  facePlayerSpeed: 6
+  facePlayerSpeed: 10
   sightRange: 80
   speedChase: 5
   animLerpSpeed: 4
-  viewAngle: 55
+  viewAngle: 180
   roamDist: 15
   headPosition: {fileID: 28303744035697817}
   numSouls: 10
-  shootRate: 1.5
-  bullet: {fileID: 5851684014553905639, guid: be62a7b4771a6a4488a7e8ca21369736, type: 3}
-  shootPosition: {fileID: 1937268705241115033}
+  shootRate: 3
+  bullet: {fileID: 2321008175003038895, guid: 025f41b34a8042f4cb37c9690ac7dc2d, type: 3}
+  shootPosition: {fileID: 595765123718862377}
   aud: {fileID: 8393345972353898669}
   enemyHurtAud:
   - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}
