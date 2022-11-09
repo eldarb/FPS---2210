@@ -38,7 +38,8 @@ public class MainMenu : MonoBehaviour
     }
 
     public void applyOptions() {
-        PlayerPrefs.SetFloat("sensitivity", sensOption.value);
+        PlayerPrefs.SetInt("sensitivity", (int)(sensOption.value * 200));
         PlayerPrefs.SetFloat("volume", volOption.value);
+        PlayerPrefs.Save();
     }
 }

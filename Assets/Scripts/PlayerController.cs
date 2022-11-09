@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] CharacterController playerController;
 
     [Header("----- Player Stats -----")]
+    [Range(1, 100)][SerializeField] int maxHP;
     [Range(1, 100)] [SerializeField] int HP;
     [Range(1, 20)] [SerializeField] float playerSpeed;
     [Range(1.1f, 2f)] [SerializeField] float sprintMultiplier;
@@ -24,12 +25,10 @@ public class PlayerController : MonoBehaviour, IDamage
 
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
+    [Range(0, 1)] [SerializeField] float audioVolume;
     [SerializeField] AudioClip[] playerHurtAud;
-    [Range(0, 1)] [SerializeField] float playerHurtAudVol;
     [SerializeField] AudioClip[] playerStepsAud;
-    [Range(0, 1)] [SerializeField] float playerStepsAudVol;
     [SerializeField] AudioClip[] playerJumpAud;
-    [Range(0, 1)] [SerializeField] float playerJumpAudVol;
 
     [Header("----- Abilities -----")]
     [SerializeField] public List<ability> abilities = new List<ability>();
@@ -54,6 +53,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     private void Start()
     {
+        audioVolume = PlayerPrefs.GetFloat("volume");
         HPOrig = HP;
         respawn();
         LoadPlayerStats();
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             timesJumped++;
             playerVelocity.y += jumpHeight;
-            aud.PlayOneShot(playerJumpAud[Random.Range(0, playerJumpAud.Length)], playerJumpAudVol);
+            aud.PlayOneShot(playerJumpAud[Random.Range(0, playerJumpAud.Length)], audioVolume);
         }
 
         playerVelocity.y -= gravityValue * Time.deltaTime;
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour, IDamage
         if (!playingSteps && playerController.velocity.magnitude > 0.3f && playerVelocity.y == 0)
         {
             playingSteps = true;
-            aud.PlayOneShot(playerStepsAud[Random.Range(0, playerStepsAud.Length)], playerStepsAudVol);
+            aud.PlayOneShot(playerStepsAud[Random.Range(0, playerStepsAud.Length)], audioVolume);
             if (isSprinting)
             {
                 yield return new WaitForSeconds(0.225f);
@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             HP -= damage;
 
-            aud.PlayOneShot(playerHurtAud[Random.Range(0, playerHurtAud.Length - 1)], playerHurtAudVol);
+            aud.PlayOneShot(playerHurtAud[Random.Range(0, playerHurtAud.Length - 1)], audioVolume);
 
             updatePlayerHUD();
             StartCoroutine(gameManager.instance.playerDamage());
@@ -160,6 +160,20 @@ public class PlayerController : MonoBehaviour, IDamage
         isInvincible = true;
         yield return new WaitForSeconds(damageDelay);
         isInvincible = false;
+    }
+
+    public int GetHealth()
+    {
+        return HP;
+    }
+
+    public void healPlayer(int healing)
+    {
+        if (HP < maxHP)
+        {
+            HP += healing;
+            updatePlayerHUD();
+        }
     }
 
     public void updatePlayerHUD()
