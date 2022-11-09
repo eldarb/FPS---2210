@@ -7413,12 +7413,12 @@ MonoBehaviour:
   sightRange: 50
   speedChase: 4
   animLerpSpeed: 4
-  viewAngle: 45
+  viewAngle: 180
   roamDist: 12
   headPosition: {fileID: 4687025298515368372}
   numSouls: 3
   shootRate: 1.5
-  bullet: {fileID: 5851684014553905639, guid: be62a7b4771a6a4488a7e8ca21369736, type: 3}
+  bullet: {fileID: 3224039564168304892, guid: 31bbfe51ee8c49e4a8eea056db00dbd7, type: 3}
   shootPosition: {fileID: 5958276550997958844}
   aud: {fileID: 5283899791029913509}
   enemyHurtAud:

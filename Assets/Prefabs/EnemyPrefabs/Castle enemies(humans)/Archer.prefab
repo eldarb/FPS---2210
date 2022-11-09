@@ -3695,18 +3695,18 @@ MonoBehaviour:
   model: {fileID: 2523999747737601458}
   anim: {fileID: 2523999747741784578}
   col: {fileID: 2516075742430983568}
-  HP: 5
+  HP: 10
   healthBar: {fileID: 3318033791500648415}
   healthBarSlider: {fileID: 4866203861418375563}
   facePlayerSpeed: 7
   sightRange: 80
   speedChase: 2
   animLerpSpeed: 4
-  viewAngle: 60
+  viewAngle: 180
   roamDist: 12
   headPosition: {fileID: 2523999747749144464}
   numSouls: 1
-  shootRate: 1
+  shootRate: 3
   bullet: {fileID: 6932166732833295826, guid: 1ed771777c0bb394f83642bddcde1f65, type: 3}
   shootPosition: {fileID: 2523999747748950294}
   aud: {fileID: 6737675973100527968}
