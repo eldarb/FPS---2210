@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] CharacterController playerController;
 
     [Header("----- Player Stats -----")]
+    [Range(1, 100)][SerializeField] int maxHP;
     [Range(1, 100)] [SerializeField] int HP;
     [Range(1, 20)] [SerializeField] float playerSpeed;
     [Range(1.1f, 2f)] [SerializeField] float sprintMultiplier;
@@ -159,6 +160,20 @@ public class PlayerController : MonoBehaviour, IDamage
         isInvincible = true;
         yield return new WaitForSeconds(damageDelay);
         isInvincible = false;
+    }
+
+    public int GetHealth()
+    {
+        return HP;
+    }
+
+    public void healPlayer(int healing)
+    {
+        if (HP < maxHP)
+        {
+            HP += healing;
+            updatePlayerHUD();
+        }
     }
 
     public void updatePlayerHUD()
