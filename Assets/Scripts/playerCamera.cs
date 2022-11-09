@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class playerCamera : MonoBehaviour
 {
-    [SerializeField] int hzntlSens;
-    [SerializeField] int vrtclSens;
+    [SerializeField] float sensitivity;
 
     [SerializeField] int lockVerticalMin;
     [SerializeField] int lockVerticalMax;
@@ -17,6 +16,7 @@ public class playerCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sensitivity = PlayerPrefs.GetFloat("sensitivity") * 300;
         Cursor.lockState = CursorLockMode.Locked; 
         Cursor.visible = false; //makes the mouse cursor invisible 
     }
@@ -25,8 +25,8 @@ public class playerCamera : MonoBehaviour
     void LateUpdate()
     {
         //get input
-        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * hzntlSens;
-        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * vrtclSens;
+        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * sensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sensitivity;
 
 
         if(!invert)

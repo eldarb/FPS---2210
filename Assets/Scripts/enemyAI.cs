@@ -24,12 +24,14 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int viewAngle; // new10/16/22 > 
     [SerializeField] int roamDist; // new10/16/22 > 
     [SerializeField] GameObject headPosition;// new10/16/22
+    [SerializeField] GameObject soulDropPosition;
     [SerializeField] int numSouls;
 
     [Header("----- Enemy Stats -----")]
     [SerializeField] float shootRate;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject shootPosition;
+    [SerializeField] GameObject soul;
 
     [Header("----- Enemy Audio -----")]
     [SerializeField] AudioSource aud;
@@ -165,6 +167,9 @@ public class enemyAI : MonoBehaviour, IDamage
                 agent.enabled = false;
                 col.enabled = false;
                 anim.SetBool("Dead", true);
+
+                Instantiate(soul, this.soulDropPosition.transform.position, this.transform.rotation);
+
                 gameManager.instance.playerScript.soulCount += numSouls;
                 gameManager.instance.soulsCount.text = gameManager.instance.playerScript.soulCount.ToString("F0");
             }
