@@ -2019,7 +2019,7 @@ MonoBehaviour:
   roamDist: 10
   headPosition: {fileID: 5586660849687888341}
   numSouls: 5
-  shootRate: 1.5
+  shootRate: 2.5
   bullet: {fileID: 6932166732833295826, guid: 1ed771777c0bb394f83642bddcde1f65, type: 3}
   shootPosition: {fileID: 4225141131241200456}
   aud: {fileID: 112955626}
