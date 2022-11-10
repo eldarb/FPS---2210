@@ -23,7 +23,7 @@ public class HitOnAnimation : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Melee") || collision.gameObject.CompareTag("Range") || collision.gameObject.CompareTag("King"))
+        if(collision.gameObject.CompareTag("Melee") || collision.gameObject.CompareTag("Range"))
         {
             collision.gameObject.GetComponent<IDamage>().takeDamage(gameManager.instance.weaponHandlerScript.GetDamage());
             aud.PlayOneShot(hitSound, gunShotAudVol);

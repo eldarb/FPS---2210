@@ -198,14 +198,8 @@ public class enemyAI : MonoBehaviour, IDamage
             aud.PlayOneShot(swordSound, enemyGunShotAudVol);
             anim.SetTrigger("Attack");
         }
-        else if (gameObject.CompareTag("King"))
-        {
-            aud.PlayOneShot(swordSound, enemyGunShotAudVol);
-            anim.SetTrigger("Attack");
-        }
 
-
-        Instantiate(bullet, shootPosition.transform.position, transform.rotation);
+            Instantiate(bullet, shootPosition.transform.position, transform.rotation);
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
