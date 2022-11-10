@@ -60,6 +60,10 @@ public class enemyAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
+        enemyHurtAudVol = PlayerPrefs.GetFloat("volume");
+        enemyStepsAudVol = PlayerPrefs.GetFloat("volume");
+        enemyGunShotAudVol = PlayerPrefs.GetFloat("volume");
+
         alive = true;
         origColor = model.material.color;
         maxHP = HP;

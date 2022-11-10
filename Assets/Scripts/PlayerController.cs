@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         audioVolume = PlayerPrefs.GetFloat("volume");
         HPOrig = HP;
+        maxHP = HPOrig;
         respawn();
         LoadPlayerStats();
         updatePlayerHUD();
@@ -194,6 +195,7 @@ public class PlayerController : MonoBehaviour, IDamage
     public void EnhanceTraits()
     {
         HP = 20;
+        maxHP = HP;
         HPOrig = HP;
         playerSpeed *= 1.3f;
         jumpHeight *= 1.2f;

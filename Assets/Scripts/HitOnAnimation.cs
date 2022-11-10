@@ -28,9 +28,5 @@ public class HitOnAnimation : MonoBehaviour
             collision.gameObject.GetComponent<IDamage>().takeDamage(gameManager.instance.weaponHandlerScript.GetDamage());
             aud.PlayOneShot(hitSound, gunShotAudVol);
         }
-        else if(collision.gameObject.CompareTag("Untagged"))
-        {
-
-        }
     }
 }
