@@ -54,10 +54,10 @@ public class PlayerController : MonoBehaviour, IDamage
     private void Start()
     {
         audioVolume = PlayerPrefs.GetFloat("volume");
-        HPOrig = HP;
-        maxHP = HPOrig;
         respawn();
         LoadPlayerStats();
+        HPOrig = HP;
+        maxHP = HP;
         updatePlayerHUD();
         playerSpeedOrig = playerSpeed;
     }
