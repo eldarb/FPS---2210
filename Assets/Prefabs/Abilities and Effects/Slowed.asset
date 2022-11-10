@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Slowed
   m_EditorClassIdentifier: 
   efctdmg: 0
-  efctdur: 5
+  efctdur: 1
   lastingdmg: 0
-  wait: 1
-  lowspeed: 1
+  wait: 5
+  lowspeed: -1
+  color: {r: 0.21568628, g: 0.21568628, b: 0.21568628, a: 1}

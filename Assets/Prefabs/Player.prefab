@@ -51,11 +51,7 @@ MonoBehaviour:
   shootDistance: 0
   shootDamage: 0
   gunModel: {fileID: 0}
-  sound: {fileID: 0}
-  hitSound: {fileID: 0}
   gunStat: []
-  aud: {fileID: 1695621967}
-  gunShotAudVol: 0.15
 --- !u!82 &1695621967
 AudioSource:
   m_ObjectHideFlags: 0
@@ -370,11 +366,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 363d4369fd2d26a4881cdfd964b9a573, type: 3}
   - {fileID: 8300000, guid: 52774ed56fb79ab46990255d16f42942, type: 3}
   abilities:
-  - {fileID: 11400000, guid: 85bf104825597464f97bd9a40a1edf7a, type: 2}
-  - {fileID: 11400000, guid: 5da70d58c63a5534fa940f8adc61757e, type: 2}
   - {fileID: 11400000, guid: db46155412fd4e24d9dd6291c38cd997, type: 2}
   - {fileID: 11400000, guid: baddac938b7f6cd40b2aec88ac5ae95e, type: 2}
   - {fileID: 11400000, guid: 3da069f58c69a26469e4c5373a3ae98b, type: 2}
+  - {fileID: 11400000, guid: 85bf104825597464f97bd9a40a1edf7a, type: 2}
+  - {fileID: 11400000, guid: 5da70d58c63a5534fa940f8adc61757e, type: 2}
   selected: 0
   shootPosition: {fileID: 3428803173978886206}
 --- !u!143 &7726628884606260107
