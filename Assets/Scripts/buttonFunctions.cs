@@ -53,4 +53,9 @@ public class buttonFunctions : MonoBehaviour
     public void volUpdate() {
         MainMenu.instance.volChange();
     }
+
+    public void credits()
+    {
+        gameManager.instance.creditScreen.SetActive(true);
+    }
 }
