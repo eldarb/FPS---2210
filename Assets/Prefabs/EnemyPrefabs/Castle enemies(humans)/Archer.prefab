@@ -3695,20 +3695,22 @@ MonoBehaviour:
   model: {fileID: 2523999747737601458}
   anim: {fileID: 2523999747741784578}
   col: {fileID: 2516075742430983568}
-  HP: 5
+  HP: 10
   healthBar: {fileID: 3318033791500648415}
   healthBarSlider: {fileID: 4866203861418375563}
-  facePlayerSpeed: 7
+  facePlayerSpeed: 10
   sightRange: 80
   speedChase: 2
   animLerpSpeed: 4
-  viewAngle: 60
+  viewAngle: 180
   roamDist: 12
   headPosition: {fileID: 2523999747749144464}
+  soulDropPosition: {fileID: 8051402100788726755}
   numSouls: 1
-  shootRate: 1
+  shootRate: 3
   bullet: {fileID: 6932166732833295826, guid: 1ed771777c0bb394f83642bddcde1f65, type: 3}
   shootPosition: {fileID: 2523999747748950294}
+  soul: {fileID: 7003587076683529667, guid: a8f6301d50321a84b968548f61991c6d, type: 3}
   aud: {fileID: 6737675973100527968}
   enemyHurtAud:
   - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}
@@ -16332,6 +16334,7 @@ Transform:
   - {fileID: 2523999747749235914}
   - {fileID: 2523999747749228264}
   - {fileID: 2523999747749227154}
+  - {fileID: 3632365306208568247}
   m_Father: {fileID: 2523999747749273818}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19261,6 +19264,37 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.09100516, y: -0.05209069, z: 0.00000014901161}
     m_Extent: {x: 0.56203955, y: 0.351475, z: 0.7707151}
   m_DirtyAABB: 0
+--- !u!1 &8051402100788726755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3632365306208568247}
+  m_Layer: 7
+  m_Name: SoulDrop Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3632365306208568247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8051402100788726755}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2523999747749276868}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8140161840916980618
 GameObject:
   m_ObjectHideFlags: 0
