@@ -16,7 +16,10 @@ public class playerCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sensitivity = PlayerPrefs.GetFloat("sensitivity") * 300;
+        if (PlayerPrefs.GetFloat("sensitivity") < 0.1)
+            sensitivity = 100;
+        else
+            sensitivity = PlayerPrefs.GetFloat("sensitivity") * 300;
         Cursor.lockState = CursorLockMode.Locked; 
         Cursor.visible = false; //makes the mouse cursor invisible 
     }
