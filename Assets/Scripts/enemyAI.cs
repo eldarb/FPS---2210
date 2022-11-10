@@ -162,7 +162,6 @@ public class enemyAI : MonoBehaviour, IDamage
             if (HP <= 0)
             {
                 alive = false;
-                Debug.Log("Enemy died " + HP);
                 healthBar.SetActive(false);
                 if(gameObject.CompareTag("King"))
                 {
