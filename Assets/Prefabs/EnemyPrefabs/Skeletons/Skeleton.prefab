@@ -227,11 +227,11 @@ MonoBehaviour:
   healthBar: {fileID: 2203327540185778593}
   healthBarSlider: {fileID: 8293367990339063797}
   sliderFill: {fileID: 1045704170026739376}
-  facePlayerSpeed: 10
+  facePlayerSpeed: 4
   sightRange: 50
   speedChase: 2
   animLerpSpeed: 4
-  viewAngle: 160
+  viewAngle: 50
   roamDist: 10
   headPosition: {fileID: 2773724602163407781}
   soulDropPosition: {fileID: 2809959150205854098}

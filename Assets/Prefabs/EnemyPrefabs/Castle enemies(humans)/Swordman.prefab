@@ -732,37 +732,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.05821733, y: -0.047807425, z: 0.00000014901161}
     m_Extent: {x: 0.5292517, y: 0.34713906, z: 0.7707151}
   m_DirtyAABB: 0
---- !u!1 &4211999170414649164
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5759058774992972094}
-  m_Layer: 7
-  m_Name: SoulDrop Position
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5759058774992972094
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4211999170414649164}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8536032251664280349}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4619712715602812884
 GameObject:
   m_ObjectHideFlags: 0
@@ -9575,19 +9544,17 @@ MonoBehaviour:
   HP: 5
   healthBar: {fileID: 1651978272889114699}
   healthBarSlider: {fileID: 8892707087321306655}
-  facePlayerSpeed: 10
+  facePlayerSpeed: 5
   sightRange: 50
   speedChase: 3
   animLerpSpeed: 4
-  viewAngle: 160
+  viewAngle: 50
   roamDist: 10
   headPosition: {fileID: 8536032251664631287}
-  soulDropPosition: {fileID: 4211999170414649164}
-  numSouls: 1
-  shootRate: 2
-  bullet: {fileID: 3131189606958772970, guid: c1dd826fe4be3744c92b73616c3abccd, type: 3}
-  shootPosition: {fileID: 8122331957360901219}
-  soul: {fileID: 7003587076683529667, guid: a8f6301d50321a84b968548f61991c6d, type: 3}
+  numSouls: 2
+  shootRate: 1.5
+  bullet: {fileID: 5851684014553905639, guid: be62a7b4771a6a4488a7e8ca21369736, type: 3}
+  shootPosition: {fileID: 8536032251664629471}
   aud: {fileID: 2642452124299701171}
   enemyHurtAud:
   - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}
@@ -15493,7 +15460,6 @@ Transform:
   - {fileID: 8536032251664277739}
   - {fileID: 8536032251664389847}
   - {fileID: 8536032251664270719}
-  - {fileID: 5759058774992972094}
   m_Father: {fileID: 8536032251664399671}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

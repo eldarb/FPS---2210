@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3797263123485291983}
+  - component: {fileID: 3797263123485291982}
   - component: {fileID: 3797263123485291969}
   - component: {fileID: 3797263123485291968}
   - component: {fileID: 3797263123485291971}
-  - component: {fileID: -7458472893364507936}
   m_Layer: 0
   m_Name: PickUpSkeletonSword
   m_TagString: Untagged
@@ -35,6 +35,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 180, y: 44.179993, z: 0}
+--- !u!136 &3797263123485291982
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3797263123485291970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000018626451, y: 0.48690844, z: 0.000000014901161}
 --- !u!33 &3797263123485291969
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -98,16 +112,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunStat: {fileID: 11400000, guid: 6592f0fab5ef4714f86059ec3c542f6a, type: 2}
---- !u!135 &-7458472893364507936
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3797263123485291970}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.9085807
-  m_Center: {x: -3.108625e-15, y: 0.552229, z: -0.00000001303852}

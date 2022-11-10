@@ -716,19 +716,17 @@ MonoBehaviour:
   HP: 7
   healthBar: {fileID: 3394042607192793949}
   healthBarSlider: {fileID: 4800330614355977481}
-  facePlayerSpeed: 10
+  facePlayerSpeed: 4
   sightRange: 50
   speedChase: 5
   animLerpSpeed: 4
-  viewAngle: 160
+  viewAngle: 50
   roamDist: 15
   headPosition: {fileID: 4216554409626468467}
-  soulDropPosition: {fileID: 3341262866159503635}
-  numSouls: 3
+  numSouls: 4
   shootRate: 3
-  bullet: {fileID: 1081464618746883525, guid: 250529306c5893345b3c54ff2e920791, type: 3}
+  bullet: {fileID: 5851684014553905639, guid: be62a7b4771a6a4488a7e8ca21369736, type: 3}
   shootPosition: {fileID: 60119562848115403}
-  soul: {fileID: 1974807047834071367, guid: 5667241429b4f7e43b4e6c8abe60c936, type: 3}
   aud: {fileID: -4144721372959291093}
   enemyHurtAud:
   - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}
@@ -1306,37 +1304,6 @@ Transform:
   - {fileID: 6817416084317601677}
   m_Father: {fileID: 491552817939956229}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3341262866159503635
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7208721667768469770}
-  m_Layer: 0
-  m_Name: SoulDrop Position
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7208721667768469770
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3341262866159503635}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.593, y: -0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7386069694248858973}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3513735612788383603
 GameObject:
@@ -2332,7 +2299,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3579196124738081855}
-  - {fileID: 7208721667768469770}
   m_Father: {fileID: 4684637380913392728}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
