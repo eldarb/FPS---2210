@@ -17,6 +17,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int HP;
     [SerializeField] GameObject healthBar;
     [SerializeField] Slider healthBarSlider;
+    [SerializeField] Image sliderFill;
     [SerializeField] int facePlayerSpeed;
     [SerializeField] int sightRange;
     [SerializeField] int speedChase; // new10/16/22 > 
@@ -197,8 +198,14 @@ public class enemyAI : MonoBehaviour, IDamage
             aud.PlayOneShot(swordSound, enemyGunShotAudVol);
             anim.SetTrigger("Attack");
         }
+        else if (gameObject.CompareTag("King"))
+        {
+            aud.PlayOneShot(swordSound, enemyGunShotAudVol);
+            anim.SetTrigger("Attack");
+        }
 
-            Instantiate(bullet, shootPosition.transform.position, transform.rotation);
+
+        Instantiate(bullet, shootPosition.transform.position, transform.rotation);
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
@@ -261,18 +268,29 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         for (int i = 0; i < efct.efctdur; i++)
         {
+            sliderFill.color = efct.color;
             yield return new WaitForSeconds(efct.wait);
             takeDamage(efct.efctdmg);
         }
+        sliderFill.color = Color.white;
     }
     IEnumerator NoDamage(effect efct)
     {
         for (int i = 0; i < efct.efctdur; i++)
         {
+            sliderFill.color = efct.color;
             int temp = speedChase;
-            speedChase = efct.lowspeed;
+            if(efct.lowspeed < 0)
+            {
+                speedChase = speedChase / 2;
+            }
+            else
+            {
+                speedChase = efct.lowspeed;
+            }
             yield return new WaitForSeconds(efct.wait);
             speedChase = temp;
         }
+        sliderFill.color = Color.white;
     }
 }

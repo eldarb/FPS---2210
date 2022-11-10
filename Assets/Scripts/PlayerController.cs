@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] public int selected;
     [SerializeField] GameObject shootPosition;
 
-    bool[] coolingdown = new bool[4];
+    bool[] coolingdown = new bool[5];
 
     Vector3 playerVelocity;
     private int timesJumped;
@@ -70,6 +70,8 @@ public class PlayerController : MonoBehaviour, IDamage
         StartCoroutine(shoot0());
         StartCoroutine(shoot1());
         StartCoroutine(shoot2());
+        StartCoroutine(shoot3());
+        StartCoroutine(shoot4());
         abilitySelect();
     }
 
@@ -257,22 +259,72 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }
 
+    IEnumerator shoot3()
+    {
+        if (Input.GetButton("Shoot Ability") && selected == 3 && coolingdown[selected] != true && HP > abilities[selected].HPcost)
+        {
+            coolingdown[selected] = true;
+
+            gameManager.instance.abilityBar.cooldown(selected);
+
+            HP -= abilities[selected].HPcost;
+            updatePlayerHUD();
+
+            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(abilities[selected].cooldown);
+
+            coolingdown[selected] = false;
+        }
+    }
+
+    IEnumerator shoot4()
+    {
+        if (Input.GetButton("Shoot Ability") && selected == 4 && coolingdown[selected] != true && HP > abilities[selected].HPcost)
+        {
+            coolingdown[selected] = true;
+
+            gameManager.instance.abilityBar.cooldown(selected);
+
+            HP -= abilities[selected].HPcost;
+            updatePlayerHUD();
+
+            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(abilities[selected].cooldown);
+
+            coolingdown[selected] = false;
+        }
+    }
+
 
     public void abilitySelect()
     {
         if (Input.GetButtonDown("Ability1") && abilities[0] != null)
         {
             selected = 0;
+            gameManager.instance.abilityBar.updateAbilities();
         }
         else if (Input.GetButtonDown("Ability2") && abilities[1] != null)
         {
             selected = 1;
+            gameManager.instance.abilityBar.updateAbilities();
         }
         else if (Input.GetButtonDown("Ability3") && abilities[2] != null)
         {
             selected = 2;
+            gameManager.instance.abilityBar.updateAbilities();
         }
-        gameManager.instance.abilityBar.updateAbilities();
+        else if (Input.GetButtonDown("Ability4") && abilities[3] != null)
+        {
+            selected = 3;
+            gameManager.instance.abilityBar.updateAbilities();
+        }
+        else if (Input.GetButtonDown("Ability5") && abilities[4] != null)
+        {
+            selected = 4;
+            gameManager.instance.abilityBar.updateAbilities();
+        }
     }
     
     public void takeEffect(effect efct)

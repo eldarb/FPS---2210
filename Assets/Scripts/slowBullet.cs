@@ -20,7 +20,7 @@ public class slowBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Melee"))
+        if (other.gameObject.CompareTag("Melee") || other.gameObject.CompareTag("Range") || other.gameObject.CompareTag("King"))
         {
             other.gameObject.GetComponent<IDamage>().takeDamage(dmg);
             other.gameObject.GetComponent<IDamage>().takeEffect(efct);
