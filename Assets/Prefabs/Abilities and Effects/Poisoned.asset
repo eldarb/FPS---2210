@@ -17,3 +17,4 @@ MonoBehaviour:
   lastingdmg: 1
   wait: 2
   lowspeed: 2
+  color: {r: 0.06666667, g: 0.35686275, b: 0.019607844, a: 1}

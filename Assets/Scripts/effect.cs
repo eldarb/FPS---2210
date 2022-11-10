@@ -11,4 +11,5 @@ public class effect : ScriptableObject
     [SerializeField] public bool lastingdmg;
     [SerializeField] public int wait;
     [SerializeField] public int lowspeed;
+    [SerializeField] public Color color;
 }
