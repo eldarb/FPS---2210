@@ -9613,6 +9613,7 @@ MonoBehaviour:
   HP: 4
   healthBar: {fileID: 2147850838489125291}
   healthBarSlider: {fileID: 8091436306471704575}
+  sliderFill: {fileID: 999357296484433594}
   facePlayerSpeed: 5
   sightRange: 50
   speedChase: 2
@@ -9620,10 +9621,12 @@ MonoBehaviour:
   viewAngle: 50
   roamDist: 10
   headPosition: {fileID: 2186779957780718741}
+  soulDropPosition: {fileID: 0}
   numSouls: 5
   shootRate: 1.5
   bullet: {fileID: 5851684014553905639, guid: be62a7b4771a6a4488a7e8ca21369736, type: 3}
   shootPosition: {fileID: 2186779957780700409}
+  soul: {fileID: 0}
   aud: {fileID: 1353000407904511447}
   enemyHurtAud:
   - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}
@@ -19850,6 +19853,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
+--- !u!114 &999357296484433594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 113859990647097696, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
+  m_PrefabInstance: {fileID: 885781017686734810}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2147850838489125291 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1262239148143224433, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
