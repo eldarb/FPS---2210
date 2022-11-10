@@ -274,7 +274,14 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             sliderFill.color = efct.color;
             int temp = speedChase;
-            speedChase = efct.lowspeed;
+            if(efct.lowspeed < 0)
+            {
+                speedChase = speedChase / 2;
+            }
+            else
+            {
+                speedChase = efct.lowspeed;
+            }
             yield return new WaitForSeconds(efct.wait);
             speedChase = temp;
         }

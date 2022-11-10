@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9044016a3aad51547b668e16be3ae4de, type: 3}
   m_Name: Freezing
   m_EditorClassIdentifier: 
-  efctdmg: 1
-  efctdur: 3
+  efctdmg: 2
+  efctdur: 2
   lastingdmg: 1
   wait: 1
-  lowspeed: 2
+  lowspeed: 0
   color: {r: 0.4117647, g: 0.4627451, b: 0.8666667, a: 1}

@@ -15,6 +15,6 @@ MonoBehaviour:
   efctdmg: 0
   efctdur: 1
   lastingdmg: 0
-  wait: 5
+  wait: 8
   lowspeed: 0
   color: {r: 0.21568628, g: 0.21568628, b: 0.21568628, a: 1}
