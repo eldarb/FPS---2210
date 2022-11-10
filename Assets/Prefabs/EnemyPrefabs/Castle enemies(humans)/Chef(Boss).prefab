@@ -86,10 +86,12 @@ MonoBehaviour:
   viewAngle: 160
   roamDist: 10
   headPosition: {fileID: 7765186765653696707}
-  numSouls: 0
+  soulDropPosition: {fileID: 8213901195145636458}
+  numSouls: 5
   shootRate: 2
   bullet: {fileID: 6655712121749355128, guid: 6cfe036f532dab945a46a8f07441c7e6, type: 3}
   shootPosition: {fileID: 2042876348953064211}
+  soul: {fileID: 4757368324847465876, guid: 652d2a740cce51e4790990b9be7b8592, type: 3}
   aud: {fileID: 2504731995430223301}
   enemyHurtAud:
   - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}
@@ -862,6 +864,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1849274244042695859}
+  - {fileID: 2386756239118117825}
   m_Father: {fileID: 4514877064664869020}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1203,6 +1206,37 @@ Transform:
   - {fileID: 4514877064664869020}
   m_Father: {fileID: 778310886785457105}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8213901195145636458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2386756239118117825}
+  m_Layer: 7
+  m_Name: SoulDrop Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2386756239118117825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8213901195145636458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9159979103639796891}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8373105817957807259
 GameObject:
