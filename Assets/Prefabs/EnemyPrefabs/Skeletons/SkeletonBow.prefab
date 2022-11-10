@@ -450,6 +450,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5091355103469360537}
+  - {fileID: 1075099022034528429}
   m_Father: {fileID: 3891346971751214590}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -843,6 +844,37 @@ Transform:
   m_Children:
   - {fileID: 8201515867238384547}
   m_Father: {fileID: 3156515545212933876}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3325674768523512490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1075099022034528429}
+  m_Layer: 0
+  m_Name: SoulDrop Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1075099022034528429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325674768523512490}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.18, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1261971979593135355}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3581699904441691228
@@ -2011,17 +2043,19 @@ MonoBehaviour:
   HP: 3
   healthBar: {fileID: 3735716864289196063}
   healthBarSlider: {fileID: 6797007385127702091}
-  facePlayerSpeed: 4
+  facePlayerSpeed: 10
   sightRange: 75
   speedChase: 4
   animLerpSpeed: 4
   viewAngle: 50
-  roamDist: 10
+  roamDist: 160
   headPosition: {fileID: 5586660849687888341}
-  numSouls: 5
-  shootRate: 1.5
+  soulDropPosition: {fileID: 3325674768523512490}
+  numSouls: 1
+  shootRate: 2.5
   bullet: {fileID: 6932166732833295826, guid: 1ed771777c0bb394f83642bddcde1f65, type: 3}
   shootPosition: {fileID: 4225141131241200456}
+  soul: {fileID: 7003587076683529667, guid: a8f6301d50321a84b968548f61991c6d, type: 3}
   aud: {fileID: 112955626}
   enemyHurtAud:
   - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}
