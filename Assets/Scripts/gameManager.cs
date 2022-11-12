@@ -29,6 +29,8 @@ public class gameManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject playerDeadMenu;
     public GameObject winMenu;
+    public GameObject creditScreen;
+    public bool credits;
     public GameObject abilityMenu;
     public abilityBar abilityBar;
     public List<GameObject> menuAbilities = new List<GameObject>();
@@ -79,12 +81,18 @@ public class gameManager : MonoBehaviour
         if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
         {
             isPaused = !isPaused;
-            pauseMenu.SetActive(isPaused);
-
-            if (isPaused)
-                cursorLockPause();
+            if (gameManager.instance.credits)
+            {
+                creditScreen.SetActive(false);
+            }
             else
-                cursorUnLockUnPause();
+            {
+                pauseMenu.SetActive(isPaused);
+                if (isPaused)
+                    cursorLockPause();
+                else
+                    cursorUnLockUnPause();
+            }                       
         }
         if (isInBossRoom)
         {

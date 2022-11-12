@@ -60,6 +60,10 @@ public class enemyAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
+        enemyHurtAudVol = PlayerPrefs.GetFloat("volume");
+        enemyStepsAudVol = PlayerPrefs.GetFloat("volume");
+        enemyGunShotAudVol = PlayerPrefs.GetFloat("volume");
+
         alive = true;
         origColor = model.material.color;
         maxHP = HP;
@@ -158,7 +162,6 @@ public class enemyAI : MonoBehaviour, IDamage
             if (HP <= 0)
             {
                 alive = false;
-                Debug.Log("Enemy died " + HP);
                 healthBar.SetActive(false);
                 if(gameObject.CompareTag("King"))
                 {
