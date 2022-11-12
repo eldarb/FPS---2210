@@ -18,7 +18,10 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.cursorUnLockUnPause();
         SceneManager.LoadScene("Prison Room 1");
     }
-
+    public void quitToMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
     public void quit()
     {
         Application.Quit();
