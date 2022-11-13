@@ -105,7 +105,7 @@ public class WeaponHandler : MonoBehaviour
 
     void gunSelect()
     {
-        if (gunStat.Count > 1)
+        if (gunStat.Count > 1 && !isShooting)
         {
             if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectGun < gunStat.Count - 1)
             {
