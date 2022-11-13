@@ -5376,7 +5376,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1152994588377079965}
         m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
-        m_MethodName: quit
+        m_MethodName: quitToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
