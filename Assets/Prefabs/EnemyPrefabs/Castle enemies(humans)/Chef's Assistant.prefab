@@ -14015,6 +14015,7 @@ MonoBehaviour:
   bullet: {fileID: 6034498898719143867, guid: 99b7f811330bc1b44bc0a3574edf3fad, type: 3}
   shootPosition: {fileID: 5786017173414686103}
   soul: {fileID: 7003587076683529667, guid: a8f6301d50321a84b968548f61991c6d, type: 3}
+  weapon: {fileID: 3033198630284357407}
   aud: {fileID: 1229984536619882870}
   enemyHurtAud:
   - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}
@@ -19831,6 +19832,11 @@ PrefabInstance:
 --- !u!4 &2401481528249726373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ad04cab312401364b8ab3d4444d8be96, type: 3}
+  m_PrefabInstance: {fileID: 2799409125581247054}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3033198630284357407 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ad04cab312401364b8ab3d4444d8be96, type: 3}
   m_PrefabInstance: {fileID: 2799409125581247054}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3888864772591458769

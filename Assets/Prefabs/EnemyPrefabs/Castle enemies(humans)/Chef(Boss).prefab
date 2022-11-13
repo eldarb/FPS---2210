@@ -93,6 +93,7 @@ MonoBehaviour:
   bullet: {fileID: 6655712121749355128, guid: 6cfe036f532dab945a46a8f07441c7e6, type: 3}
   shootPosition: {fileID: 2042876348953064211}
   soul: {fileID: 4757368324847465876, guid: 652d2a740cce51e4790990b9be7b8592, type: 3}
+  weapon: {fileID: 8026069135055158299}
   aud: {fileID: 2504731995430223301}
   enemyHurtAud:
   - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}
@@ -510,7 +511,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042876348953064211}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.021, y: -0.075, z: 0.009}
+  m_LocalPosition: {x: 0.781, y: 0.031, z: 0.552}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1464,6 +1465,11 @@ PrefabInstance:
 --- !u!4 &7217444971010336417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3767720263339776800, guid: 9f724a108f3e3b14786c0bc9a856b21f, type: 3}
+  m_PrefabInstance: {fileID: 5791666951514799489}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8026069135055158299 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4540315836586967450, guid: 9f724a108f3e3b14786c0bc9a856b21f, type: 3}
   m_PrefabInstance: {fileID: 5791666951514799489}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8557715695498824329

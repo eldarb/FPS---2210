@@ -31,6 +31,7 @@ public class gameManager : MonoBehaviour
     public GameObject winMenu;
     public GameObject creditScreen;
     public bool credits;
+    public bool spawnerEnabled;
     public GameObject abilityMenu;
     public abilityBar abilityBar;
     public List<GameObject> menuAbilities = new List<GameObject>();
@@ -72,6 +73,7 @@ public class gameManager : MonoBehaviour
         aud = GameObject.FindGameObjectWithTag("Big Door").GetComponent<AudioSource>();
         teleportToNextLevel = GameObject.FindGameObjectWithTag("Teleport");
         teleportToNextLevel.SetActive(false);
+        soundVol = PlayerPrefs.GetFloat("volume");
         waveNumberText.text = waveMax.ToString("F0");
     }
 
@@ -89,9 +91,13 @@ public class gameManager : MonoBehaviour
                 isPaused = !isPaused;
                 pauseMenu.SetActive(isPaused);
                 if (isPaused)
+                {
                     cursorLockPause();
+                }
                 else
+                {
                     cursorUnLockUnPause();
+				}
             }                       
         }
         else if (Input.GetButtonDown("Tab") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !pauseMenu.activeSelf)
@@ -137,19 +143,27 @@ public class gameManager : MonoBehaviour
 
     public void checkEnemyTotal()
     {
+        if (spawnerEnabled) {
         enemyCount--;
         enemyCountText.text = enemyCount.ToString("F0");
+    }
     }
 
     public void HasPlayerBeatAllWaves()
     {
-        waveCountText.text = waveCount.ToString("F0");
+        UpdateWaveCount();
         if (waveCount == waveMax)
         {
             teleportToNextLevel.SetActive(true);
             hasPlayerBeatAllWaves = true;
         }
     }
+
+    public void UpdateWaveCount()
+    {
+        waveCountText.text = waveCount.ToString("F0");
+    }
+
     public void CheckWinCondition()
     {
             winMenu.SetActive(true);
