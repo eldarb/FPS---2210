@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Poisoned
   m_EditorClassIdentifier: 
   efctdmg: 1
-  efctdur: 6
+  efctdur: 10
   lastingdmg: 1
-  wait: 2
+  wait: 1
   lowspeed: 0
   color: {r: 0.06666667, g: 0.35686275, b: 0.019607844, a: 1}
