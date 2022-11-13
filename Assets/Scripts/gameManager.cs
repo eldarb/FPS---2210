@@ -104,11 +104,7 @@ public class gameManager : MonoBehaviour
                 cursorUnLockUnPause();
         }
 
-
-
-
-
-            if (isInBossRoom)
+        if (isInBossRoom)
         {
             aud.PlayOneShot(sound, soundVol);
             StartCoroutine(EnhancedTraitsNotifier());

@@ -8,6 +8,7 @@ public class ability : ScriptableObject
 {
     public float cooldown;
     public int HPcost;
+    public int spd;
     public GameObject bullet;
     public GameObject fireEffect;
     public AudioClip sound;

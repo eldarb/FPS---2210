@@ -248,7 +248,7 @@ public class PlayerController : MonoBehaviour, IDamage
         HP -= abilities[slctd].HPcost;
         updatePlayerHUD();
 
-        Instantiate(abilities[slctd].bullet, shootPosition.transform.position, transform.rotation);
+        Instantiate(abilities[slctd].bullet, shootPosition.transform.position, shootPosition.transform.rotation);
 
         yield return new WaitForSeconds(abilities[slctd].cooldown);
 
@@ -264,7 +264,7 @@ public class PlayerController : MonoBehaviour, IDamage
         HP -= abilities[slctd].HPcost;
         updatePlayerHUD();
 
-        Instantiate(abilities[slctd].bullet, shootPosition.transform.position, transform.rotation);
+        Instantiate(abilities[slctd].bullet, shootPosition.transform.position, shootPosition.transform.rotation);
 
         yield return new WaitForSeconds(abilities[slctd].cooldown);
 
@@ -280,7 +280,7 @@ public class PlayerController : MonoBehaviour, IDamage
         HP -= abilities[slctd].HPcost;
         updatePlayerHUD();
 
-        Instantiate(abilities[slctd].bullet, shootPosition.transform.position, transform.rotation);
+        Instantiate(abilities[slctd].bullet, shootPosition.transform.position, shootPosition.transform.rotation);
 
         yield return new WaitForSeconds(abilities[slctd].cooldown);
 
@@ -297,7 +297,7 @@ public class PlayerController : MonoBehaviour, IDamage
         HP -= abilities[slctd].HPcost;
         updatePlayerHUD();
 
-        Instantiate(abilities[slctd].bullet, shootPosition.transform.position, transform.rotation);
+        Instantiate(abilities[slctd].bullet, shootPosition.transform.position, shootPosition.transform.rotation);
 
         yield return new WaitForSeconds(abilities[slctd].cooldown);
 
@@ -314,10 +314,9 @@ public class PlayerController : MonoBehaviour, IDamage
         HP -= abilities[slctd].HPcost;
         updatePlayerHUD();
 
-        Instantiate(abilities[slctd].bullet, shootPosition.transform.position, transform.rotation);
+        Instantiate(abilities[slctd].bullet, shootPosition.transform.position, shootPosition.transform.rotation);
 
         yield return new WaitForSeconds(abilities[slctd].cooldown);
-
         coolingdown[slctd] = false;
     }
 
