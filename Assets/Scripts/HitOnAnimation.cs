@@ -13,7 +13,7 @@ public class HitOnAnimation : MonoBehaviour
     [Range(0, 1)] [SerializeField] float gunShotAudVol;
     private void Start()
     {
-        gunShotAudVol = PlayerPrefs.GetFloat("volume") + 0.1f;
+        gunShotAudVol = PlayerPrefs.GetFloat("volume") * 0.5f;
         col.enabled = false;
     }
     public void EnableColliderOnTheSword()

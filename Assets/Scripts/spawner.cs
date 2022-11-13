@@ -17,16 +17,29 @@ public class spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager.instance.waveCount++;
+        gameManager.instance.UpdateWaveCount();
         gameManager.instance.enemyCount += maxEnemies;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.instance.enemyCount == 0) {
+            gameManager.instance.HasPlayerBeatAllWaves();
+            if (!gameManager.instance.hasPlayerBeatAllWaves) {
+                gameManager.instance.waveCount++;
+                gameManager.instance.UpdateWaveCount();
+                maxEnemies = (maxEnemies * 2) - 1;
+                gameManager.instance.enemyCount = maxEnemies;
+                enemies = 0;
+            }
+        }
+
         if (gameManager.instance.enemyCount == 0 && !gameManager.instance.hasPlayerBeatAllWaves)
         {
             gameManager.instance.waveCount++;
-            gameManager.instance.HasPlayerBeatAllWaves();
+            gameManager.instance.UpdateWaveCount();
             if (!gameManager.instance.hasPlayerBeatAllWaves)
             {
                 maxEnemies = (maxEnemies * 2) - 1;

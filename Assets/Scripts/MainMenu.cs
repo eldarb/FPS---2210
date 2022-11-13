@@ -20,8 +20,21 @@ public class MainMenu : MonoBehaviour
     }
     private void Start()
     {
-        sensOption.value = PlayerPrefs.GetFloat("sensitivity");
-        volOption.value = PlayerPrefs.GetFloat("volume");
+        if (PlayerPrefs.HasKey("sensitivity")) {
+            sensOption.value = PlayerPrefs.GetFloat("sensitivity");
+        } else {
+            sensOption.value = 0.5f;
+            PlayerPrefs.SetFloat("sensitivity", 0.5f);
+            PlayerPrefs.Save();
+        }
+
+        if (PlayerPrefs.HasKey("volume")) {
+            volOption.value = PlayerPrefs.GetFloat("volume");
+        } else {
+            volOption.value = 0.5f;
+            PlayerPrefs.SetFloat("volume", 0.5f);
+            PlayerPrefs.Save();
+        }
     }
 
     public void openOptionsMenu() {

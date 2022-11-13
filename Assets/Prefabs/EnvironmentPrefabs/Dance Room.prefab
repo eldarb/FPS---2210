@@ -3436,6 +3436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 721576621956219316}
   - component: {fileID: 1868374188}
+  - component: {fileID: 4588932028458141870}
   m_Layer: 0
   m_Name: Dance Room
   m_TagString: Untagged
@@ -3490,8 +3491,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8ca79a1aaaa411a4cb6072e9bd47e666, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
@@ -3576,6 +3577,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4588932028458141870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721576621956219317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b75bb6bee0bb37d4384842ca735b1b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aud: {fileID: 1868374188}
+  clip: {fileID: 8300000, guid: 8ca79a1aaaa411a4cb6072e9bd47e666, type: 3}
 --- !u!1 &721576622073164967
 GameObject:
   m_ObjectHideFlags: 0

@@ -72,6 +72,7 @@ public class gameManager : MonoBehaviour
         aud = GameObject.FindGameObjectWithTag("Big Door").GetComponent<AudioSource>();
         teleportToNextLevel = GameObject.FindGameObjectWithTag("Teleport");
         teleportToNextLevel.SetActive(false);
+        soundVol = PlayerPrefs.GetFloat("volume");
         waveNumberText.text = waveMax.ToString("F0");
     }
 
@@ -133,13 +134,19 @@ public class gameManager : MonoBehaviour
 
     public void HasPlayerBeatAllWaves()
     {
-        waveCountText.text = waveCount.ToString("F0");
+        UpdateWaveCount();
         if (waveCount == waveMax)
         {
             teleportToNextLevel.SetActive(true);
             hasPlayerBeatAllWaves = true;
         }
     }
+
+    public void UpdateWaveCount()
+    {
+        waveCountText.text = waveCount.ToString("F0");
+    }
+
     public void CheckWinCondition()
     {
             winMenu.SetActive(true);
