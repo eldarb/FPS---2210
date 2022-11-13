@@ -9589,6 +9589,7 @@ MonoBehaviour:
   bullet: {fileID: 3131189606958772970, guid: c1dd826fe4be3744c92b73616c3abccd, type: 3}
   shootPosition: {fileID: 8122331957360901219}
   soul: {fileID: 7003587076683529667, guid: a8f6301d50321a84b968548f61991c6d, type: 3}
+  weapon: {fileID: 8536032251664445059}
   aud: {fileID: 2642452124299701171}
   enemyHurtAud:
   - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}

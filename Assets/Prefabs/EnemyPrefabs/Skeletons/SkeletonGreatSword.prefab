@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 7021042683750876548}
   - component: {fileID: 7527129147519212253}
   m_Layer: 7
-  m_Name: 'SkeletonGreatSword '
+  m_Name: SkeletonGreatSword
   m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -621,6 +621,7 @@ MonoBehaviour:
   bullet: {fileID: 1385477999632724689, guid: ae696c6feb5e0e348b35ef35195858c3, type: 3}
   shootPosition: {fileID: 1183676418358025190}
   soul: {fileID: 7003587076683529667, guid: a8f6301d50321a84b968548f61991c6d, type: 3}
+  weapon: {fileID: 950272150757233080}
   aud: {fileID: 7527129147519212253}
   enemyHurtAud:
   - {fileID: 8300000, guid: 115ac922a362c1242b001e19621db07e, type: 3}
