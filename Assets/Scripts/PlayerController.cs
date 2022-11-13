@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour, IDamage
         float zAxis = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * xAxis + transform.forward * zAxis;
-        playerController.Move(move * playerSpeed * Time.deltaTime);
+        playerController.Move(playerSpeed * Time.deltaTime * move);
 
         StartCoroutine(playSteps());
 
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour, IDamage
         if (!playingSteps && playerController.velocity.magnitude > 0.3f && playerVelocity.y == 0)
         {
             playingSteps = true;
-            aud.PlayOneShot(playerStepsAud[Random.Range(0, playerStepsAud.Length)], audioVolume);
+            aud.PlayOneShot(playerStepsAud[Random.Range(0, playerStepsAud.Length)], audioVolume * 0.1f);
             if (isSprinting)
             {
                 yield return new WaitForSeconds(0.225f);

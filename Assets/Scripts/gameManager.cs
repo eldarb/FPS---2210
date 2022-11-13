@@ -72,6 +72,7 @@ public class gameManager : MonoBehaviour
         aud = GameObject.FindGameObjectWithTag("Big Door").GetComponent<AudioSource>();
         teleportToNextLevel = GameObject.FindGameObjectWithTag("Teleport");
         teleportToNextLevel.SetActive(false);
+        soundVol = PlayerPrefs.GetFloat("volume");
         waveNumberText.text = waveMax.ToString("F0");
     }
 

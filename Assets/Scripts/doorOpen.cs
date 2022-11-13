@@ -8,28 +8,29 @@ public class doorOpen : MonoBehaviour
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip sound;
-    [Range(0, 1)] [SerializeField] float soundVol;
-    bool openTrigger;
 
     private void OnTriggerEnter(Collider other)
     {
-
+        float soundVol = PlayerPrefs.GetFloat("volume");
         if (other.CompareTag("Player"))
         {
             if (gameObject.CompareTag("Small Door"))
             {
-                if (!openTrigger)
-                {
-                    openTrigger = !openTrigger;
-                    myDoor.Play("DoorOpenAnimation", 0, 0.0f);
-                    aud.PlayOneShot(sound, soundVol);
-                }
-                else if (openTrigger)
-                {
-                    openTrigger = !openTrigger;
-                    myDoor.Play("DoorCloseAnimation", 0, 0.0f);
-                    aud.PlayOneShot(sound, soundVol);
-                }
+                myDoor.Play("DoorOpenAnimation", 0, 0.0f);
+                aud.PlayOneShot(sound, soundVol * 0.5f);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        float soundVol = PlayerPrefs.GetFloat("volume");
+        if (other.CompareTag("Player"))
+        {
+            if (gameObject.CompareTag("Small Door"))
+            {
+                myDoor.Play("DoorCloseAnimation", 0, 0.0f);
+                aud.PlayOneShot(sound, soundVol * 0.5f);
             }
         }
     }
