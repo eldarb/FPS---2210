@@ -3670,7 +3670,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8047486374034733819}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 26.3418, y: 23.486507, z: 1.7265778}
+  m_LocalPosition: {x: 31.9, y: 36.8, z: -7.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5714,6 +5714,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3130284936943188609}
     m_Modifications:
+    - target: {fileID: 2434984691796387129, guid: ea91843ec4a10c144937de10dd2fdfec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 4178743564046285093, guid: ea91843ec4a10c144937de10dd2fdfec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.83
+      objectReference: {fileID: 0}
     - target: {fileID: 8021696843731969652, guid: ea91843ec4a10c144937de10dd2fdfec, type: 3}
       propertyPath: m_Name
       value: BigDoorOpenMechanicSmaller
