@@ -82,19 +82,24 @@ public class gameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
         {
-            isPaused = !isPaused;
             if (gameManager.instance.credits)
             {
                 creditScreen.SetActive(false);
+                credits = !credits;
             }
             else
             {
+                isPaused = !isPaused;
                 pauseMenu.SetActive(isPaused);
                 if (isPaused)
+                {
                     cursorLockPause();
+                }
                 else
+                {
                     cursorUnLockUnPause();
-            }                       
+                }
+            }                     
         }
         if (isInBossRoom)
         {

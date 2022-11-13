@@ -62,4 +62,9 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.creditScreen.SetActive(true);
         gameManager.instance.credits = true;
     }
+
+    public void MainMenuCredits()
+    {
+        MainMenu.instance.openCredits();
+    }
 }

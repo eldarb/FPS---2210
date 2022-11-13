@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class MainMenu : MonoBehaviour
 {
@@ -10,10 +11,13 @@ public class MainMenu : MonoBehaviour
 
     public GameObject mainMenu;
     public GameObject optionsMenu;
+    public GameObject creditsMenu;
     public Slider sensOption;
     public TMP_Text sensOptText;
     public Slider volOption;
     public TMP_Text volOptText;
+
+    public bool creditsOpen;
 
     private void Awake() {
         instance = this;
@@ -35,6 +39,43 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetFloat("volume", 0.5f);
             PlayerPrefs.Save();
         }
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            if (MainMenu.instance.creditsOpen)
+            {
+                creditsMenu.SetActive(false);
+                creditsOpen = !creditsOpen;
+            }
+            //else
+            //{
+            //    isPaused = !isPaused;
+            //    pauseMenu.SetActive(isPaused);
+            //    if (isPaused)
+            //    {
+            //        cursorLockPause();
+            //    }
+            //    else
+            //    {
+            //        cursorUnLockUnPause();
+            //    }
+            //}
+        }
+    }
+
+    public void openCredits()
+    {
+        creditsMenu.SetActive(true);
+        creditsOpen = true;
+    }
+
+    public void closeCredits()
+    {
+        creditsMenu.SetActive(false);
+        creditsOpen = false;
     }
 
     public void openOptionsMenu() {
