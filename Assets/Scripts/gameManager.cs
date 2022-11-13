@@ -80,13 +80,15 @@ public class gameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
         {
-            isPaused = !isPaused;
-            if (gameManager.instance.credits)
+            Debug.Log("Cancel pressed");
+            if (gameManager.instance.creditScreen.activeSelf)
             {
+                Debug.Log("Credits");
                 creditScreen.SetActive(false);
             }
             else
             {
+                isPaused = !isPaused;
                 pauseMenu.SetActive(isPaused);
                 if (isPaused)
                     cursorLockPause();
