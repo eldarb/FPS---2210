@@ -33,6 +33,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject shootPosition;
     [SerializeField] GameObject soul;
+    [SerializeField] GameObject weapon;
 
     [Header("----- Enemy Audio -----")]
     [SerializeField] AudioSource aud;
@@ -189,6 +190,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
+        
         isShooting = true;
 
         if (gameObject.CompareTag("Range"))
@@ -208,8 +210,8 @@ public class enemyAI : MonoBehaviour, IDamage
         }
 
 
+        StartCoroutine(disableEnemyWeapon());
         Instantiate(bullet, shootPosition.transform.position, transform.rotation);
-
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
     }
@@ -295,5 +297,14 @@ public class enemyAI : MonoBehaviour, IDamage
             speedChase = temp;
         }
         sliderFill.color = Color.white;
+    }
+
+    IEnumerator disableEnemyWeapon()
+    {
+        weapon.SetActive(false);
+
+        yield return new WaitForSeconds(shootRate - .3f);
+
+        weapon.SetActive(true);
     }
 }
