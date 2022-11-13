@@ -134,13 +134,19 @@ public class gameManager : MonoBehaviour
 
     public void HasPlayerBeatAllWaves()
     {
-        waveCountText.text = waveCount.ToString("F0");
+        UpdateWaveCount();
         if (waveCount == waveMax)
         {
             teleportToNextLevel.SetActive(true);
             hasPlayerBeatAllWaves = true;
         }
     }
+
+    public void UpdateWaveCount()
+    {
+        waveCountText.text = waveCount.ToString("F0");
+    }
+
     public void CheckWinCondition()
     {
             winMenu.SetActive(true);
