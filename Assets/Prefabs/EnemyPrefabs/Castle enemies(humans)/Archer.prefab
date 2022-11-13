@@ -19637,11 +19637,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8935250886787178533, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
       propertyPath: m_Value
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8935250886787178533, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
       propertyPath: m_MaxValue
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8935250886787178533, guid: 9aaf0253e84f8ad40aabe4220cc8e4f4, type: 3}
       propertyPath: m_TargetGraphic
