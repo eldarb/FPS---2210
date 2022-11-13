@@ -50,19 +50,6 @@ public class MainMenu : MonoBehaviour
                 creditsMenu.SetActive(false);
                 creditsOpen = !creditsOpen;
             }
-            //else
-            //{
-            //    isPaused = !isPaused;
-            //    pauseMenu.SetActive(isPaused);
-            //    if (isPaused)
-            //    {
-            //        cursorLockPause();
-            //    }
-            //    else
-            //    {
-            //        cursorUnLockUnPause();
-            //    }
-            //}
         }
     }
 
