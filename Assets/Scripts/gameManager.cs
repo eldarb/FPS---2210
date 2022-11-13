@@ -31,6 +31,7 @@ public class gameManager : MonoBehaviour
     public GameObject winMenu;
     public GameObject creditScreen;
     public bool credits;
+    public bool spawnerEnabled;
     public GameObject abilityMenu;
     public abilityBar abilityBar;
     public List<GameObject> menuAbilities = new List<GameObject>();
@@ -128,8 +129,10 @@ public class gameManager : MonoBehaviour
 
     public void checkEnemyTotal()
     {
-        enemyCount--;
-        enemyCountText.text = enemyCount.ToString("F0");
+        if (spawnerEnabled) {
+            enemyCount--;
+            enemyCountText.text = enemyCount.ToString("F0");
+        }
     }
 
     public void HasPlayerBeatAllWaves()
