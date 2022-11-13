@@ -68,11 +68,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         playerMove();
         sprint();
-        StartCoroutine(shoot0());
-        StartCoroutine(shoot1());
-        StartCoroutine(shoot2());
-        StartCoroutine(shoot3());
-        StartCoroutine(shoot4());
+        ShootAbility();
         abilitySelect();
     }
 
@@ -205,42 +201,47 @@ public class PlayerController : MonoBehaviour, IDamage
         updatePlayerHUD();
     }
 
+    public void ShootAbility()
+    {
+        if (Input.GetButton("Shoot Ability") && selected == 0 && coolingdown[selected] != true && HP > abilities[selected].HPcost)
+            StartCoroutine(shoot0());
+        if (Input.GetButton("Shoot Ability") && selected == 1 && coolingdown[selected] != true && HP > abilities[selected].HPcost)
+            StartCoroutine(shoot1());
+        StartCoroutine(shoot2());
+        StartCoroutine(shoot3());
+        StartCoroutine(shoot4());
+    }
+
     
     IEnumerator shoot0() // Separate co-routines for each ability to have their own cooldown timer
     {
-        if (Input.GetButton("Shoot Ability") && selected == 0 && coolingdown[selected] != true && HP > abilities[selected].HPcost)
-        {
-            coolingdown[selected] = true;
+        coolingdown[selected] = true;
 
-            gameManager.instance.abilityBar.cooldown(selected);
+        gameManager.instance.abilityBar.cooldown(selected);
 
-            HP -= abilities[selected].HPcost;
-            updatePlayerHUD();
+        HP -= abilities[selected].HPcost;
+        updatePlayerHUD();
 
-            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
+        Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
 
-            yield return new WaitForSeconds(abilities[selected].cooldown);
+        yield return new WaitForSeconds(abilities[selected].cooldown);
 
-            coolingdown[selected] = false;
-        }
+        coolingdown[selected] = false;
     }
     IEnumerator shoot1()
     {
-        if (Input.GetButton("Shoot Ability") && selected == 1 && coolingdown[selected] != true && HP > abilities[selected].HPcost)
-        {
-            coolingdown[selected] = true;
+        coolingdown[selected] = true;
 
-            gameManager.instance.abilityBar.cooldown(selected);
+        gameManager.instance.abilityBar.cooldown(selected);
 
-            HP -= abilities[selected].HPcost;
-            updatePlayerHUD();
+        HP -= abilities[selected].HPcost;
+        updatePlayerHUD();
 
-            Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
+        Instantiate(abilities[selected].bullet, shootPosition.transform.position, transform.rotation);
 
-            yield return new WaitForSeconds(abilities[selected].cooldown);
+        yield return new WaitForSeconds(abilities[selected].cooldown);
 
-            coolingdown[selected] = false;
-        }
+        coolingdown[selected] = false;
     }
     IEnumerator shoot2()
     {

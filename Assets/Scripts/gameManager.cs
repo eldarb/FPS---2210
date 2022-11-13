@@ -78,12 +78,10 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
+        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !abilityMenu.activeSelf)
         {
-            Debug.Log("Cancel pressed");
             if (gameManager.instance.creditScreen.activeSelf)
             {
-                Debug.Log("Credits");
                 creditScreen.SetActive(false);
             }
             else
@@ -96,7 +94,21 @@ public class gameManager : MonoBehaviour
                     cursorUnLockUnPause();
             }                       
         }
-        if (isInBossRoom)
+        else if (Input.GetButtonDown("Tab") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !pauseMenu.activeSelf)
+        {
+            isPaused = !isPaused;
+            abilityMenu.SetActive(isPaused);
+            if (isPaused)
+                cursorLockPause();
+            else
+                cursorUnLockUnPause();
+        }
+
+
+
+
+
+            if (isInBossRoom)
         {
             aud.PlayOneShot(sound, soundVol);
             StartCoroutine(EnhancedTraitsNotifier());
