@@ -112,6 +112,7 @@ public class gameManager : MonoBehaviour
 
     public void cursorLockPause()
     {
+        playerScript.enabled = false;
         playerDamageFlash.SetActive(false);
         Time.timeScale = 0;
         Cursor.visible = true;
@@ -120,6 +121,7 @@ public class gameManager : MonoBehaviour
     
     public void cursorUnLockUnPause()
     {
+        playerScript.enabled = true;
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
