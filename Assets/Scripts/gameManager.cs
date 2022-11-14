@@ -80,12 +80,11 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf)
+        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !abilityMenu.activeSelf)
         {
-            if (gameManager.instance.credits)
+            if (gameManager.instance.creditScreen.activeSelf)
             {
                 creditScreen.SetActive(false);
-                credits = !credits;
             }
             else
             {
@@ -98,9 +97,19 @@ public class gameManager : MonoBehaviour
                 else
                 {
                     cursorUnLockUnPause();
-                }
-            }                     
+				}
+            }                       
         }
+        else if (Input.GetButtonDown("Tab") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !pauseMenu.activeSelf)
+        {
+            isPaused = !isPaused;
+            abilityMenu.SetActive(isPaused);
+            if (isPaused)
+                cursorLockPause();
+            else
+                cursorUnLockUnPause();
+        }
+
         if (isInBossRoom)
         {
             aud.PlayOneShot(sound, soundVol);
@@ -137,9 +146,9 @@ public class gameManager : MonoBehaviour
     public void checkEnemyTotal()
     {
         if (spawnerEnabled) {
-            enemyCount--;
-            enemyCountText.text = enemyCount.ToString("F0");
-        }
+        enemyCount--;
+        enemyCountText.text = enemyCount.ToString("F0");
+    }
     }
 
     public void HasPlayerBeatAllWaves()

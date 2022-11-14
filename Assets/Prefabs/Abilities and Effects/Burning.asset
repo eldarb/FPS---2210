@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9044016a3aad51547b668e16be3ae4de, type: 3}
   m_Name: Burning
   m_EditorClassIdentifier: 
-  efctdmg: 2
-  efctdur: 2
+  efctdmg: 3
+  efctdur: 4
   lastingdmg: 1
-  wait: 1
+  wait: 2
   lowspeed: 0
   color: {r: 0.6039216, g: 0.05882353, b: 0.05882353, a: 1}

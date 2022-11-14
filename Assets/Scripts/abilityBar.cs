@@ -31,8 +31,8 @@ public class abilityBar : MonoBehaviour
         {
             yield return new WaitForSeconds(timer);
             A[selected].fillAmount += 0.125f;
+            Debug.Log("Refill abilityBar " + selected);
         }
-        A[selected].fillAmount = 1;
     }
     public void updateAbilities()
     {

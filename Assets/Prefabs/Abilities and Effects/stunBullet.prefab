@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: -7226155035564677509}
   spd: 10
-  dmg: 3
+  dmg: 5
   efct: {fileID: 11400000, guid: 5d340762f70d0634a96b558c596fb149, type: 2}
   destroyTime: 2
 --- !u!33 &2870684627712084560
