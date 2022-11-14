@@ -20,6 +20,7 @@ public class buttonFunctions : MonoBehaviour
     }
     public void quitToMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MenuScene");
     }
     public void quit()
@@ -34,7 +35,6 @@ public class buttonFunctions : MonoBehaviour
 
     public void startGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        
     }
 
     public void optionsMenu() {
