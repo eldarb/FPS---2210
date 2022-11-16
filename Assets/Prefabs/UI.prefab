@@ -5255,6 +5255,7 @@ MonoBehaviour:
   winMenu: {fileID: 1627537348}
   creditScreen: {fileID: 7562615166708647370}
   credits: 0
+  spawnerEnabled: 0
   abilityMenu: {fileID: 2329987379072877067}
   abilityBar: {fileID: 870914373}
   menuAbilities:
@@ -7889,13 +7890,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3787253175926686059, guid: e0dc65bcdad77d74896a3cc3884bc7a9, type: 3}
+      propertyPath: m_text
+      value: "No Laughing Matter \n\t   By \nThe Red Grizzlies"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4025515470675206984, guid: e0dc65bcdad77d74896a3cc3884bc7a9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 129.1469
+      objectReference: {fileID: 0}
+    - target: {fileID: 4025515470675206984, guid: e0dc65bcdad77d74896a3cc3884bc7a9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 267
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798994604593683976, guid: e0dc65bcdad77d74896a3cc3884bc7a9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 239.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798994604593683976, guid: e0dc65bcdad77d74896a3cc3884bc7a9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -89.997
+      objectReference: {fileID: 0}
     - target: {fileID: 7562615165024691359, guid: e0dc65bcdad77d74896a3cc3884bc7a9, type: 3}
       propertyPath: m_Name
       value: Rolling Credits
       objectReference: {fileID: 0}
     - target: {fileID: 7562615165024691359, guid: e0dc65bcdad77d74896a3cc3884bc7a9, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8509214038883073870, guid: e0dc65bcdad77d74896a3cc3884bc7a9, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8509214038883073870, guid: e0dc65bcdad77d74896a3cc3884bc7a9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0dc65bcdad77d74896a3cc3884bc7a9, type: 3}
