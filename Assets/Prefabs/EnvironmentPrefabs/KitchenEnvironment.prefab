@@ -4640,7 +4640,6 @@ MonoBehaviour:
   myDoor: {fileID: 811165756872300171}
   aud: {fileID: 6669224554316820621}
   sound: {fileID: 8300000, guid: ce65d1cb75ae3834fb810b92526c59da, type: 3}
-  soundVol: 0.3
 --- !u!82 &6669224554316820621
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16241,6 +16240,7 @@ GameObject:
   - component: {fileID: 2485328130818690119}
   - component: {fileID: 1572446012267873250}
   - component: {fileID: 3618224592736499496}
+  - component: {fileID: 7881420374016910438}
   m_Layer: 0
   m_Name: _pot_3
   m_TagString: Untagged
@@ -16313,6 +16313,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7881420374016910438
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2969693396547639037}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8304424244277883021, guid: b9cce761114eb2c4a80c93a6704e33c3, type: 3}
 --- !u!1 &3027750342977752756
 GameObject:
   m_ObjectHideFlags: 0
@@ -20293,7 +20307,6 @@ MonoBehaviour:
   myDoor: {fileID: 5722275978941961752}
   aud: {fileID: 1775989728980398110}
   sound: {fileID: 8300000, guid: ce65d1cb75ae3834fb810b92526c59da, type: 3}
-  soundVol: 0.3
 --- !u!82 &1775989728980398110
 AudioSource:
   m_ObjectHideFlags: 0
@@ -23936,7 +23949,6 @@ MonoBehaviour:
   myDoor: {fileID: 8672283648760764973}
   aud: {fileID: 3428974994533137451}
   sound: {fileID: 8300000, guid: ce65d1cb75ae3834fb810b92526c59da, type: 3}
-  soundVol: 0.3
 --- !u!82 &3428974994533137451
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25613,7 +25625,6 @@ MonoBehaviour:
   myDoor: {fileID: 7660740537767901846}
   aud: {fileID: 4439533827846528144}
   sound: {fileID: 8300000, guid: ce65d1cb75ae3834fb810b92526c59da, type: 3}
-  soundVol: 0.3
 --- !u!82 &4439533827846528144
 AudioSource:
   m_ObjectHideFlags: 0
@@ -26229,7 +26240,6 @@ MonoBehaviour:
   myDoor: {fileID: 7108018672180295881}
   aud: {fileID: 3848554315382660815}
   sound: {fileID: 8300000, guid: ce65d1cb75ae3834fb810b92526c59da, type: 3}
-  soundVol: 0.3
 --- !u!82 &3848554315382660815
 AudioSource:
   m_ObjectHideFlags: 0
