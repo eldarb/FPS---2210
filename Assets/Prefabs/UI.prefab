@@ -1155,7 +1155,7 @@ MonoBehaviour:
   - {fileID: 2133516760}
   - {fileID: 1209078213}
   - {fileID: 1050323109}
-  selectedColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+  selectedColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0.78431374}
   defaultColor: {r: 0, g: 0, b: 0, a: 0.5882353}
 --- !u!1 &399758071
 GameObject:
@@ -7916,7 +7916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7562615165024691359, guid: e0dc65bcdad77d74896a3cc3884bc7a9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8509214038883073870, guid: e0dc65bcdad77d74896a3cc3884bc7a9, type: 3}
       propertyPath: m_AnchoredPosition.x
