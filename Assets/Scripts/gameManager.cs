@@ -20,7 +20,6 @@ public class gameManager : MonoBehaviour
     public PlayerController playerScript;
     public GameObject spawnPosition;
 
-
     [Header("----- Weapon Handler -----")]
     public GameObject weaponHandler;
     public WeaponHandler weaponHandlerScript;
@@ -38,6 +37,8 @@ public class gameManager : MonoBehaviour
     public GameObject currentMenu;
     public GameObject playerDamageFlash;
     public Image playerHPBar;
+    public TextMeshProUGUI playerCurrentHPText;
+    public TextMeshProUGUI playerMaxHPText;
     public TextMeshProUGUI enemyCountText;
     public TextMeshProUGUI enemyText;
     public TextMeshProUGUI waveCountText;
