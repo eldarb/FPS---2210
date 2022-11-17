@@ -178,8 +178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10c040c1ba765f48a42565617a35223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myDoor: {fileID: 1649843898797149297}
-  animationName: BigDoorLeftAnimation
+  leftDoor: {fileID: 0}
+  rightDoor: {fileID: 0}
+  doorAudPlayer: {fileID: 0}
+  doorCloseAudio: {fileID: 0}
 --- !u!1 &3602730526029920651
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,66 +302,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &4178743564046285114
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4178743564046285093}
-  - component: {fileID: 4178743564046285095}
-  - component: {fileID: 4178743564046285115}
-  m_Layer: 0
-  m_Name: BigDoorRightTriggerClose
-  m_TagString: Big Door
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4178743564046285093
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4178743564046285114}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.24765873, y: 3.548954, z: -3.9641876}
-  m_LocalScale: {x: 27.451777, y: 6.14777, z: 4.2322893}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8021696843731969653}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4178743564046285095
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4178743564046285114}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4178743564046285115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4178743564046285114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d10c040c1ba765f48a42565617a35223, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myDoor: {fileID: 3602730526030407082}
-  animationName: BigDoorRightAnimation
 --- !u!1 &8021696843731969652
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +334,6 @@ Transform:
   - {fileID: 1649843898796855405}
   - {fileID: 3602730526030407083}
   - {fileID: 2434984691796387129}
-  - {fileID: 4178743564046285093}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}

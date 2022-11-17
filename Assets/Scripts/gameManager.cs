@@ -50,8 +50,6 @@ public class gameManager : MonoBehaviour
     public GameObject enhancedTraitsNotifier;
 
     [Header("----- Audio -----")]
-    [SerializeField] AudioSource aud;
-    [SerializeField] AudioClip sound;
     [Range(0, 1)] [SerializeField] float soundVol;
 
     [Header("----- Teleport -----")]
@@ -71,7 +69,6 @@ public class gameManager : MonoBehaviour
         weaponHandler = GameObject.FindGameObjectWithTag("Weapon Handler");
         weaponHandlerScript = weaponHandler.GetComponent<WeaponHandler>();
         spawnPosition = GameObject.FindGameObjectWithTag("Spawn Point");
-        aud = GameObject.FindGameObjectWithTag("Big Door").GetComponent<AudioSource>();
         teleportToNextLevel = GameObject.FindGameObjectWithTag("Teleport");
         teleportToNextLevel.SetActive(false);
         soundVol = PlayerPrefs.GetFloat("volume");
@@ -113,7 +110,6 @@ public class gameManager : MonoBehaviour
 
         if (isInBossRoom)
         {
-            aud.PlayOneShot(sound, soundVol);
             StartCoroutine(EnhancedTraitsNotifier());
 
             isInBossRoom = false;

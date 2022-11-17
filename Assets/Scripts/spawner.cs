@@ -8,11 +8,14 @@ public class spawner : MonoBehaviour
     [SerializeField] int maxEnemies;
     [SerializeField] GameObject[] enemyTypes;
     [SerializeField] Transform[] spawnPos;
+    [SerializeField] GameObject bossType;
+    [SerializeField] Transform bossPos;
+    [SerializeField] bool hasBoss;
 
     int enemies;
     bool isSpawning;
     bool startSpawning;
-    int randomEnemyToSpawn;
+    bool spawnBoss;
 
     // Start is called before the first frame update
     void Start()
@@ -30,14 +33,18 @@ public class spawner : MonoBehaviour
             if (!gameManager.instance.hasPlayerBeatAllWaves) {
                 gameManager.instance.waveCount++;
                 gameManager.instance.UpdateWaveCount();
-                maxEnemies = (maxEnemies * 2) - 1;
+                if (hasBoss && gameManager.instance.waveCount == gameManager.instance.waveMax) {
+                    maxEnemies++;
+                    spawnBoss = true;
+                } else {
+                    maxEnemies = (maxEnemies * 2) - 1;
+                }
                 gameManager.instance.enemyCount = maxEnemies;
                 enemies = 0;
             }
         }
         if (startSpawning && !isSpawning && enemies < maxEnemies)
         {
-            randomEnemyToSpawn = Random.Range(0, enemyTypes.Length - 1);
             StartCoroutine(spawn());
             enemies++;
         }
@@ -47,8 +54,14 @@ public class spawner : MonoBehaviour
     {
         isSpawning = true;
 
-        Instantiate(enemyTypes[randomEnemyToSpawn], spawnPos[Random.Range(0, spawnPos.Length - 1)].transform.position, enemyTypes[randomEnemyToSpawn].transform.rotation);
-        //enemies++;
+        if (spawnBoss) {
+            Instantiate(bossType, bossPos.transform.position, bossType.transform.rotation);
+            spawnBoss = false;
+        } else {
+            int randomEnemy = Random.Range(0, enemyTypes.Length - 1);
+            int randomSpawn = Random.Range(0, spawnPos.Length - 1);
+            Instantiate(enemyTypes[randomEnemy], spawnPos[randomSpawn].transform.position, enemyTypes[randomEnemy].transform.rotation);
+        }
 
         yield return new WaitForSeconds(timer);
         isSpawning = false;
