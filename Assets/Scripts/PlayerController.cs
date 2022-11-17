@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] AudioClip[] playerHurtAud;
     [SerializeField] AudioClip[] playerStepsAud;
     [SerializeField] AudioClip[] playerJumpAud;
+    [SerializeField] AudioClip playerHealAud;
 
     [Header("----- Abilities -----")]
     [SerializeField] public List<ability> abilities = new List<ability>();
@@ -175,6 +176,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public void healPlayer(int healing)
     {
+        aud.PlayOneShot(playerHealAud, audioVolume);
         if (HP < maxHP)
         {
             HP += healing;
