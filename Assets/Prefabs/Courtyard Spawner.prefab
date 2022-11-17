@@ -67,6 +67,9 @@ MonoBehaviour:
   - {fileID: 6705340373616871468}
   - {fileID: 6705340374871563115}
   - {fileID: 6705340375223545227}
+  bossType: {fileID: 4687025298515199770, guid: 1c3894d702f79514398a6b00696ee2a4, type: 3}
+  bossPos: {fileID: 0}
+  hasBoss: 1
 --- !u!65 &3695317636380465162
 BoxCollider:
   m_ObjectHideFlags: 0
