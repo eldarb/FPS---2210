@@ -4,25 +4,21 @@ using UnityEngine;
 
 public class bigDoorAnimation : MonoBehaviour
 {
-    [SerializeField] Animator myDoor = null;
-    [SerializeField] string animationName;
-    
+    [SerializeField] Animator leftDoor;
+    [SerializeField] Animator rightDoor;
+    [SerializeField] AudioSource doorAudPlayer;
+    [SerializeField] AudioClip doorCloseAudio;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && gameObject.CompareTag("Big Door"))
         {
+            float vol = PlayerPrefs.GetFloat("volume");
             gameManager.instance.isInBossRoom = true;
-            if (animationName == "BigDoorRightAnimation")
-            {
-                myDoor.Play("BigDoorRightAnimation", 0, 0.0f);
-                gameObject.SetActive(false);
-            }
-            else if (animationName == "BigDoorLeftAnimation")
-            {
-                myDoor.Play("BigDoorLeftAnimation", 0, 0.0f);
-                gameObject.SetActive(false);
-            }
+            rightDoor.Play("BigDoorRightAnimation", 0, 0.0f);
+            leftDoor.Play("BigDoorLeftAnimation", 0, 0.0f);
+            doorAudPlayer.PlayOneShot(doorCloseAudio, vol);
+            gameObject.SetActive(false);
             gameManager.instance.spawnPosition.transform.position = gameObject.transform.position;
         }
     }
