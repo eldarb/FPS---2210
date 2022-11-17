@@ -612,14 +612,6 @@ PrefabInstance:
       propertyPath: bossPos
       value: 
       objectReference: {fileID: 4687025300018809131}
-    - target: {fileID: 4583326323626600307, guid: 769fbcd2c8a97984da096958a9604faf, type: 3}
-      propertyPath: hasBoss
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4583326323626600307, guid: 769fbcd2c8a97984da096958a9604faf, type: 3}
-      propertyPath: bossType
-      value: 
-      objectReference: {fileID: 4687025298515199770, guid: 1c3894d702f79514398a6b00696ee2a4, type: 3}
     - target: {fileID: 4583326323626600319, guid: 769fbcd2c8a97984da096958a9604faf, type: 3}
       propertyPath: m_Name
       value: Courtyard Spawner
