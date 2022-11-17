@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     bool[] coolingdown = new bool[5];
 
+    Vector3 hitNormal;
     Vector3 playerVelocity;
     private int timesJumped;
     int HPOrig;
@@ -71,6 +72,7 @@ public class PlayerController : MonoBehaviour, IDamage
         if (Input.GetButton("Shoot Ability"))
             ShootAbility();
         abilitySelect();
+        gameObject.GetComponent<CharacterController>().Move(new Vector3(hitNormal.x * Time.deltaTime, playerVelocity.y * Time.deltaTime, hitNormal.z * Time.deltaTime));
     }
 
     void playerMove()
@@ -92,7 +94,7 @@ public class PlayerController : MonoBehaviour, IDamage
         if (Input.GetButtonDown("Jump") && timesJumped < jumpsMax)
         {
             timesJumped++;
-            playerVelocity.y += jumpHeight;
+            playerVelocity.y = jumpHeight;
             aud.PlayOneShot(playerJumpAud[Random.Range(0, playerJumpAud.Length)], audioVolume);
         }
 
@@ -100,6 +102,10 @@ public class PlayerController : MonoBehaviour, IDamage
         playerController.Move(playerVelocity * Time.deltaTime);
     }
 
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        hitNormal = hit.normal;
+    }
     void sprint()
     {
         if (Input.GetButtonDown("Sprint"))
