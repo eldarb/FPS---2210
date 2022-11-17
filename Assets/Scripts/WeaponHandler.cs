@@ -50,7 +50,12 @@ public class WeaponHandler : MonoBehaviour
             else if (gunType == "Melee")
             {
                 gunModel.GetComponent<Animator>().SetTrigger("Attack");
-                gunModel.GetComponent<Animator>().speed = 1/shootRate;
+                yield return new WaitForSeconds(0.01f);
+                Animator anim = gunModel.GetComponent<Animator>();
+                AnimatorClipInfo[] array = gunModel.GetComponent<Animator>().GetNextAnimatorClipInfo(0);
+                if(array == null)
+                    array = gunModel.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
+                anim.speed = (array[0].clip.length - 0.01f) / shootRate;
             }
             else if (gunType == "Range")
             {
@@ -64,7 +69,7 @@ public class WeaponHandler : MonoBehaviour
                 }
             }
             yield return new WaitForSeconds(shootRate);
-            if(justDidHeavyAttack)
+            if (justDidHeavyAttack)
             {
                 shootDamage /= 2;
                 justDidHeavyAttack = false;
