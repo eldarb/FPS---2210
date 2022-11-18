@@ -29,6 +29,7 @@ public class gameManager : MonoBehaviour
     public GameObject playerDeadMenu;
     public GameObject winMenu;
     public GameObject creditScreen;
+    public GameObject controlHints;
     public bool credits;
     public bool spawnerEnabled;
     public GameObject abilityMenu;
@@ -79,7 +80,7 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !abilityMenu.activeSelf)
+        if (Input.GetButtonDown("Cancel") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !abilityMenu.activeSelf && !hiddenWinConditionPanel.activeSelf)
         {
             if (gameManager.instance.creditScreen.activeSelf)
             {
@@ -99,7 +100,7 @@ public class gameManager : MonoBehaviour
 				}
             }                       
         }
-        else if (Input.GetButtonDown("Tab") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !pauseMenu.activeSelf)
+        else if (Input.GetButtonDown("Tab") && !playerDeadMenu.activeSelf && !winMenu.activeSelf && !pauseMenu.activeSelf && !hiddenWinConditionPanel.activeSelf)
         {
             isPaused = !isPaused;
             abilityMenu.SetActive(isPaused);
