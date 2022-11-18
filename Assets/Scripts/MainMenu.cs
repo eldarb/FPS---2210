@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     public TMP_Text sensOptText;
     public Slider volOption;
     public TMP_Text volOptText;
+    public AudioSource aud;
 
     public bool creditsOpen;
 
@@ -39,6 +40,8 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetFloat("volume", 0.5f);
             PlayerPrefs.Save();
         }
+
+        aud.volume = PlayerPrefs.GetFloat("volume");
     }
 
     void Update()
@@ -70,7 +73,12 @@ public class MainMenu : MonoBehaviour
         optionsMenu.SetActive(true);
     }
 
-    public void openMainMenu() {
+    public void closeOptionsMenu() {
+        float vol = PlayerPrefs.GetFloat("volume");
+        float sens = PlayerPrefs.GetFloat("sensitivity");
+        aud.volume = vol;
+        volOption.value = vol;
+        sensOption.value = sens;
         optionsMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
@@ -80,10 +88,12 @@ public class MainMenu : MonoBehaviour
     }
 
     public void volChange() {
+        aud.volume = volOption.value;
         volOptText.text = volOption.value.ToString("F");
     }
 
     public void applyOptions() {
+        aud.volume = volOption.value;
         PlayerPrefs.SetFloat("sensitivity", sensOption.value);
         PlayerPrefs.SetFloat("volume", volOption.value);
         PlayerPrefs.Save();

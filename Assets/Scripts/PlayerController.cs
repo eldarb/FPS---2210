@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] AudioClip[] playerHurtAud;
     [SerializeField] AudioClip[] playerStepsAud;
     [SerializeField] AudioClip[] playerJumpAud;
+    [SerializeField] AudioClip playerHealAud;
 
     [Header("----- Abilities -----")]
     [SerializeField] public List<ability> abilities = new List<ability>();
@@ -175,9 +176,12 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public void healPlayer(int healing)
     {
+        aud.PlayOneShot(playerHealAud, audioVolume);
         if (HP < maxHP)
         {
             HP += healing;
+            if (HP > maxHP)
+                HP = maxHP;
             updatePlayerHUD();
         }
     }
@@ -185,6 +189,8 @@ public class PlayerController : MonoBehaviour, IDamage
     public void updatePlayerHUD()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / (float)HPOrig;
+        gameManager.instance.playerCurrentHPText.text = HP.ToString("F0");
+        gameManager.instance.playerMaxHPText.text = maxHP.ToString("F0");
     }
 
     public void respawn()
@@ -197,9 +203,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public void EnhanceTraits()
     {
-        HP = 20;
-        maxHP = HP;
-        HPOrig = HP;
+        HPOrig = maxHP = HP = 20;
         playerSpeed *= 1.3f;
         jumpHeight *= 1.2f;
         gravityValue = 20;

@@ -351,6 +351,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2862c884baf6a64db6c05c5555629bd, type: 3}
+--- !u!95 &315046247 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8304879941625799300, guid: 183055c62f687ab449c713efdba273cd, type: 3}
+  m_PrefabInstance: {fileID: 975564209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &324052893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -700,6 +705,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3309423185121244610, guid: 183055c62f687ab449c713efdba273cd, type: 3}
+      propertyPath: leftDoor
+      value: 
+      objectReference: {fileID: 1745108226}
+    - target: {fileID: 3309423185121244610, guid: 183055c62f687ab449c713efdba273cd, type: 3}
+      propertyPath: rightDoor
+      value: 
+      objectReference: {fileID: 315046247}
+    - target: {fileID: 3309423185121244610, guid: 183055c62f687ab449c713efdba273cd, type: 3}
+      propertyPath: doorAudPlayer
+      value: 
+      objectReference: {fileID: 1188069907}
+    - target: {fileID: 3309423185121244610, guid: 183055c62f687ab449c713efdba273cd, type: 3}
+      propertyPath: doorCloseAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 4594da37506d82f479ff5746785b0de6, type: 3}
     - target: {fileID: 3309423185331806554, guid: 183055c62f687ab449c713efdba273cd, type: 3}
       propertyPath: m_Name
       value: BigDoorOpenMechanic
@@ -748,8 +769,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7166750587129258520, guid: 183055c62f687ab449c713efdba273cd, type: 3}
+      propertyPath: m_Name
+      value: BigDoorTriggerClose
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 183055c62f687ab449c713efdba273cd, type: 3}
+--- !u!82 &1188069907 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 767387190, guid: 183055c62f687ab449c713efdba273cd, type: 3}
+  m_PrefabInstance: {fileID: 975564209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1696188446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -807,6 +837,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b36ad994ab485f440a7427b26d32b401, type: 3}
+--- !u!95 &1745108226 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6078390918464310111, guid: 183055c62f687ab449c713efdba273cd, type: 3}
+  m_PrefabInstance: {fileID: 975564209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1784338424
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -507,6 +507,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9152c3cc3c408a747ab6aff59d3e5012, type: 3}
   - {fileID: 8300000, guid: 363d4369fd2d26a4881cdfd964b9a573, type: 3}
   - {fileID: 8300000, guid: 52774ed56fb79ab46990255d16f42942, type: 3}
+  playerHealAud: {fileID: 8300000, guid: 52453f8f967807d49adcf600ee483fa1, type: 3}
   abilities:
   - {fileID: 11400000, guid: db46155412fd4e24d9dd6291c38cd997, type: 2}
   - {fileID: 11400000, guid: baddac938b7f6cd40b2aec88ac5ae95e, type: 2}
