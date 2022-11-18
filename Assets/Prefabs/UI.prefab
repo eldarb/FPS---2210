@@ -5390,6 +5390,7 @@ MonoBehaviour:
   playerDeadMenu: {fileID: 142732387}
   winMenu: {fileID: 1627537348}
   creditScreen: {fileID: 7562615166708647370}
+  controlHints: {fileID: 4862839528945918199}
   credits: 0
   spawnerEnabled: 0
   abilityMenu: {fileID: 2329987379072877067}
@@ -5415,8 +5416,6 @@ MonoBehaviour:
   hiddenWinConditionPanel: {fileID: 1784583467600647770}
   enhancedTraitsNotifier: {fileID: 8545083510009508079}
   interactMessage: {fileID: 569557059}
-  aud: {fileID: 0}
-  sound: {fileID: 8300000, guid: 4594da37506d82f479ff5746785b0de6, type: 3}
   soundVol: 0.3
   teleportToNextLevel: {fileID: 0}
   GunList:

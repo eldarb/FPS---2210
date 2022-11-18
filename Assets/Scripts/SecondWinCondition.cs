@@ -8,5 +8,7 @@ public class SecondWinCondition : MonoBehaviour
     {
         gameManager.instance.hiddenWinConditionPanel.SetActive(true);
         gameManager.instance.cursorLockPause();
+        gameManager.instance.controlHints.SetActive(false);
+        gameManager.instance.abilityBar.gameObject.SetActive(false);
     }
 }
