@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: SwordRed
   gunType: Melee
-  shootRate: 1
+  shootRate: 0.7
   shootDistance: 5
   shootDamage: 3
   gunModel: {fileID: 6626909981149324367, guid: 4d3aad0ad1c6142409fedf74af454314, type: 3}

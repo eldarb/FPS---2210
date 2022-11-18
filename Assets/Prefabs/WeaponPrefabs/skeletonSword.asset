@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: SkeletonSword
   gunType: Melee
-  shootRate: 0.2
+  shootRate: 0.5
   shootDistance: 5
   shootDamage: 1
   gunModel: {fileID: 175076064233636392, guid: 324b35f3db438da4c9ede9426155074f, type: 3}

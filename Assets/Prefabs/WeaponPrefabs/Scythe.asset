@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Scythe
   gunType: Melee
-  shootRate: 0.45
+  shootRate: 0.75
   shootDistance: 5
   shootDamage: 2
   gunModel: {fileID: 193167634323517353, guid: d51eb402371ba354aa7bff460f21867c, type: 3}
