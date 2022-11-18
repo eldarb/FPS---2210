@@ -47,6 +47,7 @@ public class gameManager : MonoBehaviour
     public TextMeshProUGUI soulsCount;
     public GameObject hiddenWinConditionPanel;
     public GameObject enhancedTraitsNotifier;
+    public TextMeshProUGUI interactMessage;
 
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
