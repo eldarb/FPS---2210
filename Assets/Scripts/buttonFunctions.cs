@@ -42,7 +42,7 @@ public class buttonFunctions : MonoBehaviour
     }
 
     public void optionsBack() {
-        MainMenu.instance.openMainMenu();
+        MainMenu.instance.closeOptionsMenu();
     }
 
     public void optionsApply() {
