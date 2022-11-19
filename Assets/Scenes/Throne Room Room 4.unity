@@ -340,6 +340,10 @@ PrefabInstance:
       propertyPath: bossType
       value: 
       objectReference: {fileID: 5333844867902180112, guid: 34b54471c6d43d848a04889afb82440f, type: 3}
+    - target: {fileID: 4583326323626600307, guid: 769fbcd2c8a97984da096958a9604faf, type: 3}
+      propertyPath: maxEnemies
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4583326323626600319, guid: 769fbcd2c8a97984da096958a9604faf, type: 3}
       propertyPath: m_Name
       value: Courtyard Spawner
@@ -621,15 +625,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8047486374034733817, guid: 66744ccac4302c0408973c9527a0b590, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.9
+      value: 29.36
       objectReference: {fileID: 0}
     - target: {fileID: 8047486374034733817, guid: 66744ccac4302c0408973c9527a0b590, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 36.8
+      value: 30.74
       objectReference: {fileID: 0}
     - target: {fileID: 8047486374034733817, guid: 66744ccac4302c0408973c9527a0b590, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.9
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047486374034733818, guid: 66744ccac4302c0408973c9527a0b590, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047486374034733818, guid: 66744ccac4302c0408973c9527a0b590, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66744ccac4302c0408973c9527a0b590, type: 3}

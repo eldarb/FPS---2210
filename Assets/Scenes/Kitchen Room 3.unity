@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43671113, g: 0.4843154, b: 0.5645643, a: 1}
+  m_IndirectSpecularColor: {r: 0.44679004, g: 0.49665982, b: 0.5749448, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -569,6 +569,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1139751137790993571, guid: c1a73ac370159d14ab7bc196b2474b70, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5975383
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139751137790993571, guid: c1a73ac370159d14ab7bc196b2474b70, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.68270016
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139751137790993571, guid: c1a73ac370159d14ab7bc196b2474b70, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.41493362
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139751137790993571, guid: c1a73ac370159d14ab7bc196b2474b70, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.06854704
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139751137790993571, guid: c1a73ac370159d14ab7bc196b2474b70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 49.376
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139751137790993571, guid: c1a73ac370159d14ab7bc196b2474b70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -115.129
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139751137790993571, guid: c1a73ac370159d14ab7bc196b2474b70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -84.85
+      objectReference: {fileID: 0}
     - target: {fileID: 2694892685243562143, guid: c1a73ac370159d14ab7bc196b2474b70, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -867,7 +895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 1
-  maxEnemies: 2
+  maxEnemies: 3
   enemyTypes:
   - {fileID: 2129668336644961826, guid: a07d5874fda92214085953d2664a4b14, type: 3}
   - {fileID: 2523999747748941056, guid: c37781e0e92b7ca4a9268cd0a3275a53, type: 3}
